@@ -116,11 +116,8 @@
 
 					<div class="row table method-table">
 						<div class="table-header table-row hidden-xs">
-							<div class="col-sm-3">Name</div>
-							<div class="col-sm-2">Namespace</div>
-							<div class="col-sm-2">Assembly</div>
-							<div class="col-sm-2">Class</div>
-							<div class="col-sm-3">Description</div>
+							<div class="col-sm-4">Method</div>
+							<div class="col-sm-8">Description</div>
 						</div>
 
 						<div class="table-row method-table-row ng-hide" ng-show="currentObject.methods.length == 0">
@@ -130,28 +127,16 @@
 						</div>
 
 						<div class="table-row method-table-row" ng-repeat="x in currentObject.methods">
-							<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Name</div>
-							<div class="col-xs-12 col-sm-3 table-cell property-table-cell">
-								{{x.memberName}}
-							</div>
-
-							<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Namespace</div>
-							<div class="col-xs-12 col-sm-2 table-cell property-table-cell">
-								{{x.namespace}}
-							</div>
-
-							<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Assembly</div>
-							<div class="col-xs-12 col-sm-2 table-cell property-table-cell">
-								{{x.assemblyName}}
-							</div>
-
-							<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Class</div>
-							<div class="col-xs-12 col-sm-2 table-cell property-table-cell">
-								{{x.className}}
+							<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Method</div>
+							<div class="col-xs-12 col-sm-4 table-cell property-table-cell">
+								<div class="row"><span class="method-data-header">{{x.memberName}}</span></div>
+								<div class="row">{{x.className}}</div>
+								<div class="row">{{x.namespace}}</div>
+								<div class="row">{{x.assemblyName}}</div>
 							</div>
 
 							<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Description</div>
-							<div class="col-xs-12 col-sm-3 table-cell property-table-cell">
+							<div class="col-xs-12 col-sm-8 table-cell property-table-cell">
 								{{x.description}}
 							</div>
 

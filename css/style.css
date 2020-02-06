@@ -54,6 +54,11 @@ h4
 	padding: 1%;
 }
 
+.method-data-header
+{
+	font-weight: bold;
+}
+
 .can-click
 {
  	cursor: pointer;
