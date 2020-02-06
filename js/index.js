@@ -15,47 +15,49 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {
 		$scope.isLoading = true;
 
-		var namespace = $location.search().namespace;
-		var object = $location.search().object;
-
-		$scope.currentObject = null;
-
-		$scope.objects.filter(function(obj) {
-			if(obj.namespace == namespace && obj.memberName == object)
-				$scope.currentObject = obj;
-		});
-
-		if($scope.currentObject != null)
-		{
-			var types = [];
-			types.push(namespace + "." + object);
-			$scope.currentObject.inheritance.forEach(function(obj) {
-				types.push(obj.namespace + "." + obj.memberName);
-			});
-
-			var methods = [];
-			$scope.methods.filter(function(obj) {
-				obj.inputs.filter(function(input) {
-					if(types.indexOf(input.namespace + "." + input.memberName) != -1)
-					{
-						if(methods.indexOf(obj) == -1)
-							methods.push(obj);
-					}
-				});
-			});
-
-			$scope.currentObject.methods = methods;
-		}
-
-		/*$http.get('js/test.json').then(function(response) {
+		$http.get('js/blah.json').then(function(response) {
 			$scope.objects = response.data;
 
-			$scope.currentObject = $scope.objects[0];
+			var namespace = $location.search().namespace;
+			var object = $location.search().object;
+
+			$scope.currentObject = null;
+
+			$scope.objects.filter(function(obj) {
+				if(obj.namespace == namespace && obj.memberName == object)
+					$scope.currentObject = obj;
+			});
+
+			if($scope.currentObject != null)
+			{
+				var types = [];
+				types.push(namespace + "." + object);
+				$scope.currentObject.inheritance.forEach(function(obj) {
+					types.push(obj.namespace + "." + obj.memberName);
+				});
+
+				var methods = [];
+				$scope.methods.filter(function(obj) {
+					obj.inputs.filter(function(input) {
+						if(types.indexOf(input.namespace + "." + input.memberName) != -1)
+						{
+							if(methods.indexOf(obj) == -1)
+								methods.push(obj);
+						}
+					});
+				});
+
+				$scope.currentObject.methods = methods;
+			}
 
 			$scope.isLoading = false;		
 		}, function(response) {
 			$scope.handleFailure(response);
-		});*/
+		});
+
+		
+
+		
 
 		//$scope.currentObject = $scope.objects[0];
 
