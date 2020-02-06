@@ -15,11 +15,12 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {
 		$scope.isLoading = true;
 
+		var namespace = $location.search().namespace;
+		var object = $location.search().object;
+		
 		$http.get('js/blah.json').then(function(response) {
 			$scope.objects = response.data;
 
-			var namespace = $location.search().namespace;
-			var object = $location.search().object;
 
 			$scope.currentObject = null;
 
