@@ -26,9 +26,17 @@ h4
 	padding: 3%;
 }
 
+.table-header
+{
+	font-weight: bold;
+	padding-bottom: 5%;
+	border-bottom: 1px solid #aaaaaa;
+}
+
 .table-row
 {
 	padding-bottom: 5%;
+	border-bottom: 1px solid #aaaaaa;
 }
 
 .can-click
