@@ -36,7 +36,16 @@ h4
 .table-row
 {
 	padding-bottom: 5%;
+}
+
+.property-table-row
+{
 	border-bottom: 1px solid #aaaaaa;
+}
+
+.method-input-table-header
+{
+	font-weight: bold;
 }
 
 .can-click
