@@ -23,6 +23,12 @@ h4
 .table
 {
 	border: 1px solid black;
+	padding: 3%;
+}
+
+.table-row
+{
+	padding-bottom: 5%;
 }
 
 .can-click
