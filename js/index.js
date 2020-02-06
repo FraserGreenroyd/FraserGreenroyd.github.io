@@ -49,6 +49,12 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 						});
 					});
 
+					methods.sort(function(a, b) {
+						if(a.namespace < b.namespace) return -1;
+						if(a.namespace > b.namespace) return 1;
+						return 0;
+					});
+
 					$scope.currentObject.methods = methods;
 				}
 
