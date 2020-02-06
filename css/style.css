@@ -53,6 +53,11 @@ h4
 	border-bottom: 1px solid #aaaaaa;
 }
 
+.table-sub-row
+{
+	border-bottom: 1px solid #999999;
+}
+
 .can-click
 {
  	cursor: pointer;
