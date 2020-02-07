@@ -72,7 +72,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 						});
 
 						methods.sort(function(a, b) {
-							if(a.namespace.contains(namespace.replace('oM', 'Engine'))) return -1;
+							if(a.namespace.includes(namespace.replace('oM', 'Engine'))) return -1;
 							if(a.namespace < b.namespace) return -1;
 							if(a.namespace > b.namespace) return 1;
 							return 0;
