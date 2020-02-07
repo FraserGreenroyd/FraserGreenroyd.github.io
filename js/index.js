@@ -122,7 +122,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		{
 			var arr = [];
 			$scope.namespacesMaster.forEach(function(obj) {
-				if(obj.includes($scope.namespaceFilter))
+				if(obj.toLowerCase().includes($scope.namespaceFilter.toLowerCase()))
 					arr.push(obj);
 			});
 
