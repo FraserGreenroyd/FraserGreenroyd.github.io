@@ -72,9 +72,16 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 						});
 
 						methods.sort(function(a, b) {
-							if(a.namespace.includes(namespace.replace('oM', 'Engine'))) return -1;
 							if(a.namespace < b.namespace) return -1;
 							if(a.namespace > b.namespace) return 1;
+							return 0;
+						});
+
+						var engineNamespace = namespace.replace('oM', 'Engine');
+
+						methods.sort(function(a, b) {
+							if(a.namespace.includes(engineNamespace)) return -1;
+							if(b.namespace.includes(engineNamespace)) return 1;
 							return 0;
 						});
 
