@@ -34,6 +34,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 			$http.get('js/objects.json').then(function(response) {
 				$scope.objects = response.data;
 				$scope.currentObject = null;
+				$scope.selectedNamespaceObjects = [];
 
 				$scope.objects.forEach(function(obj) {
 					if($scope.namespaces.indexOf(obj.namespace) == -1)
