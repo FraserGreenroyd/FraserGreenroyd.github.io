@@ -205,4 +205,11 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 		return tuples;
 	};
+
+	$scope.showHideNamespace = function(ns) {
+		if(ns.canView == undefined)
+			ns.canView = false;
+		
+		ns.canView = !ns.canView;
+	};
 });
