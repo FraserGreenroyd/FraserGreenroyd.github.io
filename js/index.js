@@ -75,11 +75,13 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 							});
 						});
 
+						var groupedMethods = $scope.groupMethodsByNamespace(methods);
+
 						var engineNamespace = namespace.replace('oM', 'Engine');
 						if($scope.nthIndexOf(engineNamespace, '.', 3) != -1)
 							engineNamespace = engineNamespace.substring(0, $scope.nthIndexOf(engineNamespace, '.', 3));
 
-						methods.sort(function(a, b) {
+						/*methods.sort(function(a, b) {
 							if(a.namespace.includes(engineNamespace)) return -1;
 							if(b.namespace.includes(engineNamespace)) return 1;
 							return 0;
@@ -92,9 +94,9 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 								if(a.namespace > b.namespace) return 1;
 							}
 							return 0;
-						});
+						});*/
 
-						$scope.currentObject.methods = methods;
+						$scope.currentObject.methods = groupedMethods;
 					}
 				}
 				else
@@ -156,5 +158,34 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	    }
 
 	    return i;
+	};
+
+	$scope.groupMethodsByNamespace = function(array) {
+		var arr = [];
+
+		array.forEach(function(obj) {
+			var ns = obj.namespace;
+			if($scope.nthIndexOf(ns, '.', 3) != -1)
+				ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
+
+			if(arr[ns] == undefined)
+				arr[ns] = [];
+
+			arr[ns].push(obj);
+		});
+
+		var tuples = [];
+
+		for (var key in arr) tuples.push([key, arr[key]]);
+
+		tuples.sort(function(a, b) {
+			a = a[0];
+			b = b[0];
+			if(a < b) return -1;
+			if(a > b) return 1;
+			return 0;
+		});
+
+		return tuples;
 	};
 });
