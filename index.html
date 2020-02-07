@@ -40,7 +40,9 @@
 						<span class="fa fa-bars fa-3x"></span>
 					</a>
 						<ul class="dropdown-menu nav-menu-dropdown">
+							<li class="nav-menu-item"><input type="text" ng-model="namespaceFilter" placeholder="Search for a namespace" ng-change="filterNamesapces()" /></li>
 							<li class="nav-menu-item can-click" ng-repeat="x in namespaces" ng-click="goToNamespace(x)">{{x}}</li>
+							<li class="nav-menu-item ng-hide" ng-show="namespaceFilter != '' && namespaces.length == 0">No results found</li> 
 						</ul>
 					</li>
 				</ul>

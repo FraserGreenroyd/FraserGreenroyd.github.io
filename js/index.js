@@ -9,8 +9,10 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.objects = [];
 	$scope.methods = [];
 
+	$scope.namespacesMaster = [];
 	$scope.namespaces = [];
 	$scope.displayNamespace = false;
+	$scope.namespaceFilter = "";
 
 	$scope.handleFailure = function(response)
 	{
@@ -40,6 +42,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 					if($scope.namespaces.indexOf(obj.namespace) == -1)
 						$scope.namespaces.push(obj.namespace);
 				});
+
+				$scope.namespacesMaster = JSON.parse(JSON.stringify($scope.namespaces));
 
 				if(object != null && object != undefined)
 				{
@@ -109,5 +113,20 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 	$scope.goToNamespace = function(namespace) {
 		$location.search('namespace', namespace);
+	};
+
+	$scope.filterNamespaces = function() {
+		if($scope.namespaceFilter == "" || $scope.namespaceFilter == undefined)
+			$scope.namespaces = JSON.parse(JSON.stringify($scope.namespacesMaster));
+		else
+		{
+			var arr = [];
+			$scope.namespacesMaster.forEach(function(obj) {
+				if(obj.includes($scope.namespaceFilter))
+					arr.push(obj);
+			});
+
+			$scope.namespaces = arr;
+		}
 	};
 });
