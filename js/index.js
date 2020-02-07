@@ -108,6 +108,6 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	};
 
 	$scope.goToNamespace = function(namespace) {
-		$location.search('namespace', namespace.namespace);
+		$location.search('namespace', namespace);
 	};
 });
