@@ -78,7 +78,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 				else
 				{
 					$scope.objects.filter(function(obj) {
-						if(obj.namespace == namespace)
+						if(obj.namespace.startsWith(namespace))
 							$scope.selectedNamespaceObjects.push(obj);
 					});
 
