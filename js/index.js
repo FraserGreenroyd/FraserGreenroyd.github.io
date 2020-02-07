@@ -160,7 +160,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	    return i;
 	};
 
-	$scope.groupMethodsByNamespace = function(array) {
+	$scope.groupMethodsByNamespace = function(array, coreNS) {
 		var arr = [];
 
 		array.forEach(function(obj) {
@@ -179,12 +179,22 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		for (var key in arr) tuples.push([key, arr[key]]);
 
 		tuples.sort(function(a, b) {
+			if(a[0].includes(coreNS)) return -1;
+			if(b[0].includes(coreNS)) return 1;
+			return 0;
+		});
+
+		var t = tuples.shift();
+
+		tuples.sort(function(a, b) {
 			a = a[0];
 			b = b[0];
 			if(a < b) return -1;
 			if(a > b) return 1;
 			return 0;
 		});
+
+		tuples.splice(0, 0, t);
 
 		return tuples;
 	};
