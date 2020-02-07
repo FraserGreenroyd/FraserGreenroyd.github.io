@@ -39,9 +39,12 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 				$scope.selectedNamespaceObjects = [];
 
 				$scope.objects.forEach(function(obj) {
-					var ns = obj.split('.');
-					if($scope.namespaces.indexOf(obj.namespace) == -1)
-						$scope.namespaces.push(obj.namespace);
+					var ns = obj.namespace;
+					if($scope.nthIndexOf(ns, 3) != -1)
+						ns = ns.substring(0, $scope.nthIndexOf(ns, 3));
+
+					if($scope.namespaces.indexOf(ns) == -1)
+						$scope.namespaces.push(ns);
 				});
 
 				$scope.namespacesMaster = JSON.parse(JSON.stringify($scope.namespaces));
