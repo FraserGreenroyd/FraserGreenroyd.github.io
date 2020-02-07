@@ -40,8 +40,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 				$scope.objects.forEach(function(obj) {
 					var ns = obj.namespace;
-					if($scope.nthIndexOf(ns, 3) != -1)
-						ns = ns.substring(0, $scope.nthIndexOf(ns, 3));
+					if($scope.nthIndexOf(ns, '.', 3) != -1)
+						ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
 
 					if($scope.namespaces.indexOf(ns) == -1)
 						$scope.namespaces.push(ns);
@@ -82,8 +82,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 						});
 
 						var engineNamespace = namespace.replace('oM', 'Engine');
-						if($scope.nthIndexOf(engineNamespace, 3) != -1)
-							engineNamespace = engineNamespace.substring(0, $scope.nthIndexOf(engineNamespace, 3));
+						if($scope.nthIndexOf(engineNamespace, '.', 3) != -1)
+							engineNamespace = engineNamespace.substring(0, $scope.nthIndexOf(engineNamespace, '.', 3));
 
 						methods.sort(function(a, b) {
 							if(a.namespace.includes(engineNamespace)) return -1;
@@ -144,11 +144,11 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		}
 	};
 
-	$scope.nthIndexOf = function(pattern, n) {
+	$scope.nthIndexOf = function(str, pattern, n) {
 	    var i = -1;
 
-	    while (n-- && i++ < this.length) {
-	        i = this.indexOf(pattern, i);
+	    while (n-- && i++ < str.length) {
+	        i = str.indexOf(pattern, i);
 	        if (i < 0) break;
 	    }
 
