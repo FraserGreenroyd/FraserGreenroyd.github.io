@@ -91,7 +91,7 @@
 
 						<div class="table-row method-table-row" ng-repeat="a in currentEngine.methods">
 							<div class="namespace-display accordion-display" ng-click="showHideClass(a)">
-								{{a[0]}}
+								<span class="can-click">{{a[0]}}</span>
 							</div>
 
 							<div class="namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
