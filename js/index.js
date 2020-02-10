@@ -80,21 +80,6 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 							engineNamespace = engineNamespace.substring(0, $scope.nthIndexOf(engineNamespace, '.', 3));
 
 						var groupedMethods = $scope.groupMethodsByNamespace(methods, engineNamespace);
-						/*methods.sort(function(a, b) {
-							if(a.namespace.includes(engineNamespace)) return -1;
-							if(b.namespace.includes(engineNamespace)) return 1;
-							return 0;
-						});
-
-						methods.sort(function(a, b) {
-							if((a.namespace.includes(engineNamespace) && b.namespace.includes(engineNamespace)) || (!a.namespace.includes(engineNamespace) && !b.namespace.includes(engineNamespace)))
-							{
-								if(a.namespace < b.namespace) return -1;
-								if(a.namespace > b.namespace) return 1;
-							}
-							return 0;
-						});*/
-
 						$scope.currentObject.methods = groupedMethods;
 					}
 				}
