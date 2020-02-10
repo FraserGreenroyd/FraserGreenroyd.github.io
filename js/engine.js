@@ -3,14 +3,12 @@ app.controller('engineController', function($scope, $window, $http, $filter, not
 	$scope.isLoading = true;
 
 	$scope.currentEngine = {};
-	$scope.selectedNamespace = "";
 
 	$scope.objects = [];
 	$scope.methods = [];
 
 	$scope.namespacesMaster = [];
 	$scope.namespaces = [];
-	$scope.displayNamespace = false;
 	$scope.namespaceFilter = "";
 
 	$scope.handleFailure = function(response)
@@ -23,10 +21,6 @@ app.controller('engineController', function($scope, $window, $http, $filter, not
 		$scope.isLoading = true;
 
 		var engine = $location.search().engine;
-
-		$scope.displayNamespace = false;
-
-		$scope.selectedNamespace = namespace;
 
 		$http.get('js/methods.json').then(function(response) {
 			$scope.methods = response.data;
