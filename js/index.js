@@ -92,11 +92,11 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 									adapters.push(obj);
 							});
 
-							var adapterNamespace = namespace.replace('oM', 'Engine');
+							var adapterNamespace = namespace.replace('oM', 'Adapter');
 							if($scope.nthIndexOf(adapterNamespace, '.', 3) != -1)
 								adapterNamespace = adapterNamespace.substring(0, $scope.nthIndexOf(adapterNamespace, '.', 3));
 
-							var groupedAdapters = $scope.groupMethodsByNamespace(adapters, adapterNamespace);
+							var groupedAdapters = $scope.groupMethodsByNamespace(adapters[0].adapterMethods, adapterNamespace);
 							$scope.currentObject.adapters = groupedAdapters;
 						}
 					}
