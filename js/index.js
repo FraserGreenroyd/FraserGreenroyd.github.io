@@ -92,7 +92,12 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 									adapters.push(obj);
 							});
 
-							$scope.currentObject.adapters = adapters[0].adapterMethods;
+							var adapterNamespace = namespace.replace('oM', 'Engine');
+							if($scope.nthIndexOf(adapterNamespace, '.', 3) != -1)
+								adapterNamespace = adapterNamespace.substring(0, $scope.nthIndexOf(adapterNamespace, '.', 3));
+
+							var groupedAdapters = $scope.groupMethodsByNamespace(adapters, adapterNamespace);
+							$scope.currentObject.adapters = groupedAdapters;
 						}
 					}
 					else
