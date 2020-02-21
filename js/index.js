@@ -31,7 +31,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 		$scope.selectedNamespace = namespace;
 
-		$http.get('js/adapters.json').then(function(response) {
+		$http.get('js/adapter.json').then(function(response) {
 			$scope.adapters = response.data;
 
 			$http.get('js/methods.json').then(function(response) {
