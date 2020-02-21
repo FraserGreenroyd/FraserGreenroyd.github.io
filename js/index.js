@@ -92,7 +92,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 									adapters.push(obj);
 							});
 
-							$scope.currentObject.adapters = adapters;
+							$scope.currentObject.adapters = adapters[0].adapterMethods;
 						}
 					}
 					else
