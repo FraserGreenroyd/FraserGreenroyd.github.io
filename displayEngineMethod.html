@@ -40,6 +40,41 @@
 		</div>
 	</div>
 
+	<p class="object-properties can-click" ng-click="displayMethodOutputs(currentMethod)"><span class="fa {{currentMethod.displayOutputs ? 'fa-minus' : 'fa-plus'}} fa-3x"></span> Outputs</p>
+
+	<div class="row table method-table ng-hide" ng-show="currentMethod.displayOutputs">
+		<div class="table-row method-table-row">
+			<div class="col-xs-12 table-sub-row method-table-sub-row">
+				<div class="col-xs-12 method-input-table-header">Output</div>
+
+				<div class="table-header table-row hidden-xs">
+					<div class="col-sm-3">Name</div>
+
+					<div class="col-sm-3">Type</div>
+
+					<div class="col-sm-6">Description</div>
+				</div>
+
+				<div class="table-row property-table-row" ng-repeat="x in currentObject.properties">
+					<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Name</div>
+					<div class="col-xs-12 col-sm-3 table-cell property-table-cell">
+						{{currentMethod.outputs.memberName}}
+					</div>
+
+					<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Type</div>
+					<div class="col-xs-12 col-sm-3 table-cell property-table-cell">
+						{{currentMethod.outputs.namespace}}
+					</div>
+
+					<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Description</div>
+					<div class="col-xs-12 col-sm-6 table-cell property-table-cell">
+						{{currentMethod.outputs.description}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<p class="version-info version-title">Assembly and Version Information</p>
 	<p class="version-info">{{currentMethod.assemblyName}}</p>
 	<p class="version-info">{{currentMethod.version}}</p>
