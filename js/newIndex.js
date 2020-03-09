@@ -439,4 +439,20 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 			$scope.handleFailure(response);
 		});
 	};
+
+	$scope.showHideNamespace = function(object)
+	{
+		if(ns.canView == undefined)
+			ns.canView = false;
+		
+		ns.canView = !ns.canView;
+	};
+
+	$scope.showHideMethodInputs = function(object)
+	{
+		if(ns.canViewInputs == undefined)
+			ns.canViewInputs = false;
+		
+		ns.canViewInputs = !ns.canViewInputs;
+	};
 });
