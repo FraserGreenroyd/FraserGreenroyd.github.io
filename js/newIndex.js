@@ -126,16 +126,6 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		method.displayInputs = !method.displayInputs;
 	};
 
-	$scope.preObjectNameSpace = function(object)
-	{
-		return object.namespace.substring(0, object.namespace.lastIndexOf('.'));
-	};
-
-	$scope.objectNameAndUsings = function(object)
-	{
-		return object.namespace.substring(object.namespace.lastIndexOf('.'));
-	};
-
 	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {
 		$scope.isLoading = true;
 
