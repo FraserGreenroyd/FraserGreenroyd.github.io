@@ -19,6 +19,12 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.expandEngine = false;
 	$scope.expandAdapter = false;
 
+	$scope.displayResults = false;
+
+	$scope.mainSearch = {
+		searchTerm : "",
+	};
+
 	$scope.handleFailure = function(response)
 	{
 		$scope.isLoading = false;
@@ -55,6 +61,17 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		alert("Fraser didn't do this yet - remind him?");
 	};
 
+	$scope.runSearch = function()
+	{
+		alert("Fraser didn't do this yet - remind him?");
+	};
+
+	$scope.surpriseMe = function()
+	{
+		var item = $scope.objects[Math.floor(Math.random() * $scope.objects.length)]
+		$scope.currentObject = item;
+	};
+
 	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {
 		$scope.isLoading = true;
 
@@ -67,26 +84,90 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 		$http.get('js/adapter.json').then(function(response) {
 			$scope.adapters = response.data;
-		}, function(response) {
-			$scope.handleFailure(response);
-		});
 
-		$http.get('js/methods.json').then(function(response) {
-			$scope.methods = response.data;
-		}, function(response) {
-			$scope.handleFailure(response);
-		});
+			$http.get('js/methods.json').then(function(response) {
+				$scope.methods = response.data;
 
-		$http.get('js/objects.json').then(function(response) {
-			$scope.objects = response.data;
+				$http.get('js/objects.json').then(function(response) {
+					$scope.objects = response.data;
+					$scope.currentObject = null;
+					$scope.selectedNamespaceObjects = [];
 
-			$scope.objects.forEach(function(obj) {
-				var ns = obj.namespace;
-				if($scope.nthIndexOf(ns, '.', 3) != -1)
-					ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
+					$scope.objects.forEach(function(obj) {
+						var ns = obj.namespace;
+						if($scope.nthIndexOf(ns, '.', 3) != -1)
+							ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
 
-				if($scope.namespaces.indexOf(ns) == -1)
-					$scope.namespaces.push(ns);
+						if($scope.namespaces.indexOf(ns) == -1)
+							$scope.namespaces.push(ns);
+					});
+
+					$scope.namespacesMaster = JSON.parse(JSON.stringify($scope.namespaces));
+
+					if(object != null && object != undefined)
+					{
+						$scope.objects.filter(function(obj) {
+							if(obj.namespace == namespace && obj.memberName == object)
+								$scope.currentObject = obj;
+						});
+
+						if($scope.currentObject != null)
+						{
+							var types = [];
+							types.push(namespace + "." + object);
+							$scope.currentObject.inheritance.forEach(function(obj) {
+								types.push(obj.namespace + "." + obj.memberName);
+							});
+
+							var methods = [];
+							$scope.methods.filter(function(obj) {
+								obj.inputs.filter(function(input) {
+									if(types.indexOf(input.namespace + "." + input.memberName) != -1)
+									{
+										if(methods.indexOf(obj) == -1)
+											methods.push(obj);
+									}
+								});
+							});
+
+							var engineNamespace = namespace.replace('oM', 'Engine');
+							if($scope.nthIndexOf(engineNamespace, '.', 3) != -1)
+								engineNamespace = engineNamespace.substring(0, $scope.nthIndexOf(engineNamespace, '.', 3));
+
+							var groupedMethods = $scope.groupMethodsByNamespace(methods, engineNamespace);
+							$scope.currentObject.methods = groupedMethods;
+
+							var adapters = [];
+							$scope.adapters.filter(function(obj) {
+								if(obj.namespace == $scope.currentObject.namespace && obj.memberName == $scope.currentObject.memberName)
+									adapters.push(obj);
+							});
+
+							var adapterNamespace = namespace.replace('oM', 'Adapter');
+							if($scope.nthIndexOf(adapterNamespace, '.', 3) != -1)
+								adapterNamespace = adapterNamespace.substring(0, $scope.nthIndexOf(adapterNamespace, '.', 3));
+
+							var groupedAdapters = $scope.groupMethodsByNamespace(adapters[0].adapterMethods, adapterNamespace);
+							$scope.currentObject.adapters = groupedAdapters;
+						}
+					}
+					else
+					{
+						$scope.objects.filter(function(obj) {
+							if(obj.namespace.startsWith(namespace))
+								$scope.selectedNamespaceObjects.push(obj);
+						});
+
+						$scope.displayNamespace = true;
+					}
+
+					$scope.isLoading = false;		
+				}, function(response) {
+					$scope.handleFailure(response);
+				});
+
+			}, function(response) {
+				$scope.handleFailure(response);
 			});
 		}, function(response) {
 			$scope.handleFailure(response);
@@ -104,5 +185,52 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	    }
 
 	    return i;
+	};
+
+	$scope.groupMethodsByNamespace = function(array, coreNS) {
+		var arr = [];
+
+		array.forEach(function(obj) {
+			var ns = obj.namespace;
+			if($scope.nthIndexOf(ns, '.', 3) != -1)
+				ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
+
+			if(arr[ns] == undefined)
+				arr[ns] = [];
+
+			arr[ns].push(obj);
+		});
+
+		var tuples = [];
+
+		for (var key in arr) tuples.push([key, arr[key]]);
+
+		tuples.sort(function(a, b) {
+			if(a[0].includes(coreNS)) return -1;
+			if(b[0].includes(coreNS)) return 1;
+			return 0;
+		});
+
+		var t = tuples.shift();
+
+		tuples.sort(function(a, b) {
+			a = a[0];
+			b = b[0];
+			if(a < b) return -1;
+			if(a > b) return 1;
+			return 0;
+		});
+
+		tuples.splice(0, 0, t);
+
+		tuples.forEach(function(obj) {
+			obj[1].sort(function(a, b) {
+				if(a.memberName < b.memberName) return -1;
+				if(a.memberName > b.memberName) return 1;
+				return 0;
+			});
+		});
+
+		return tuples;
 	};
 });
