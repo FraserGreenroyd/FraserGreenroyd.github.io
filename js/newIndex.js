@@ -75,9 +75,9 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.surpriseMe = function()
 	{
 		var item = $scope.objects[Math.floor(Math.random() * $scope.objects.length)]
-		$scope.currentObject = item;
-
-		$scope.setDisplayObject();
+		$location.search('type', 'oM');
+		$location.search('namespace', item.namespace);
+		$location.search('object', item.memberName);
 	};
 
 	$scope.setDisplaySearch = function()
