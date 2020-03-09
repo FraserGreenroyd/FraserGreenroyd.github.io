@@ -69,19 +69,19 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 			$scope.adapters = response.data;
 		}, function(response) {
 			$scope.handleFailure(response);
-		};
+		});
 
 		$http.get('js/methods.json').then(function(response) {
 			$scope.methods = response.data;
 		}, function(response) {
 			$scope.handleFailure(response);
-		};
+		});
 
 		$http.get('js/objects.json').then(function(response) {
 			$scope.objects = response.data;
 		}, function(response) {
 			$scope.handleFailure(response);
-		};
+		});
 
 		$scope.isLoading = false;
 	});
