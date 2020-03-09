@@ -71,7 +71,20 @@
 
 				<div class="col-md-9">
 					<!-- Main content -->
-					
+					<div class="col-md-3">
+						<img src="img/main-logo.png" class="main-logo" />
+					</div>
+
+					<div class="col-md-9">
+						<div class="row">
+							<input type="text" ng-model="mainSearch.searchTerm" />
+						</div>
+
+						<div class="row">
+							<button class="btn btn-success search-btn" ng-click="runSearch()">BHoM Search</button>
+							<button class="btn btn-info surprise-btn" ng-click="surpriseMe()">Surprise me!</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
