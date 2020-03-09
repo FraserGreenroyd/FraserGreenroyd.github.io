@@ -1,0 +1,46 @@
+<div class="col-md-9 ng-hide" ng-show="displayEngineMethod">
+	<div class="col-md-12 text-right">
+		<p class="right-hand-header">Engine</p>
+	</div>
+
+	<p class="pre-object-namespace">{{preObjectNameSpace(currentMethod)}}</p>
+
+	<p class="object-name">{{objectNameAndUsings(currentMethod)}}</p>
+
+	<p class="object-description">{{currentMethod.description}}</p>
+
+	<p class="object-properties can-click" ng-click="displayMethodInputs(currentMethod)"><span class="fa {{currentMethod.displayInputs ? 'fa-minus' : 'fa-plus'}} fa-3x"></span> Inputs</p>
+
+	<div class="row table method-table ng-hide" ng-show="currentMethod.displayInputs">
+		<div class="table-row method-table-row">
+			<div class="col-xs-12 table-sub-row method-table-sub-row">
+				<div class="col-xs-12 method-input-table-header">Inputs</div>
+
+				<div class="row method-input-table-header hidden-xs">
+					<div class="col-sm-2">Name</div>
+					<div class="col-sm-3">Type</div>
+					<div class="col-sm-1">Is Required</div>
+					<div class="col-sm-6">Description</div>
+				</div>
+
+				<div class="row table-sub-row" ng-repeat="y in currentMethod.inputs">
+					<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Name</div>
+					<div class="col-xs-12 col-sm-2 table-cell property-input-table-cell">{{y.inputName}}</div>
+
+					<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Type</div>
+					<div class="col-xs-12 col-sm-3 table-cell property-input-table-cell"><span class="can-click" ng-click="goToObject(y)">{{y.namespace}}.{{y.memberName}}</span></div>
+
+					<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Is Required</div>
+					<div class="col-xs-12 col-sm-1 table-cell property-input-table-cell">{{y.isRequired}}</div>
+
+					<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Description</div>
+					<div class="col-xs-12 col-sm-6 table-cell property-input-table-cell">{{y.description}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<p class="version-info version-title">Assembly and Version Information</p>
+	<p class="version-info">{{currentMethod.assemblyName}}</p>
+	<p class="version-info">{{currentMethod.version}}</p>
+</div>

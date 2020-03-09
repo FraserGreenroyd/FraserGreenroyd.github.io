@@ -3,6 +3,9 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.isLoading = true;
 
 	$scope.currentObject = {};
+	$scope.currentEngine = {};
+	$scope.currentMethod = {};
+	
 	$scope.selectedNamespaceObjects = [];
 	$scope.selectedNamespace = "";
 
@@ -22,7 +25,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.displaySearch = true;
 	$scope.displayResults = false;
 	$scope.displayObject = false;
-	$scope.displayEngine = false;
+	$scope.displayEngineMethod = false;
 
 	$scope.mainSearch = {
 		searchTerm : "",
@@ -89,10 +92,10 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$scope.displayObject = true;
 	};
 
-	$scope.setDisplayEngine = function()
+	$scope.setDisplayEngineMethods = function()
 	{
 		$scope.setAllViewsFalse();
-		$scope.displayEngine = true;
+		$scope.displayEngineMethod = true;
 	};
 
 	$scope.setAllViewsFalse = function()
@@ -100,7 +103,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$scope.displaySearch = false;
 		$scope.displayResults = false;
 		$scope.displayObject = false;
-		$scope.displayEngine = false;
+		$scope.displayEngineMethod = false;
 	};
 
 	$scope.displayObjectProperties = function(object)
@@ -134,7 +137,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		else if (type == "engine")
 		{
 			$scope.readEngine();
-			$scope.setDisplayEngine();
+			$scope.displayEngineMethod();
 		}
 
 		$scope.isLoading = false;
@@ -339,6 +342,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.readEngine = function()
 	{
 		var engine = $location.search().engine;
+		var method = $location.search().method;
 
 		$http.get('js/methods.json').then(function(response) {
 			$scope.methods = response.data;
@@ -352,33 +356,47 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 					$scope.namespaces.push(ns);
 			});
 
-			$scope.namespacesMaster = JSON.parse(JSON.stringify($scope.namespaces));
+			if(method == null)
+			{
+				$scope.namespacesMaster = JSON.parse(JSON.stringify($scope.namespaces));
 
-			$http.get('js/objects.json').then(function(response) {
-				$scope.objects = response.data;
-				$scope.currentEngine = null;
+				$http.get('js/objects.json').then(function(response) {
+					$scope.objects = response.data;
+					$scope.currentEngine = null;
 
-				if(engine != null && engine != undefined)
-				{
-					$scope.currentEngine = { methods: [] };
+					if(engine != null && engine != undefined)
+					{
+						$scope.currentEngine = { methods: [] };
 
-					var methods = [];
-					$scope.methods.filter(function(obj) {
-						if(obj.namespace.includes(engine))
-							methods.push(obj);
-					});
+						var methods = [];
+						$scope.methods.filter(function(obj) {
+							if(obj.namespace.includes(engine))
+								methods.push(obj);
+						});
 
-					if($scope.nthIndexOf(engine, '.', 3) != -1)
-						engine = engine.substring(0, $scope.nthIndexOf(engine, '.', 3));
+						if($scope.nthIndexOf(engine, '.', 3) != -1)
+							engine = engine.substring(0, $scope.nthIndexOf(engine, '.', 3));
 
-					var groupedMethods = $scope.groupMethodsByClass(methods, engine);
-					$scope.currentEngine.methods = groupedMethods;
-				}
+						var groupedMethods = $scope.groupMethodsByClass(methods, engine);
+						$scope.currentEngine.methods = groupedMethods;
+					}
 
-				$scope.isLoading = false;		
-			}, function(response) {
-				$scope.handleFailure(response);
-			});
+					$scope.isLoading = false;		
+				}, function(response) {
+					$scope.handleFailure(response);
+				});
+			}
+			else
+			{
+				$scope.methods.forEach(function(obj) {
+					var ns = obj.namespace;
+					if($scope.nthIndexOf(ns, '.', 3) != -1)
+						ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
+
+					if(ns == engine && obj.memberName == method)
+						$scope.currentMethod = obj;
+				});
+			}
 
 		}, function(response) {
 			$scope.handleFailure(response);
