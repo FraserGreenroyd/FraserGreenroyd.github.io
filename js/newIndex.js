@@ -19,7 +19,9 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.expandEngine = false;
 	$scope.expandAdapter = false;
 
+	$scope.displaySearch = true;
 	$scope.displayResults = false;
+	$scope.displayObject = false;
 
 	$scope.mainSearch = {
 		searchTerm : "",
@@ -70,6 +72,21 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	{
 		var item = $scope.objects[Math.floor(Math.random() * $scope.objects.length)]
 		$scope.currentObject = item;
+
+		$scope.displayObject = true;
+	};
+
+	$scope.setDisplayObject = function()
+	{
+		$scope.setAllViewsFalse();
+		$scope.displayObject = true;
+	};
+
+	$scope.setAllViewsFalse = function()
+	{
+		$scope.displaySearch = false;
+		$scope.displayResults = false;
+		$scope.displayObject = false;
 	};
 
 	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {
