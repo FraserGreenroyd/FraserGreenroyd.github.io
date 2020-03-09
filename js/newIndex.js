@@ -137,6 +137,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		var type = $location.search().type;
 		if(type == null)
 		{
+			$scope.readSearch();
 			$scope.setDisplaySearch();
 		}
 		else if(type == "oM")
@@ -149,8 +150,6 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 			$scope.readEngine();
 			$scope.setDisplayEngineMethods();
 		}
-
-		$scope.isLoading = false;
 	});
 
 	$scope.nthIndexOf = function(str, pattern, n) {
@@ -246,6 +245,29 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		});
 
 		return tuples;
+	};
+
+	$scope.readSearch = function()
+	{
+		$http.get('js/adapter.json').then(function(response) {
+			$scope.adapters = response.data;
+
+			$http.get('js/methods.json').then(function(response) {
+				$scope.methods = response.data;
+
+				$http.get('js/objects.json').then(function(response) {
+					$scope.objects = response.data;
+
+					$scope.isLoading = false;
+				}, function(response) {
+					$scope.handleFailure(response);
+				});
+			}, function(response) {
+				$scope.handleFailure(response);
+			});
+		}, function(response) {
+			$scope.handleFailure(response);
+		});
 	};
 
 	$scope.read_oM = function()
