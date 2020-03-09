@@ -77,6 +77,12 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$scope.setDisplayObject();
 	};
 
+	$scope.setDisplaySearch = function()
+	{
+		$scope.setAllViewsFalse();
+		$scope.displaySearch = true;
+	};
+
 	$scope.setDisplayObject = function()
 	{
 		$scope.setAllViewsFalse();
@@ -116,9 +122,11 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$scope.isLoading = true;
 
 		var type = $location.search().type;
-		if(type == null) return;
-
-		if(type == "oM")
+		if(type == null)
+		{
+			$scope.setDisplaySearch();
+		}
+		else if(type == "oM")
 		{
 			$scope.read_oM();
 			$scope.setDisplayObject();
