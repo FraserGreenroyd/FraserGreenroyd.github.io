@@ -94,4 +94,15 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 		$scope.isLoading = false;
 	});
+
+	$scope.nthIndexOf = function(str, pattern, n) {
+	    var i = -1;
+
+	    while (n-- && i++ < str.length) {
+	        i = str.indexOf(pattern, i);
+	        if (i < 0) break;
+	    }
+
+	    return i;
+	};
 });
