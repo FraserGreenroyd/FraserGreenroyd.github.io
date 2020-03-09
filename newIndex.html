@@ -122,7 +122,7 @@
 
 					<p class="object-description">{{currentObject.description}}</p>
 
-					<p class="object-properties can-click" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties : 'fa-minus' : 'fa-plus'}} fa-3x"></span> oM Properties</p>
+					<p class="object-properties can-click" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-minus' : 'fa-plus'}} fa-3x"></span> oM Properties</p>
 
 					<div class="row table property-table ng-hide" ng-show="currentObject.displayProperties">
 						<div class="table-header table-row hidden-xs">
@@ -157,7 +157,7 @@
 						</div>
 					</div>
 
-					<p class="engine-methods can-click" ng-click="displayEngineMethods(currentObject)"><span class="fa {{currentObject.displayEngineMethods : 'fa-minus' : 'fa-plus'}} fa-3x"></span> Engine Methods</p>
+					<p class="engine-methods can-click" ng-click="displayEngineMethods(currentObject)"><span class="fa {{currentObject.displayEngineMethods ? 'fa-minus' : 'fa-plus'}} fa-3x"></span> Engine Methods</p>
 
 					<div class="row table method-table ng-hide" ng-show="currentObject.displayEngineMethods">
 						<div class="table-header table-row hidden-xs">
@@ -218,7 +218,7 @@
 						</div>
 					</div>
 
-					<p class="engine-methods can-click" ng-click="displayAdapterMethods(currentObject)"><span class="fa {{currentObject.displayAdapterMethods : 'fa-minus' : 'fa-plus'}} fa-3x"></span> Adapter Methods</p>
+					<p class="engine-methods can-click" ng-click="displayAdapterMethods(currentObject)"><span class="fa {{currentObject.displayAdapterMethods ? 'fa-minus' : 'fa-plus'}} fa-3x"></span> Adapter Methods</p>
 
 					<div class="row table method-table ng-hide" ng-show="currentObject.displayAdapterMethods">
 						<div class="table-row method-table-row" ng-repeat="a in currentObject.adapters">
