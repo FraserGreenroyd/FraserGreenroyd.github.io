@@ -73,7 +73,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		var item = $scope.objects[Math.floor(Math.random() * $scope.objects.length)]
 		$scope.currentObject = item;
 
-		$scope.displayObject = true;
+		$scope.setDisplayObject();
 	};
 
 	$scope.setDisplayObject = function()
@@ -87,6 +87,21 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$scope.displaySearch = false;
 		$scope.displayResults = false;
 		$scope.displayObject = false;
+	};
+
+	$scope.displayObjectProperties = function(object)
+	{
+		object.displayProperties = !object.displayProperties;
+	};
+
+	$scope.displayEngineMethods = function(object)
+	{
+		object.displayMethods = !object.displayMethods;
+	};
+
+	$scope.displayAdapterMethods = function(object)
+	{
+		object.displayAdapters = !object.displayAdapters;
 	};
 
 	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {

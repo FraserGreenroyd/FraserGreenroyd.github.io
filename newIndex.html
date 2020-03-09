@@ -157,9 +157,9 @@
 						</div>
 					</div>
 
-					<p class="engine-methods can-click" ng-click="displayEngineMethods(currentObject)"><span class="fa {{currentObject.displayEngineMethods ? 'fa-minus' : 'fa-plus'}} fa-3x"></span> Engine Methods</p>
+					<p class="engine-methods can-click" ng-click="displayEngineMethods(currentObject)"><span class="fa {{currentObject.displayMethods ? 'fa-minus' : 'fa-plus'}} fa-3x"></span> Engine Methods</p>
 
-					<div class="row table method-table ng-hide" ng-show="currentObject.displayEngineMethods">
+					<div class="row table method-table ng-hide" ng-show="currentObject.displayMethods">
 						<div class="table-header table-row hidden-xs">
 							<div class="col-sm-4">Method</div>
 							<div class="col-sm-8">Description</div>
@@ -218,9 +218,9 @@
 						</div>
 					</div>
 
-					<p class="engine-methods can-click" ng-click="displayAdapterMethods(currentObject)"><span class="fa {{currentObject.displayAdapterMethods ? 'fa-minus' : 'fa-plus'}} fa-3x"></span> Adapter Methods</p>
+					<p class="engine-methods can-click" ng-click="displayAdapterMethods(currentObject)"><span class="fa {{currentObject.displayAdapters ? 'fa-minus' : 'fa-plus'}} fa-3x"></span> Adapter Methods</p>
 
-					<div class="row table method-table ng-hide" ng-show="currentObject.displayAdapterMethods">
+					<div class="row table method-table ng-hide" ng-show="currentObject.displayAdapters">
 						<div class="table-row method-table-row" ng-repeat="a in currentObject.adapters">
 							<div class="namespace-display accordion-display" ng-click="showHideNamespace(a)">
 								<span class="can-click">{{a[0]}}</span>
