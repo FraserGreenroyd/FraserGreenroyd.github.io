@@ -107,6 +107,114 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {
 		$scope.isLoading = true;
 
+		var type = $location.search().type;
+		if(type == null) return;
+
+		if(type == "oM")
+			$scope.read_oM();
+		else if (type == "engine")
+			$scope.readEngine();
+
+		$scope.isLoading = false;
+	});
+
+	$scope.nthIndexOf = function(str, pattern, n) {
+	    var i = -1;
+
+	    while (n-- && i++ < str.length) {
+	        i = str.indexOf(pattern, i);
+	        if (i < 0) break;
+	    }
+
+	    return i;
+	};
+
+	$scope.groupMethodsByNamespace = function(array, coreNS) {
+		var arr = [];
+
+		array.forEach(function(obj) {
+			var ns = obj.namespace;
+			if($scope.nthIndexOf(ns, '.', 3) != -1)
+				ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
+
+			if(arr[ns] == undefined)
+				arr[ns] = [];
+
+			arr[ns].push(obj);
+		});
+
+		var tuples = [];
+
+		for (var key in arr) tuples.push([key, arr[key]]);
+
+		tuples.sort(function(a, b) {
+			if(a[0].includes(coreNS)) return -1;
+			if(b[0].includes(coreNS)) return 1;
+			return 0;
+		});
+
+		var t = tuples.shift();
+
+		tuples.sort(function(a, b) {
+			a = a[0];
+			b = b[0];
+			if(a < b) return -1;
+			if(a > b) return 1;
+			return 0;
+		});
+
+		tuples.splice(0, 0, t);
+
+		tuples.forEach(function(obj) {
+			obj[1].sort(function(a, b) {
+				if(a.memberName < b.memberName) return -1;
+				if(a.memberName > b.memberName) return 1;
+				return 0;
+			});
+		});
+
+		return tuples;
+	};
+
+	$scope.groupMethodsByClass = function(array) {
+		var arr = [];
+
+		array.forEach(function(obj) {
+			var ns = obj.className;
+			if($scope.nthIndexOf(ns, '.', 3) != -1)
+				ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
+
+			if(arr[ns] == undefined)
+				arr[ns] = [];
+
+			arr[ns].push(obj);
+		});
+
+		var tuples = [];
+
+		for (var key in arr) tuples.push([key, arr[key]]);
+
+		tuples.sort(function(a, b) {
+			a = a[0];
+			b = b[0];
+			if(a < b) return -1;
+			if(a > b) return 1;
+			return 0;
+		});
+
+		tuples.forEach(function(obj) {
+			obj[1].sort(function(a, b) {
+				if(a.memberName < b.memberName) return -1;
+				if(a.memberName > b.memberName) return 1;
+				return 0;
+			});
+		});
+
+		return tuples;
+	};
+
+	$scope.read_oM = function()
+	{
 		var namespace = $location.search().namespace;
 		var object = $location.search().object;
 
@@ -204,65 +312,54 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		}, function(response) {
 			$scope.handleFailure(response);
 		});
-
-		$scope.isLoading = false;
-	});
-
-	$scope.nthIndexOf = function(str, pattern, n) {
-	    var i = -1;
-
-	    while (n-- && i++ < str.length) {
-	        i = str.indexOf(pattern, i);
-	        if (i < 0) break;
-	    }
-
-	    return i;
 	};
 
-	$scope.groupMethodsByNamespace = function(array, coreNS) {
-		var arr = [];
+	$scope.readEngine = function()
+	{
+		var engine = $location.search().engine;
 
-		array.forEach(function(obj) {
-			var ns = obj.namespace;
-			if($scope.nthIndexOf(ns, '.', 3) != -1)
-				ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
+		$http.get('js/methods.json').then(function(response) {
+			$scope.methods = response.data;
 
-			if(arr[ns] == undefined)
-				arr[ns] = [];
+			$scope.methods.forEach(function(obj) {
+				var ns = obj.namespace;
+				if($scope.nthIndexOf(ns, '.', 3) != -1)
+					ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
 
-			arr[ns].push(obj);
-		});
-
-		var tuples = [];
-
-		for (var key in arr) tuples.push([key, arr[key]]);
-
-		tuples.sort(function(a, b) {
-			if(a[0].includes(coreNS)) return -1;
-			if(b[0].includes(coreNS)) return 1;
-			return 0;
-		});
-
-		var t = tuples.shift();
-
-		tuples.sort(function(a, b) {
-			a = a[0];
-			b = b[0];
-			if(a < b) return -1;
-			if(a > b) return 1;
-			return 0;
-		});
-
-		tuples.splice(0, 0, t);
-
-		tuples.forEach(function(obj) {
-			obj[1].sort(function(a, b) {
-				if(a.memberName < b.memberName) return -1;
-				if(a.memberName > b.memberName) return 1;
-				return 0;
+				if($scope.namespaces.indexOf(ns) == -1)
+					$scope.namespaces.push(ns);
 			});
-		});
 
-		return tuples;
+			$scope.namespacesMaster = JSON.parse(JSON.stringify($scope.namespaces));
+
+			$http.get('js/objects.json').then(function(response) {
+				$scope.objects = response.data;
+				$scope.currentEngine = null;
+
+				if(engine != null && engine != undefined)
+				{
+					$scope.currentEngine = { methods: [] };
+
+					var methods = [];
+					$scope.methods.filter(function(obj) {
+						if(obj.namespace.includes(engine))
+							methods.push(obj);
+					});
+
+					if($scope.nthIndexOf(engine, '.', 3) != -1)
+						engine = engine.substring(0, $scope.nthIndexOf(engine, '.', 3));
+
+					var groupedMethods = $scope.groupMethodsByClass(methods, engine);
+					$scope.currentEngine.methods = groupedMethods;
+				}
+
+				$scope.isLoading = false;		
+			}, function(response) {
+				$scope.handleFailure(response);
+			});
+
+		}, function(response) {
+			$scope.handleFailure(response);
+		});
 	};
 });
