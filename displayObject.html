@@ -60,7 +60,7 @@
 
 		<div class="table-row method-table-row" ng-repeat="a in currentObject.methods">
 			<div class="namespace-display accordion-display" ng-click="showHideNamespace(a)">
-				<span class="can-click">{{a[0]}}</span>
+				<span class="can-click"><span class="fa {{a.canView ? 'fa-folder-open' : 'fa-folder'}} fa-2x"></span> {{a[0]}}</span>
 			</div>
 
 			<div class="namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
@@ -78,16 +78,16 @@
 				</div>
 
 				<div class="col-xs-12 table-sub-row method-table-sub-row">
-					<div class="col-xs-12 method-input-table-header">Inputs</div>
+					<div class="col-xs-12 method-input-table-header can-click" ng-click="showHideMethodInputs(a)"><span class="fa {{a.canViewInputs ? 'fa-folder-open' : 'fa-folder'}} fa-2x"></span> Inputs</div>
 
-					<div class="row method-input-table-header hidden-xs">
+					<div class="row method-input-table-header hidden-xs ng-hide" ng-show="a.canViewInputs">
 						<div class="col-sm-2">Name</div>
 						<div class="col-sm-3">Type</div>
 						<div class="col-sm-1">Is Required</div>
 						<div class="col-sm-6">Description</div>
 					</div>
 
-					<div class="row table-sub-row" ng-repeat="y in x.inputs">
+					<div class="row table-sub-row ng-hide" ng-show="a.canViewInputs" ng-repeat="y in x.inputs">
 						<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Name</div>
 						<div class="col-xs-12 col-sm-2 table-cell property-input-table-cell">{{y.inputName}}</div>
 
