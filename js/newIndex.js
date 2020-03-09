@@ -121,6 +121,11 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		object.displayAdapters = !object.displayAdapters;
 	};
 
+	$scope.displayMethodInputs = function(method)
+	{
+		method.displayInputs = !method.displayInputs;
+	};
+
 	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {
 		$scope.isLoading = true;
 
