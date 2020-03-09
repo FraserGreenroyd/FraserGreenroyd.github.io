@@ -5,7 +5,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.currentObject = {};
 	$scope.currentEngine = {};
 	$scope.currentMethod = {};
-	
+
 	$scope.selectedNamespaceObjects = [];
 	$scope.selectedNamespace = "";
 
@@ -137,7 +137,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		else if (type == "engine")
 		{
 			$scope.readEngine();
-			$scope.displayEngineMethod();
+			$scope.setDisplayEngineMethods();
 		}
 
 		$scope.isLoading = false;
