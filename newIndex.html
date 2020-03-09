@@ -48,21 +48,21 @@
 				<div class="col-md-3">
 					<!-- Left hand sidebar -->
 					<div class="row">
-						<span class="can-click" ng-click="showObjects()"><span class="fa {{expandObjects ? 'fa-minus' : 'fa-plus'}} fa-3x"></span> oM</span>
+						<span class="can-click" ng-click="showObjects()"><span class="fa {{expandObjects ? 'fa-folder-open' : 'fa-folder'}} fa-3x"></span> oM</span>
 						<div class="row can-click ng-hide" ng-show="expandObjects" ng-repeat="x in namespaces" ng-click="goToNamespace(x)">
 							{{x}}
 						</div>
 					</div>
 
 					<div class="row">
-						<span class="can-click" ng-click="showEngine()"><span class="fa {{expandEngine ? 'fa-minus' : 'fa-plus'}} fa-3x"></span> Engine</span>
+						<span class="can-click" ng-click="showEngine()"><span class="fa {{expandEngine ? 'fa-folder-open' : 'fa-folder'}} fa-3x"></span> Engine</span>
 						<div class="row can-click ng-hide" ng-show="expandEngine" ng-repeat="x in engines" ng-click="goToEngine(x)">
 							{{x}}
 						</div>
 					</div>
 
 					<div class="row">
-						<span class="can-click" ng-click="showAdapter()"><span class="fa {{expandAdapter ? 'fa-minus' : 'fa-plus'}} fa-3x"></span> Adapter</span>
+						<span class="can-click" ng-click="showAdapter()"><span class="fa {{expandAdapter ? 'fa-folder-open' : 'fa-folder'}} fa-3x"></span> Adapter</span>
 						<div class="row can-click ng-hide" ng-show="expandAdapter" ng-repeat="x in adapters" ng-click="goToAdapter(x)">
 							{{x}}
 						</div>
