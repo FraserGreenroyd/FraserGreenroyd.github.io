@@ -69,7 +69,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-9">
+				<div class="col-md-9 ng-hide" ng-show="!displayResults">
 					<!-- Main content -->
 					<div class="col-md-3">
 						<img src="img/main-logo.png" class="main-logo" />
@@ -85,6 +85,52 @@
 							<button class="btn btn-info surprise-btn" ng-click="surpriseMe()">Surprise me!</button>
 						</div>
 					</div>
+				</div>
+
+				<div class="col-md-9 ng-hide" ng-show="displayResults">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3">
+							<input class="form-control" type="text" ng-model="mainSearch.searchTerm" />
+						</div>
+					</div>
+
+					<div class="row">
+						<p>
+							You search for {{mainSearch.searchTerm}} and we found these results:
+						</p>
+
+						<div class="search-result can-click" ng-repeat="x in searchResults">
+							<div class="col-md-8">
+								{{x.name}}
+							</div>
+
+							<div class="col-md-4">
+								{{x.description}}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-9 ng-hide" ng-show="displayObject">
+					<div class="col-md-12 text-right">
+						<p class="right-hand-header">oM</p>
+					</div>
+
+					<p class="pre-object-namespace">{{preObjectNameSpace(currentObject)}}</p>
+
+					<p class="object-name">{{objectNameAndUsings(currentObject)}}</p>
+
+					<p class="object-description">{{currentObject.description}}</p>
+
+					<p class="object-properties can-click" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties : 'fa-minus' : 'fa-plus'}} fa-3x"></span> oM Properties</p>
+
+					<p class="engine-methods can-click" ng-click="displayEngineMethods(currentObject)"><span class="fa {{currentObject.displayEngineMethods : 'fa-minus' : 'fa-plus'}} fa-3x"></span> Engine Methods</p>
+
+					<p class="engine-methods can-click" ng-click="displayAdapterMethods(currentObject)"><span class="fa {{currentObject.displayAdapterMethods : 'fa-minus' : 'fa-plus'}} fa-3x"></span> Adapter Methods</p>
+
+					<p class="version-info version-title">Assembly and Version Information</p>
+					<p class="version-info">{{currentObject.assembly}}</p>
+					<p class="version-info">{{currentObject.version}}</p>
 				</div>
 			</div>
 		</div>
