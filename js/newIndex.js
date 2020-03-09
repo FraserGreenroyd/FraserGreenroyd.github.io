@@ -442,17 +442,17 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 	$scope.showHideNamespace = function(object)
 	{
-		if(ns.canView == undefined)
-			ns.canView = false;
+		if(object.canView == undefined)
+			object.canView = false;
 		
-		ns.canView = !ns.canView;
+		object.canView = !object.canView;
 	};
 
 	$scope.showHideMethodInputs = function(object)
 	{
-		if(ns.canViewInputs == undefined)
-			ns.canViewInputs = false;
+		if(object.canViewInputs == undefined)
+			object.canViewInputs = false;
 		
-		ns.canViewInputs = !ns.canViewInputs;
+		object.canViewInputs = !object.canViewInputs;
 	};
 });
