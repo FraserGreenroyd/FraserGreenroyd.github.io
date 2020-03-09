@@ -79,6 +79,15 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 		$http.get('js/objects.json').then(function(response) {
 			$scope.objects = response.data;
+
+			$scope.objects.forEach(function(obj) {
+				var ns = obj.namespace;
+				if($scope.nthIndexOf(ns, '.', 3) != -1)
+					ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
+
+				if($scope.namespaces.indexOf(ns) == -1)
+					$scope.namespaces.push(ns);
+			});
 		}, function(response) {
 			$scope.handleFailure(response);
 		});
