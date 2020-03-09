@@ -22,6 +22,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.displaySearch = true;
 	$scope.displayResults = false;
 	$scope.displayObject = false;
+	$scope.displayEngine = false;
 
 	$scope.mainSearch = {
 		searchTerm : "",
@@ -82,11 +83,18 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$scope.displayObject = true;
 	};
 
+	$scope.setDisplayEngine = function()
+	{
+		$scope.setAllViewsFalse();
+		$scope.displayEngine = true;
+	};
+
 	$scope.setAllViewsFalse = function()
 	{
 		$scope.displaySearch = false;
 		$scope.displayResults = false;
 		$scope.displayObject = false;
+		$scope.displayEngine = false;
 	};
 
 	$scope.displayObjectProperties = function(object)
@@ -111,9 +119,15 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		if(type == null) return;
 
 		if(type == "oM")
+		{
 			$scope.read_oM();
+			$scope.setDisplayObject();
+		}
 		else if (type == "engine")
+		{
 			$scope.readEngine();
+			$scope.setDisplayEngine();
+		}
 
 		$scope.isLoading = false;
 	});
