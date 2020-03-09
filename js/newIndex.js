@@ -344,8 +344,13 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 							if($scope.nthIndexOf(adapterNamespace, '.', 3) != -1)
 								adapterNamespace = adapterNamespace.substring(0, $scope.nthIndexOf(adapterNamespace, '.', 3));
 
-							var groupedAdapters = $scope.groupMethodsByNamespace(adapters[0].adapterMethods, adapterNamespace);
-							$scope.currentObject.adapters = groupedAdapters;
+							if(adapters.length > 0)
+							{
+								var groupedAdapters = $scope.groupMethodsByNamespace(adapters[0].adapterMethods, adapterNamespace);
+								$scope.currentObject.adapters = groupedAdapters;
+							}
+							else
+								$scope.currentObject.adapters = [];
 						}
 					}
 					else
