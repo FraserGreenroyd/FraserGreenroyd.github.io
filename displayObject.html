@@ -9,7 +9,7 @@
 
 	<p class="object-description">{{currentObject.description}}</p>
 
-	<p class="object-properties can-click" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-folder-open' : 'fa-folder'}} fa-3x"></span> oM Properties</p>
+	<p class="object-properties can-click" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-times-circle' : 'fa-plus-circle'}} fa-3x"></span> oM Properties</p>
 
 	<div class="row table property-table ng-hide" ng-show="currentObject.displayProperties">
 		<div class="table-header table-row hidden-xs">
@@ -44,7 +44,7 @@
 		</div>
 	</div>
 
-	<p class="engine-methods can-click" ng-click="displayEngineMethods(currentObject)"><span class="fa {{currentObject.displayMethods ? 'fa-folder-open' : 'fa-folder'}} fa-3x"></span> Engine Methods</p>
+	<p class="engine-methods can-click" ng-click="displayEngineMethods(currentObject)"><span class="fa {{currentObject.displayMethods ? 'fa-times-circle' : 'fa-plus-circle'}} fa-3x"></span> Engine Methods</p>
 
 	<div class="row table method-table ng-hide" ng-show="currentObject.displayMethods">
 		<div class="table-header table-row hidden-xs">
@@ -60,7 +60,7 @@
 
 		<div class="table-row method-table-row" ng-repeat="a in currentObject.methods">
 			<div class="namespace-display accordion-display" ng-click="showHideNamespace(a)">
-				<span class="can-click"><span class="fa {{a.canView ? 'fa-folder-open' : 'fa-folder'}} fa-2x"></span> {{a[0]}}</span>
+				<span class="can-click"><span class="fa {{a.canView ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{a[0]}}</span>
 			</div>
 
 			<div class="namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
@@ -78,7 +78,7 @@
 				</div>
 
 				<div class="col-xs-12 table-sub-row method-table-sub-row">
-					<div class="col-xs-12 method-input-table-header can-click" ng-click="showHideMethodInputs(a)"><span class="fa {{a.canViewInputs ? 'fa-folder-open' : 'fa-folder'}} fa-2x"></span> Inputs</div>
+					<div class="col-xs-12 method-input-table-header can-click" ng-click="showHideMethodInputs(a)"><span class="fa {{a.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Inputs</div>
 
 					<div class="row method-input-table-header hidden-xs ng-hide" ng-show="a.canViewInputs">
 						<div class="col-sm-2">Name</div>
@@ -105,12 +105,12 @@
 		</div>
 	</div>
 
-	<p class="engine-methods can-click" ng-click="displayAdapterMethods(currentObject)"><span class="fa {{currentObject.displayAdapters ? 'fa-folder-open' : 'fa-folder'}} fa-3x"></span> Adapter Methods</p>
+	<p class="engine-methods can-click" ng-click="displayAdapterMethods(currentObject)"><span class="fa {{currentObject.displayAdapters ? 'fa-times-circle' : 'fa-plus-circle'}} fa-3x"></span> Adapter Methods</p>
 
 	<div class="row table method-table ng-hide" ng-show="currentObject.displayAdapters">
 		<div class="table-row method-table-row" ng-repeat="a in currentObject.adapters">
 			<div class="namespace-display accordion-display" ng-click="showHideNamespace(a)">
-				<span class="can-click"><span class="fa {{a.canView ? 'fa-folder-open' : 'fa-folder'}} fa-2x"></span> {{a[0]}}</span>
+				<span class="can-click"><span class="fa {{a.canView ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{a[0]}}</span>
 			</div>
 
 			<div class="namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
@@ -128,7 +128,7 @@
 				</div>
 
 				<div class="col-xs-12 table-sub-row method-table-sub-row">
-					<div class="col-xs-12 method-input-table-header can-click" ng-click="showHideMethodInputs(a)"><span class="fa {{a.canViewInputs ? 'fa-folder-open' : 'fa-folder'}} fa-2x"></span> Inputs</div>
+					<div class="col-xs-12 method-input-table-header can-click" ng-click="showHideMethodInputs(a)"><span class="fa {{a.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Inputs</div>
 
 					<div class="row method-input-table-header hidden-xs ng-hide" ng-show="a.canViewInputs">
 						<div class="col-sm-2">Name</div>
