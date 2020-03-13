@@ -89,3 +89,10 @@ h4
 {
 	color: #FE224A;
 }
+
+.menu-sidebar
+{
+	border-width: 1px;
+	border-style: dotted;
+	border-color: #FE224A;
+}
