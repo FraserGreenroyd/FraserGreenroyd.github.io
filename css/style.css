@@ -95,11 +95,6 @@ h4
 	padding-bottom: 5%;
 }
 
-.property-table-row
-{
-	border-bottom: 1px solid #aaaaaa;
-}
-
 .method-input-table-header
 {
 	font-weight: bold;
@@ -138,7 +133,7 @@ h4
 	background-color: #FFA500;
 }
 
-.property-table-cell
+.table-cell
 {
 	background-color: #F6F6F6;
 }
