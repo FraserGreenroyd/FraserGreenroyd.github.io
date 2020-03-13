@@ -53,51 +53,53 @@
 				<span class="can-click"><span class="fa {{a.canView ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{a[0]}}</span>
 			</div>
 
-			<div class="table-row namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
-				<div class="col-sm-3 table-cell can-click" ng-click="showHideMethodInputs(x)">
-					<span class="fa {{x.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{x.memberName}}
+			<div class="namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
+				<div class="table-row">
+					<div class="col-sm-3 table-cell can-click" ng-click="showHideMethodInputs(x)">
+						<span class="fa {{x.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{x.memberName}}
+					</div>
+
+					<div class="col-sm-3 table-cell">
+						{{x.className}}
+					</div>
+
+					<div class="col-sm-6 table-cell">
+						{{x.description}}
+					</div>
 				</div>
 
-				<div class="col-sm-3 table-cell">
-					{{x.className}}
-				</div>
+				<div class="table-row">
+					<div class="ng-hide table-cell" ng-show="x.canViewInputs">
+						<div class="row">
+							<div class="col-sm-3 table-cell-inner table-header">Inputs</div>
+							<div class="col-sm-3 table-cell-inner table-header">Type</div>
+							<div class="col-sm-2 table-cell-inner table-header">Is Required</div>
+							<div class="col-sm-4 table-cell-inner table-header">Description</div>
+						</div>
 
-				<div class="col-sm-6 table-cell">
-					{{x.description}}
-				</div>
-			</div>
+						<div class="row" ng-repeat="y in x.inputs">
+							<div class="col-sm-3 table-cell-inner">{{y.inputName}}</div>
+							<div class="col-sm-3 table-cell-inner">{{y.namespace}}.{{y.memberName}}</div>
+							<div class="col-sm-2 table-cell-inner">{{y.isRequired}}</div>
+							<div class="col-sm-4 table-cell-inner">{{y.description}}</div>
+						</div>
 
-			<div class="row table-row">
-				<div class="ng-hide table-cell" ng-show="x.canViewInputs">
-					<div class="row">
-						<div class="col-sm-3 table-cell-inner table-header">Inputs</div>
-						<div class="col-sm-3 table-cell-inner table-header">Type</div>
-						<div class="col-sm-2 table-cell-inner table-header">Is Required</div>
-						<div class="col-sm-4 table-cell-inner table-header">Description</div>
-					</div>
+						<div class="row">
+							<div class="col-sm-3 table-cell-inner table-header">Outputs</div>
+							<div class="col-sm-3 table-cell-inner table-header">Type</div>
+							<div class="col-sm-4 col-sm-offset-2 table-cell-inner table-header">Description</div>
+						</div>
 
-					<div class="row" ng-repeat="y in x.inputs">
-						<div class="col-sm-3 table-cell-inner">{{y.inputName}}</div>
-						<div class="col-sm-3 table-cell-inner">{{y.namespace}}.{{y.memberName}}</div>
-						<div class="col-sm-2 table-cell-inner">{{y.isRequired}}</div>
-						<div class="col-sm-4 table-cell-inner">{{y.description}}</div>
-					</div>
+						<div class="row">
+							<div class="col-sm-3 col-sm-offset-3 table-cell-inner">{{x.outputs.namespace}}.{{x.outputs.memberName}}</div>
+							<div class="col-sm-4 col-sm-offset-2 table-cell-inner">{{x.outputs.description}}</div>
+						</div>
 
-					<div class="row">
-						<div class="col-sm-3 table-cell-inner table-header">Outputs</div>
-						<div class="col-sm-3 table-cell-inner table-header">Type</div>
-						<div class="col-sm-4 col-sm-offset-2 table-cell-inner table-header">Description</div>
-					</div>
-
-					<div class="row">
-						<div class="col-sm-3 col-sm-offset-3 table-cell-inner">{{x.outputs.namespace}}.{{x.outputs.memberName}}</div>
-						<div class="col-sm-4 col-sm-offset-2 table-cell-inner">{{x.outputs.description}}</div>
-					</div>
-
-					<div class="row">
-						<div class="col-sm-3 table-cell-inner table-header">Assembly</div>
-						<div class="col-sm-3">{{x.assemblyName}}</div>
-						<div class="col-sm-3 col-sm-offset-2"></div>
+						<div class="row">
+							<div class="col-sm-3 table-cell-inner table-header">Assembly</div>
+							<div class="col-sm-3">{{x.assemblyName}}</div>
+							<div class="col-sm-3 col-sm-offset-2"></div>
+						</div>
 					</div>
 				</div>
 			</div>
