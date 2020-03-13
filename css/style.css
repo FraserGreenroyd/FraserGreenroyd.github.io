@@ -144,3 +144,8 @@ h4
 	background-color: #F6F6F6;
 	flex: 1;
 }
+
+.table-inner-margin
+{
+	margin-top: 5%;
+}
