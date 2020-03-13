@@ -54,6 +54,24 @@ h4
 	margin-top: 10%;
 }
 
+.search-btn
+{
+	background-color: #FE224A;
+	padding-left: 10%;
+	padding-right: 10%;
+	font-weight: bold;
+}
+
+.surprise-btn
+{
+	background-color: #FFFFFF;
+	padding-left: 10%;
+	padding-right: 10%;
+	border-color: #FE224A;
+	color: #FE224A;
+	font-weight: bold;
+}
+
 .table
 {
 	border: 1px solid black;
