@@ -33,11 +33,11 @@
 	</head>
 
 	<body ng-app="bhomapi" ng-controller="indexController">
-		<nav class="navbar navbar-inverse">
+		<!--<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 
 			</div>
-		</nav>
+		</nav>-->
 
 		<div class="container">
 			<div class="row">
@@ -47,22 +47,26 @@
 			<div class="row ng-hide" ng-show="!isLoading">
 				<div class="col-md-3">
 					<!-- Left hand sidebar -->
+					<div class="row text-center">
+						<span class="bhom-black">BHoM</span><span class="bhom-red">.API</span>
+					</div>
+
 					<div class="row">
-						<span class="can-click" ng-click="showObjects()"><span class="fa {{expandObjects ? 'fa-times-circle' : 'fa-plus-circle'}} fa-3x"></span> oM</span>
+						<span class="can-click" ng-click="showObjects()"><span class="fa {{expandObjects ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> oM</span>
 						<div class="row can-click ng-hide" ng-show="expandObjects" ng-repeat="x in namespaces" ng-click="goToNamespace(x)">
 							{{x}}
 						</div>
 					</div>
 
 					<div class="row">
-						<span class="can-click" ng-click="showEngine()"><span class="fa {{expandEngine ? 'fa-times-circle' : 'fa-plus-circle'}} fa-3x"></span> Engine</span>
+						<span class="can-click" ng-click="showEngine()"><span class="fa {{expandEngine ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Engine</span>
 						<div class="row can-click ng-hide" ng-show="expandEngine" ng-repeat="x in engines" ng-click="goToEngine(x)">
 							{{x}}
 						</div>
 					</div>
 
 					<div class="row">
-						<span class="can-click" ng-click="showAdapter()"><span class="fa {{expandAdapter ? 'fa-times-circle' : 'fa-plus-circle'}} fa-3x"></span> Adapter</span>
+						<span class="can-click" ng-click="showAdapter()"><span class="fa {{expandAdapter ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Adapter</span>
 						<div class="row can-click ng-hide" ng-show="expandAdapter" ng-repeat="x in adapters" ng-click="goToAdapter(x)">
 							{{x}}
 						</div>

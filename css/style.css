@@ -20,6 +20,16 @@ h4
 	font-weight: bold;
 }
 
+.bhom-red
+{
+	color: #FE224A;
+}
+
+.bhom-black
+{
+	color: #211218;
+}
+
 .container
 {
 	margin-left: 5%;
@@ -73,4 +83,9 @@ h4
 .can-click
 {
  	cursor: pointer;
+}
+
+.fa-plus-circle
+{
+	color: #FE224A;
 }
