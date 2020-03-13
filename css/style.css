@@ -137,6 +137,12 @@ h4
 
 .table-cell
 {
+	background-color: #E6E6E6;
+	flex: 1;
+}
+
+.table-cell-inner
+{
 	background-color: #F6F6F6;
 	flex: 1;
 }
