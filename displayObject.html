@@ -6,13 +6,13 @@
 		<p class="right-hand-header"><img src="img/main-logo.png" class="top-right-logo" /></p>
 	</div>
 
-	<p class="pre-object-namespace">{{currentObject.namespace}}</p>
+	<div class="row">
+		<p><span class="pre-object-namespace">{{currentObject.namespace}}</span>.<span class="object-name">{{currentObject.memberName}}</span> : <span class="can-click inheritance-name" ng-repeat="x in currentObject.inheritance" ng-click="goToObject(x)">{{x.memberName}}, </span></p>
 
-	<p class="object-name">{{currentObject.memberName}}</p>
+		<p class="object-description">{{currentObject.description}}</p>
 
-	<p class="object-description">{{currentObject.description}}</p>
-
-	<p class="object-properties can-click" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> oM Properties</p>
+		<p class="object-properties can-click" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> oM Properties</p>
+	</div>
 
 	<div class="row table property-table ng-hide" ng-show="currentObject.displayProperties">
 		<div class="table-header table-row hidden-xs">
