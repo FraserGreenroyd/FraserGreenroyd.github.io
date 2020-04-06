@@ -4,6 +4,11 @@
   src: local('Courier Prime');
 }
 
+body
+{
+	font-family: "Courier Prime",serif;
+}
+
 h1
 {
 	font-weight: bold;
