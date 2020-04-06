@@ -48,7 +48,7 @@
 			</div>
 		</div>
 
-		<div class="method-table-row" ng-repeat="a in currentObject.methods">
+		<div class="level-5-indent method-table-row" ng-repeat="a in currentObject.methods">
 			<div class="namespace-display accordion-display" ng-click="showHideNamespace(a)">
 				<span class="can-click"><span class="fa {{a.canView ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{a[0]}}</span>
 			</div>
@@ -68,7 +68,7 @@
 					</div>
 				</div>
 
-				<div class="table-row">
+				<div class="level-5-indent table-row">
 					<div class="ng-hide table-cell" ng-show="x.canViewInputs">
 						<div class="row">
 							<div class="col-sm-3 table-cell-inner table-header">Inputs</div>
