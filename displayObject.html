@@ -128,41 +128,38 @@
 
 			<div class="namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
 				<div class="table-row">
-					<div class="col-sm-4 table-cell property-table-cell">
-						<div class="row"><span class="method-data-header">{{x.memberName}}</span></div>
-						<div class="row">{{x.className}}</div>
-						<div class="row">{{x.namespace}}</div>
-						<div class="row">{{x.assemblyName}}</div>
-					</div>
-				</div>
-
-				<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Description</div>
-				<div class="col-xs-12 col-sm-8 table-cell property-table-cell">
-					{{x.description}}
-				</div>
-
-				<div class="col-xs-12 table-sub-row method-table-sub-row">
-					<div class="col-xs-12 method-input-table-header can-click" ng-click="showHideMethodInputs(a)"><span class="fa {{a.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Inputs</div>
-
-					<div class="row method-input-table-header hidden-xs ng-hide" ng-show="a.canViewInputs">
-						<div class="col-sm-2">Name</div>
-						<div class="col-sm-3">Type</div>
-						<div class="col-sm-1">Is Required</div>
-						<div class="col-sm-6">Description</div>
+					<div class="row table-cell can-click" ng-click="showHideMethodInputs(x)">
+						<span class="fa {{x.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{x.memberName}}
 					</div>
 
-					<div class="row table-sub-row ng-hide" ng-show="a.canViewInputs" ng-repeat="y in x.inputs">
-						<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Name</div>
-						<div class="col-xs-12 col-sm-2 table-cell property-input-table-cell">{{y.inputName}}</div>
+					<div class="row table-cell">{{x.className}}</div>
 
-						<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Type</div>
-						<div class="col-xs-12 col-sm-3 table-cell property-input-table-cell"><span class="can-click" ng-click="goToObject(y)">{{y.namespace}}.{{y.memberName}}</span></div>
+					<div class="row">{{x.namespace}}</div>
 
-						<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Is Required</div>
-						<div class="col-xs-12 col-sm-1 table-cell property-input-table-cell">{{y.isRequired}}</div>
+					<div class="row table-cell">{{x.assemblyName}}</div>
 
-						<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Description</div>
-						<div class="col-xs-12 col-sm-6 table-cell property-input-table-cell">{{(y.description == "" ? 'N/A' : y.description)}}</div>
+					<div class="row table-cell">
+						{{x.description}}
+					</div>
+
+					<div class="row method-input-table-header can-click" ng-click="showHideMethodInputs(a)"><span class="fa {{a.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Inputs</div>
+				</div>
+
+				<div class="level-5-indent">
+					<div class="ng-hide table-cell" ng-show="x.canViewInputs">
+						<div class="row">
+							<div class="col-sm-3 table-cell-inner table-header">Inputs</div>
+							<div class="col-sm-3 table-cell-inner table-header">Type</div>
+							<div class="col-sm-2 table-cell-inner table-header">Is Required</div>
+							<div class="col-sm-4 table-cell-inner table-header">Description</div>
+						</div>
+
+						<div class="row" ng-repeat="y in x.inputs">
+							<div class="col-sm-3 table-cell-inner">{{y.inputName}}</div>
+							<div class="col-sm-3 table-cell-inner"><span class="can-click" ng-click="goToObject(y)">{{y.namespace}}.{{y.memberName}}</span></div>
+							<div class="col-sm-2 table-cell-inner">{{y.isRequired}}</div>
+							<div class="col-sm-4 table-cell-inner">{{(y.description == "" ? 'N/A' : y.description)}}</div>
+						</div>
 					</div>
 				</div>
 			</div>
