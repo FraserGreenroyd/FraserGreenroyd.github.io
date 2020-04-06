@@ -121,28 +121,21 @@
 			</div>
 		</div>
 
-		<div class="level-5-indent table-row method-table-row" ng-repeat="a in currentObject.adapters">
+		<div class="level-5-indent method-table-row" ng-repeat="a in currentObject.adapters">
 			<div class="namespace-display accordion-display" ng-click="showHideNamespace(a)">
 				<span class="can-click"><span class="fa {{a.canView ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{a[0]}}</span>
 			</div>
 
 			<div class="namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
-				<div class="row col-xs-12">
-					<div class="row table-cell can-click" ng-click="showHideMethodInputs(x)">
-						<span class="fa {{x.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{x.memberName}}
-					</div>
-
+				<div class="level-5-indent row col-xs-12">
+					<div class="row table-cell can-click" ng-click="showHideMethodInputs(x)">{{x.memberName}}</div>
 					<div class="row table-cell">{{x.className}}</div>
-
 					<div class="row">{{x.namespace}}</div>
-
 					<div class="row table-cell">{{x.assemblyName}}</div>
-
-					<div class="row table-cell">
-						{{x.description}}
+					<div class="row table-cell">{{x.description}}</div>
+					<div class="row method-input-table-header can-click" ng-click="showHideMethodInputs(x)">
+						<span class="fa {{x.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Inputs
 					</div>
-
-					<div class="row method-input-table-header">Inputs</div>
 				</div>
 
 				<div class="level-5-indent">
