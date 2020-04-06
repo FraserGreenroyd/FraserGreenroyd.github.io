@@ -152,6 +152,13 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		}
 	});
 
+	$scope.goToObject = function(object)
+	{
+		$location.search('type', 'oM');
+		$location.search('namespace', object.namespace);
+		$location.search('object', object.memberName);
+	};
+
 	$scope.nthIndexOf = function(str, pattern, n) {
 	    var i = -1;
 
