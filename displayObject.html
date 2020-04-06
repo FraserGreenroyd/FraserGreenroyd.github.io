@@ -127,12 +127,13 @@
 			</div>
 
 			<div class="namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
-				<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Method</div>
-				<div class="col-xs-12 col-sm-4 table-cell property-table-cell">
-					<div class="row"><span class="method-data-header">{{x.memberName}}</span></div>
-					<div class="row">{{x.className}}</div>
-					<div class="row">{{x.namespace}}</div>
-					<div class="row">{{x.assemblyName}}</div>
+				<div class="table-row">
+					<div class="col-sm-4 table-cell property-table-cell">
+						<div class="row"><span class="method-data-header">{{x.memberName}}</span></div>
+						<div class="row">{{x.className}}</div>
+						<div class="row">{{x.namespace}}</div>
+						<div class="row">{{x.assemblyName}}</div>
+					</div>
 				</div>
 
 				<div class="col-xs-12 hidden-sm hidden-md hidden-lg table-header-xs">Description</div>
