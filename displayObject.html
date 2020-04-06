@@ -127,7 +127,7 @@
 			</div>
 
 			<div class="namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
-				<div class="row col-xs-12 table-row">
+				<div class="row col-xs-12">
 					<div class="row table-cell can-click" ng-click="showHideMethodInputs(x)">
 						<span class="fa {{x.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{x.memberName}}
 					</div>
@@ -142,7 +142,7 @@
 						{{x.description}}
 					</div>
 
-					<div class="row method-input-table-header can-click" ng-click="showHideMethodInputs(a)"><span class="fa {{a.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Inputs</div>
+					<div class="row method-input-table-header">Inputs</div>
 				</div>
 
 				<div class="level-5-indent">
