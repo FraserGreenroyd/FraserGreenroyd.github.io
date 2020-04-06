@@ -100,6 +100,7 @@ h4
 	width: 100%;
 	margin-bottom: 1%;
 	margin-top: 1%;
+	background-color: #E6E6E6;
 }
 
 .method-input-table-header
@@ -142,7 +143,6 @@ h4
 
 .table-cell
 {
-	background-color: #E6E6E6;
 	flex: 1;
 	padding: 1%;
 }
