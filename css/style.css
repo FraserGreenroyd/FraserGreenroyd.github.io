@@ -144,7 +144,6 @@ h4
 .table-cell
 {
 	flex: 1;
-	padding: 1%;
 }
 
 .table-cell-inner
@@ -161,4 +160,9 @@ h4
 .level-5-indent
 {
 	padding-left: 5%;
+}
+
+.method-table-cell
+{
+	padding: 1%;
 }
