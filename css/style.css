@@ -149,13 +149,13 @@ h4
 
 .table-cell-inner
 {
-	background-color: #F6F6F6;
+	/*background-color: #F6F6F6;*/
 	flex: 1;
 }
 
 .table-inner-margin
 {
-	margin-top: 5%;
+	margin-top: 1%;
 }
 
 .level-5-indent
