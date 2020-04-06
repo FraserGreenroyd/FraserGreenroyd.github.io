@@ -110,9 +110,11 @@
 		</div>
 	</div>
 
-	<p class="engine-methods can-click" ng-click="displayAdapterMethods(currentObject)"><span class="fa {{currentObject.displayAdapters ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Adapter Methods</p>
+	<div class="row">
+		<p class="engine-methods can-click" ng-click="displayAdapterMethods(currentObject)"><span class="fa {{currentObject.displayAdapters ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Adapter Methods</p>
+	</div>
 
-	<div class="row table method-table ng-hide" ng-show="currentObject.displayAdapters">
+	<div class="row method-table ng-hide" ng-show="currentObject.displayAdapters">
 		<div class="table-row method-table-row" ng-repeat="a in currentObject.adapters">
 			<div class="namespace-display accordion-display" ng-click="showHideNamespace(a)">
 				<span class="can-click"><span class="fa {{a.canView ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{a[0]}}</span>
