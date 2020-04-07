@@ -131,7 +131,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		method.displayOutputs = !method.displayOutputs;
 	};
 
-	$scope.displayNamespace = function(namespace)
+	$scope.displayNamespaceSplit = function(namespace)
 	{
 		var split = namespace.split('.');
 

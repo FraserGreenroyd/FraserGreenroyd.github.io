@@ -54,7 +54,7 @@
 					<div class="row">
 						<span class="can-click" ng-click="showObjects()"><span class="fa {{expandObjects ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> oM</span>
 						<div class="row can-click ng-hide" ng-show="expandObjects" ng-repeat="x in namespaces" ng-click="goToNamespace(x)">
-							{{displayNamespace(x)}}
+							{{displayNamespaceSplit(x)}}
 						</div>
 					</div>
 
