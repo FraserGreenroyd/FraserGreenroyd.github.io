@@ -462,4 +462,18 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		
 		object.canViewInputs = !object.canViewInputs;
 	};
+
+	$scope.displayNamespace = function(namespace)
+	{
+		var split = namespace.split('.');
+
+		if(split.length > 2)
+		{
+			if(split.length > 3 && split[2] == "External")
+				return split[3];
+			else
+				return split[2];
+		}
+		else return namespace; //Not sure what happened
+	};
 });
