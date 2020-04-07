@@ -320,6 +320,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 							$scope.namespaces.push(ns);
 					});
 
+					$scope.namespaces.sort();
+
 					$scope.namespacesMaster = JSON.parse(JSON.stringify($scope.namespaces));
 
 					if(object != null && object != undefined)
