@@ -5,6 +5,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.currentObject = {};
 	$scope.currentEngine = {};
 	$scope.currentMethod = {};
+	$scope.currentNamespace = "";
 
 	$scope.selectedNamespaceObjects = [];
 	$scope.selectedNamespace = "";
@@ -382,6 +383,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 							if(obj.namespace.startsWith(namespace))
 								$scope.selectedNamespaceObjects.push(obj);
 						});
+
+						$scope.currentNamespace = namespace;
 
 						$scope.displayNamespace = true;
 					}
