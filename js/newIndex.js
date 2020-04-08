@@ -387,6 +387,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 						$scope.currentNamespace = namespace;
 
 						$scope.displayNamespace = true;
+						$scope.displayObject = false;
 					}
 
 					$scope.isLoading = false;		
