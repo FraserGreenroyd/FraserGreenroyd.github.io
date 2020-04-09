@@ -53,9 +53,16 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$scope.expandAdapter = !$scope.expandAdapter;
 	};
 
+	$scope.setLocationNull = function()
+	{
+		$scope.search('object', null);
+		$scope.search('namespace', null);
+	};
+
 	$scope.goToNamespace = function(namespace)
 	{
-		alert("Fraser didn't do this yet - remind him?");
+		$scope.setLocationNull();
+		$location.search('namespace', namespace);
 	};
 
 	$scope.goToEngine = function(engine)
