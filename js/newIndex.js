@@ -55,8 +55,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 	$scope.setLocationNull = function()
 	{
-		$scope.search('object', null);
-		$scope.search('namespace', null);
+		$location.search('object', null);
+		$location.search('namespace', null);
 	};
 
 	$scope.goToNamespace = function(namespace)
