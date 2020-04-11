@@ -57,11 +57,14 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	{
 		$location.search('object', null);
 		$location.search('namespace', null);
+		$location.search('type', null);
+		$location.search('engine', null);
 	};
 
 	$scope.goToNamespace = function(namespace)
 	{
 		$scope.setLocationNull();
+		$location.search('type', 'oM');
 		$location.search('namespace', namespace);
 	};
 
