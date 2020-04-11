@@ -467,6 +467,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 					if(ns == engine && obj.memberName == method)
 						$scope.currentMethod = obj;
 				});
+
+				$scope.isLoading = false;
 			}
 
 		}, function(response) {
