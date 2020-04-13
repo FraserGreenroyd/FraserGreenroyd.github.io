@@ -93,8 +93,8 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {
 		$scope.isLoading = true;
 
-		while($scope.objects.length == 0)
-			$scope.isLoading = true; //Don't start loading the oM on first load until we have data
+		if($scope.objects.length == 0)
+			$scope.setUpNavigation(); //First time load
 
 		$scope.read_oM();
 	});
@@ -292,7 +292,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 					$scope.navigationObjectModel.sort();
 
-					$scope.isLoading = false;
+					$scope.read_oM();
 				}, function(response) {
 					$scope.handleFailure(response);
 				});
@@ -303,6 +303,4 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			$scope.handleFailure(response);
 		});
 	};
-
-	$scope.setUpNavigation(); //Do once per file load
 });
