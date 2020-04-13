@@ -7,6 +7,10 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	$scope.navigationEngines = [];
 	$scope.navigationAdapters = [];
 
+	$scope.expandObjects = false;
+	$scope.expandEngine = false;
+	$scope.expandAdapter = false;
+
 	//oM specific methods
 	$scope.currentObject = {};
 
@@ -25,6 +29,21 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	{
 		$scope.isLoading = false;
 		failureHandling.handleFailure(response, $window);
+	};
+
+	$scope.showObjects = function()
+	{
+		$scope.expandObjects = !$scope.expandObjects;
+	};
+
+	$scope.showEngine = function()
+	{
+		$scope.expandEngine = !$scope.expandEngine;
+	};
+
+	$scope.showAdapter = function()
+	{
+		$scope.expandAdapter = !$scope.expandAdapter;
 	};
 
 	$scope.setLocationNull = function()
