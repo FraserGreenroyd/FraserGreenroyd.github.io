@@ -21,6 +21,8 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	$scope.engines = [];
 	$scope.objects = [];
 
+	$scope.setUpNavigation(); //Do once per file load
+
 	$scope.handleFailure = function(response)
 	{
 		$scope.isLoading = false;
@@ -300,6 +302,4 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			$scope.handleFailure(response);
 		});
 	};
-
-	$scope.setUpNavigation(); //Do once per file load
 });
