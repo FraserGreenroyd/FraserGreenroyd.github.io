@@ -46,6 +46,12 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		$scope.expandAdapter = !$scope.expandAdapter;
 	};
 
+	$scope.goToObjectNamespace = function(namespace)
+	{
+		$scope.setLocationNull();
+		$location.search('namespace', namespace);
+	};
+
 	$scope.setLocationNull = function()
 	{
 		$location.search('object', null);
