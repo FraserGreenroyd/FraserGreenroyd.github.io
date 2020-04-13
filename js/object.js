@@ -21,8 +21,6 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	$scope.engines = [];
 	$scope.objects = [];
 
-	$scope.setUpNavigation(); //Do once per file load
-
 	$scope.handleFailure = function(response)
 	{
 		$scope.isLoading = false;
@@ -94,6 +92,9 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {
 		$scope.isLoading = true;
+
+		while($scope.objects.lentgh == 0)
+			$scope.isLoading = true; //Don't start loading the oM on first load until we have data
 
 		$scope.read_oM();
 	});
@@ -302,4 +303,6 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			$scope.handleFailure(response);
 		});
 	};
+
+	$scope.setUpNavigation(); //Do once per file load
 });
