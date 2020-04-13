@@ -28,6 +28,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.displayObject = false;
 	$scope.displayEngineMethod = false;
 
+	//SORT OUT OM NAMESPACES AND ENGINE NAMESPACES AND ADAPTER NAMESPACES FOR LEFT SIDEBAR
+
 	$scope.mainSearch = {
 		searchTerm : "",
 	};
