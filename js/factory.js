@@ -47,3 +47,31 @@ app.factory('failureHandling', function(notificationFactory) {
 		},
 	};
 });
+
+app.factory('apiHelpers', function() {
+	return {
+		nthIndexOf : function(str, pattern, n) {
+		    var i = -1;
+
+		    while (n-- && i++ < str.length) {
+		        i = str.indexOf(pattern, i);
+		        if (i < 0) break;
+		    }
+
+		    return i;
+		},
+
+		displayNamespaceSplit : function(namespace) {
+			var split = namespace.split('.');
+
+			if(split.length > 2)
+			{
+				if(split.length > 3 && split[2] == "External")
+					return split[3];
+				else
+					return split[2];
+			}
+			else return namespace; //Not sure what happened
+		},
+	};
+});
