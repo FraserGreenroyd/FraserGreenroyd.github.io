@@ -11,13 +11,13 @@
 	</div>
 
 	<div class="row property-table">
-		<div class="table-row method-table-row ng-hide" ng-show="currentEngine.methods.length == 0">
+		<div class="method-table-row ng-hide" ng-show="currentEngine.methods.length == 0">
 			<div class="col-xs-12 text-center">
 				{{currentEngine.name}} has no methods associated with it
 			</div>
 		</div>
 
-		<div class="table-row property-table-row" ng-repeat="x in currentEngine.methods">		
+		<div class="property-table-row" ng-repeat="x in currentEngine.methods">		
 			<div class="row property-table-cell">
 				<span class="object-name">{{x[0]}}</span>
 			</div>
