@@ -13,8 +13,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 	//oM specific methods
 	$scope.currentMethod = {};
-
-	$scope.selectedNamespaceObjects = [];
+	$scope.currentEngine = {};
 
 	$scope.displayEngine = false;
 	$scope.displayEngineMethod = false;
@@ -128,13 +127,13 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		$location.search('object', object.memberName);
 	};
 
-	$scope.groupMethodsByNamespace = function(array, coreNS) {
+	$scope.groupMethodsByClass = function(array) {
 		var arr = [];
 
 		array.forEach(function(obj) {
-			var ns = obj.namespace;
-			if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
-				ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
+			var ns = obj.className;
+			if($scope.nthIndexOf(ns, '.', 3) != -1)
+				ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
 
 			if(arr[ns] == undefined)
 				arr[ns] = [];
@@ -147,22 +146,12 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		for (var key in arr) tuples.push([key, arr[key]]);
 
 		tuples.sort(function(a, b) {
-			if(a[0].includes(coreNS)) return -1;
-			if(b[0].includes(coreNS)) return 1;
-			return 0;
-		});
-
-		var t = tuples.shift();
-
-		tuples.sort(function(a, b) {
 			a = a[0];
 			b = b[0];
 			if(a < b) return -1;
 			if(a > b) return 1;
 			return 0;
 		});
-
-		tuples.splice(0, 0, t);
 
 		tuples.forEach(function(obj) {
 			obj[1].sort(function(a, b) {
@@ -171,6 +160,8 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 				return 0;
 			});
 		});
+
+		console.log(tuples);
 
 		return tuples;
 	};
