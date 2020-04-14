@@ -43,6 +43,11 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		$scope.expandAdapter = !$scope.expandAdapter;
 	};
 
+	$scope.goToMethod = function(method)
+	{
+		$location.search('method', method);
+	};
+
 	$scope.goToObjectNamespace = function(namespace)
 	{
 		$window.location.href = "object.html#!?namespace=" + namespace;

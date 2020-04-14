@@ -28,7 +28,7 @@
 					<div class="col-md-9 table-header">Description</div>
 				</div>
 
-				<div class="table-row can-click" ng-repeat="y in x[1]">
+				<div class="table-row can-click" ng-click="goToMethod(y)" ng-repeat="y in x[1]">
 					<div class="col-md-3">
 						{{y.memberName}}
 					</div>
