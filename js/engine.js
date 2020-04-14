@@ -55,7 +55,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 	$scope.goToEngineNamespace = function(engine)
 	{
-		$location.setLocationNull();
+		$scope.setLocationNull();
 		$location.search('engine', engine);
 	};
 
