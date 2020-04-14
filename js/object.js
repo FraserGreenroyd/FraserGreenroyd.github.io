@@ -20,7 +20,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	$scope.displayObject = false;
 
 	$scope.adapters = [];
-	$scope.engines = [];
+	$scope.methods = [];
 	$scope.objects = [];
 
 	$scope.handleFailure = function(response)

@@ -20,7 +20,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 	$scope.displayEngineMethod = false;
 
 	$scope.adapters = [];
-	$scope.engines = [];
+	$scope.methods = [];
 	$scope.objects = [];
 
 	$scope.handleFailure = function(response)
