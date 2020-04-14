@@ -1,4 +1,4 @@
-app.controller('objectController', function($scope, $window, $http, $filter, notificationFactory, failureHandling, $location, apiHelpers) {
+app.controller('methodController', function($scope, $window, $http, $filter, notificationFactory, failureHandling, $location, apiHelpers) {
 
 	$scope.isLoading = true;
 
@@ -46,23 +46,22 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	$scope.goToObjectNamespace = function(namespace)
 	{
-		$scope.setLocationNull();
-		$location.search('namespace', namespace);
+		$window.location.href = "object.html#!?namespace=" + namespace;
+	};
+
+	$scope.goToEngineNamespace = function(engine)
+	{
+		alert("Not done, sorry");
+	};
+
+	$scope.goToAdapterNamespace = function(adapter)
+	{
+		alert("Not done, sorry");
 	};
 
 	$scope.setLocationNull = function()
 	{
-		$location.search('object', null);
-		$location.search('namespace', null);
-		$location.search('type', null);
 		$location.search('engine', null);
-	};
-
-	$scope.goToNamespace = function(namespace)
-	{
-		$scope.setLocationNull();
-		$location.search('type', 'oM');
-		$location.search('namespace', namespace);
 	};
 
 	$scope.setDisplayObject = function()
@@ -196,6 +195,8 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	{
 		var engine = $location.search().engine;
 		var method = $location.search().method;
+
+		if($scope.methods.lentgh == 0) return;
 		
 		if(method == null)
 		{

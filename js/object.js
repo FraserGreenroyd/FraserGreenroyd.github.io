@@ -50,19 +50,20 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		$location.search('namespace', namespace);
 	};
 
+	$scope.goToEngineNamespace = function(engine)
+	{
+		alert("Not done, sorry");
+	};
+
+	$scope.goToAdapterNamespace = function(adapter)
+	{
+		alert("Not done, sorry");
+	};
+
 	$scope.setLocationNull = function()
 	{
 		$location.search('object', null);
 		$location.search('namespace', null);
-		$location.search('type', null);
-		$location.search('engine', null);
-	};
-
-	$scope.goToNamespace = function(namespace)
-	{
-		$scope.setLocationNull();
-		$location.search('type', 'oM');
-		$location.search('namespace', namespace);
 	};
 
 	$scope.setDisplayObject = function()
