@@ -196,7 +196,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		var engine = $location.search().engine;
 		var method = $location.search().method;
 
-		if($scope.methods.lentgh == 0) return;
+		if($scope.methods.length == 0) return;
 		
 		if(method == null)
 		{
