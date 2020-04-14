@@ -55,7 +55,8 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 	$scope.goToEngineNamespace = function(engine)
 	{
-		alert("Not done, sorry");
+		$location.setLocationNull();
+		$location.search('engine', engine);
 	};
 
 	$scope.goToAdapterNamespace = function(adapter)
@@ -66,6 +67,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 	$scope.setLocationNull = function()
 	{
 		$location.search('engine', null);
+		$location.search('method', null);
 	};
 
 	$scope.setDisplayMethod = function()

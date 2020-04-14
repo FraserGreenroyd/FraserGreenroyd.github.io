@@ -52,7 +52,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	$scope.goToEngineNamespace = function(engine)
 	{
-		alert("Not done, sorry");
+		$window.location.href = "engine.html#!?engine=" + engine;
 	};
 
 	$scope.goToAdapterNamespace = function(adapter)
