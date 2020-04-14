@@ -212,8 +212,8 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 						methods.push(obj);
 				});
 
-				if($scope.nthIndexOf(engine, '.', 3) != -1)
-					engine = engine.substring(0, $scope.nthIndexOf(engine, '.', 3));
+				if(apiHelpers.nthIndexOf(engine, '.', 3) != -1)
+					engine = engine.substring(0, apiHelpers.nthIndexOf(engine, '.', 3));
 
 				var groupedMethods = $scope.groupMethodsByClass(methods, engine);
 				$scope.currentEngine.methods = groupedMethods;
@@ -225,8 +225,8 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		{
 			$scope.methods.forEach(function(obj) {
 				var ns = obj.namespace;
-				if($scope.nthIndexOf(ns, '.', 3) != -1)
-					ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
+				if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
+					ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
 
 				if(ns == engine && obj.memberName == method)
 					$scope.currentMethod = obj;
