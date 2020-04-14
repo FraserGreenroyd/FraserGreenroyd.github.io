@@ -18,24 +18,22 @@
 		</div>
 
 		<div class="table-row property-table-row" ng-repeat="x in currentEngine.methods">		
-			<div class="col-sm-12 property-table-cell">
+			<div class="row property-table-cell">
 				<span class="object-name">{{x[0]}}</span>
 			</div>
 
-			<div class="row method-table table-cell">
-				<div class="level-5-indent col-xs-12 method-table-sub-row">
-					<div class="table-header hidden-xs">
-						<div class="col-sm-3 table-cell-inner table-header">Name</div>
-						<div class="col-sm-9 table-cell-inner table-header">Description</div>
-					</div>
+			<div class="row method-table table-cel level-5-indent">
+				<div class="table-header">
+					<div class="col-md-3 table-cell-inner table-header">Name</div>
+					<div class="col-md-9 table-cell-inner table-header">Description</div>
+				</div>
 
-					<div class="property-table-row method-input-row can-click" ng-repeat="y in x[1]">
-						<div class="col-sm-3 table-cell-inner">
-							{{y.memberName}}
-						</div>
-						<div class="col-sm-9 table-cell-inner">
-							{{y.description}}
-						</div>
+				<div class="property-table-row method-input-row can-click" ng-repeat="y in x[1]">
+					<div class="col-md-3 table-cell-inner">
+						{{y.memberName}}
+					</div>
+					<div class="col-md-9 table-cell-inner">
+						{{y.description}}
 					</div>
 				</div>
 			</div>
