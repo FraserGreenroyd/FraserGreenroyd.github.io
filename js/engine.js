@@ -132,8 +132,8 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 		array.forEach(function(obj) {
 			var ns = obj.className;
-			if($scope.nthIndexOf(ns, '.', 3) != -1)
-				ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
+			if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
+				ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
 
 			if(arr[ns] == undefined)
 				arr[ns] = [];
