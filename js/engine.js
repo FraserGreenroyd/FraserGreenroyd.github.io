@@ -129,9 +129,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 	$scope.goToObject = function(object)
 	{
-		$location.search('type', 'oM');
-		$location.search('namespace', object.namespace);
-		$location.search('object', object.memberName);
+		$window.location.href = "object.html#!?namespace=" + object.namespace + "&object=" + object.memberName;
 	};
 
 	$scope.groupMethodsByClass = function(array) {
