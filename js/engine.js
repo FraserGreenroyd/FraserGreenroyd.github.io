@@ -64,22 +64,22 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		$location.search('engine', null);
 	};
 
-	$scope.setDisplayObject = function()
+	$scope.setDisplayMethod = function()
 	{
 		$scope.setAllViewsFalse();
-		$scope.displayObject = true;
+		$scope.displayEngineMethod = true;
 	};
 
-	$scope.setDisplayNamespace = function()
+	$scope.setDisplayEngine = function()
 	{
 		$scope.setAllViewsFalse();
-		$scope.displayNamespace = true;
+		$scope.displayEngine = true;
 	};
 
 	$scope.setAllViewsFalse = function()
 	{
-		$scope.displayNamespace = false;
-		$scope.displayObject = false;
+		$scope.displayEngine = false;
+		$scope.displayEngineMethod = false;
 	};
 
 	$scope.displayObjectProperties = function(object)
@@ -219,6 +219,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 				$scope.currentEngine.methods = groupedMethods;
 			}
 
+			$scope.setDisplayEngine();
 			$scope.isLoading = false;
 		}
 		else
@@ -232,6 +233,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 					$scope.currentMethod = obj;
 			});
 
+			$scope.setDisplayMethod();
 			$scope.isLoading = false;
 		}
 	};
