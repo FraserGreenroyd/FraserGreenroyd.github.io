@@ -161,8 +161,6 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 			});
 		});
 
-		console.log(tuples);
-
 		return tuples;
 	};
 
@@ -195,7 +193,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 			if(engine != null && engine != undefined)
 			{
-				$scope.currentEngine = { methods: [] };
+				$scope.currentEngine = { methods: [], name : "" };
 
 				var methods = [];
 				$scope.methods.filter(function(obj) {
@@ -207,6 +205,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 					engine = engine.substring(0, apiHelpers.nthIndexOf(engine, '.', 3));
 
 				var groupedMethods = $scope.groupMethodsByClass(methods, engine);
+				$scope.currentEngine.name = engine;
 				$scope.currentEngine.methods = groupedMethods;
 			}
 
