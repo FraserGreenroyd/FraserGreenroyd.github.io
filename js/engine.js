@@ -45,7 +45,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 	$scope.goToMethod = function(method)
 	{
-		$location.search('method', method);
+		$location.search('method', method.memberName);
 	};
 
 	$scope.goToObjectNamespace = function(namespace)
