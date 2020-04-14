@@ -16,8 +16,6 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	$scope.selectedNamespaceObjects = [];
 
-	$scope.namespacesMaster = [];
-
 	$scope.displayNamespace = false;
 	$scope.displayObject = false;
 
