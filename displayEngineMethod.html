@@ -1,15 +1,17 @@
 <div class="col-md-8 col-md-offset-1 ng-hide" ng-show="displayEngineMethod">
-	<div class="col-md-12 text-right">
-		<p class="right-hand-header">Engine</p>
+	<div class="col-md-6">
+		<h3 class="left-hand-header bhom-red">Engine</h3>
+	</div>
+	<div class="col-md-6 text-right">
+		<p class="right-hand-header"><img src="img/main-logo.png" class="top-right-logo" /></p>
 	</div>
 
-	<p class="pre-object-namespace"><span class="pre-object-namespace">{{currentMethod.namespace}}</span>.<span class="object-name">{{currentMethod.className}}</span></p>
-
-	<p class="object-name">{{currentMethod.memberName}}</p>
-
-	<p class="object-description">{{currentMethod.description}}</p>
-
-	<p class="object-properties can-click" ng-click="displayMethodInputs(currentMethod)"><span class="fa {{currentMethod.displayInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Inputs</p>
+	<div class="row">
+		<p class="pre-object-namespace"><span class="pre-object-namespace">{{currentMethod.namespace}}</span>.<span class="object-name">{{currentMethod.className}}</span></p>
+		<p class="object-name">{{currentMethod.memberName}}</p>
+		<p class="object-description">{{currentMethod.description}}</p>
+		<p class="object-properties can-click" ng-click="displayMethodInputs(currentMethod)"><span class="fa {{currentMethod.displayInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Inputs</p>
+	</div>
 
 	<div class="row method-table table-cell ng-hide" ng-show="currentMethod.displayInputs">
 		<div class="level-5-indent method-table-row">
