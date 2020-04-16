@@ -164,7 +164,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$scope.objects.forEach(function(item) {
 			var name = item.namespace + "." + item.memberName;
 			name = name.toLowerCase();
-			if(name.contains(term))
+			if(name.includes(term))
 			{
 				item.itemType = 1;
 				foundItems.push(item);
@@ -174,7 +174,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$scope.methods.forEach(function(item) {
 			var name = item.namespace + "." + item.memberName;
 			name = name.toLowerCase();
-			if(name.contains(term))
+			if(name.includes(term))
 			{
 				item.itemType = 2;
 				foundItems.push(item);
