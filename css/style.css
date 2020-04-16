@@ -36,6 +36,16 @@ h4
 	font-weight: bold;
 }
 
+.margin-top-10
+{
+	margin-top: 10%;
+}
+
+.search-result
+{
+	padding-top: 5%;
+}
+
 .api-container
 {
 	margin-left: 5%;
