@@ -89,6 +89,10 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$scope.isLoading = true;
 
 		$scope.setUpNavigation();
+
+		var term = $location.search().search;
+		$scope.mainSearch.searchTerm = term;
+		$scope.runSearch();
 	});
 
 	$scope.setUpNavigation = function()
@@ -145,6 +149,14 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		}, function(response) {
 			$scope.handleFailure(response);
 		});
+	};
+
+	$scope.changeSearchTerm = function()
+	{
+		if($scope.mainSearch.searchTerm == "")
+			$location.search('search', null);
+		else
+			$location.search('search', $scope.mainSearch.searchTerm);
 	};
 
 	$scope.runSearch = function()

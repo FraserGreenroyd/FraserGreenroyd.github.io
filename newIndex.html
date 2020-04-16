@@ -94,7 +94,7 @@
 				<div class="col-md-8 col-md-offset-1 ng-hide" ng-show="displayResults">
 					<div class="row">
 						<div class="col-md-6">
-							<input class="form-control search-box-top margin-top-10" type="text" ng-model="mainSearch.searchTerm" />
+							<input class="form-control search-box-top margin-top-10" type="text" ng-model="mainSearch.searchTerm" ng-change="changeSearchTerm()" />
 						</div>
 						<div class="col-md-6 text-right">
 							<p class="right-hand-header"><img src="img/main-logo.png" class="top-right-logo" /></p>
