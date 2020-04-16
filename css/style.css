@@ -167,7 +167,13 @@ h4
 	border-color: #FE224A;
 }
 
-.object-name, .object-description
+.object-name
+{
+	font-weight: bold;
+	background-color: #FFD700;
+}
+
+.object-description
 {
 	background-color: #FFD700;
 }
