@@ -159,6 +159,12 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 			$location.search('search', $scope.mainSearch.searchTerm);
 	};
 
+	$scope.runSearchKeyPress = function($event)
+	{
+		if($event.keyCode == 13)
+			$scope.changeSearchTerm(); //Code 13 = enter key pressed
+	};
+
 	$scope.runSearch = function()
 	{
 		if($scope.mainSearch.searchTerm == "")
