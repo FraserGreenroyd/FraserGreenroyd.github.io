@@ -111,15 +111,13 @@
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="search-result can-click" ng-repeat="x in searchResults">
-							<div class="col-md-12">
-								{{x.namespace}}.{{x.memberName}}
-							</div>
+					<div class="search-result can-click" ng-repeat="x in searchResults">
+						<div class="row">
+							{{x.namespace}}.{{x.memberName}}
+						</div>
 
-							<div class="col-md-12">
-								<span class="object-name">{{x.description}}</span>
-							</div>
+						<div class="row">
+							<span class="object-name">{{x.description}}</span>
 						</div>
 					</div>
 				</div>
