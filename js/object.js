@@ -288,13 +288,19 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		$http.get('js/adapter.json').then(function(response) {
 			$scope.adapters = response.data;
 
+			var adapterNames = [];
+
 			$scope.adapters.forEach(function(obj) {
 				var ns = obj.namespace;
 				if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
 					ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
 
-				if($scope.navigationAdapters.indexOf(ns) == -1)
-					$scope.navigationAdapters.push({name: ns, isVisible: false});
+				if(adapterNames.indexOf(ns) == -1)
+					adapterNames.push(ns);
+			});
+
+			adapterNames.forEach(function(item) {
+				$scope.navigationAdapters.push({name: item, isVisible: false});
 			});
 
 			$scope.navigationAdapters.sort();
@@ -302,13 +308,19 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			$http.get('js/methods.json').then(function(response) {
 				$scope.methods = response.data;
 
+				var engineNames = [];
+
 				$scope.methods.forEach(function(obj) {
 					var ns = obj.namespace;
 					if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
 						ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
 
-					if($scope.navigationEngines.indexOf(ns) == -1)
-						$scope.navigationEngines.push({name: ns, isVisible: false});
+					if(engineNames.indexOf(ns) == -1)
+						engineNames.push(ns);
+				});
+
+				engineNames.forEach(function(item) {
+					$scope.navigationEngines.push({name: item, isVisible: false});
 				});
 
 				$scope.navigationEngines.sort();
@@ -316,13 +328,18 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 				$http.get('js/objects.json').then(function(response) {
 					$scope.objects = response.data;
 
+					var objectNames = [];
 					$scope.objects.forEach(function(obj) {
 						var ns = obj.namespace;
 						if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
 							ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
 
-						if($scope.navigationObjectModel.indexOf(ns) == -1)
-							$scope.navigationObjectModel.push({name: ns, isVisible: false});
+						if(objectNames.indexOf(ns) == -1)
+							objectNames.push(ns);
+					});
+
+					objectNames.forEach(function(item) {
+						$scope.navigationObjectModel.push({name: item, isVisible: false});
 					});
 
 					$scope.navigationObjectModel.sort();
