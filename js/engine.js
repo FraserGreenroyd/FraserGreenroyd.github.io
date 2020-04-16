@@ -46,6 +46,11 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 	$scope.goToMethod = function(method)
 	{
 		$location.search('method', method.memberName);
+		$scope.navigationEngines.forEach(function(item) {
+			item.isVisible = false;
+			if(item.includes(method.namespace))
+				item.isVisible = true;
+		});
 	};
 
 	$scope.goToObjectNamespace = function(namespace)
@@ -123,6 +128,12 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 		if($scope.objects.length == 0)
 			$scope.setUpNavigation(); //First time load
+
+		$scope.navigationEngines.forEach(function(item) {
+			item.isVisible = false;
+			if(item.includes($location.search().engine))
+				item.isVisible = true;
+		});
 
 		$scope.read_Engine();
 	});

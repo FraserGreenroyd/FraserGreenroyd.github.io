@@ -48,6 +48,11 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	{
 		$scope.setLocationNull();
 		$location.search('namespace', namespace);
+		$scope.navigationObjectModel.forEach(function(item) {
+			item.isVisible = false;
+			if(item.includes(namespace))
+				item.isVisible = true;
+		});
 	};
 
 	$scope.goToEngineNamespace = function(engine)
@@ -119,6 +124,12 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 		if($scope.objects.length == 0)
 			$scope.setUpNavigation(); //First time load
+
+		$scope.navigationObjectModel.forEach(function(item) {
+			item.isVisible = false;
+			if(item.includes($location.search().namespace))
+				item.isVisible = true;
+		});
 
 		$scope.read_oM();
 	});
