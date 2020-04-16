@@ -108,11 +108,11 @@
 						</p>
 
 						<div class="search-result can-click" ng-repeat="x in searchResults">
-							<div class="col-md-8">
-								{{x.name}}
+							<div class="col-md-4">
+								{{x.namespace}}.{{x.memberName}}
 							</div>
 
-							<div class="col-md-4">
+							<div class="col-md-8">
 								{{x.description}}
 							</div>
 						</div>
