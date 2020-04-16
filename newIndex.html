@@ -111,8 +111,8 @@
 						</div>
 					</div>
 
-					<div class="search-result can-click" ng-repeat="x in searchResults">
-						<div class="search-result-name">
+					<div class="search-result" ng-repeat="x in searchResults">
+						<div class="search-result-name can-click" ng-click="goToResult(x)">
 							{{x.namespace}}.{{x.memberName}}
 						</div>
 

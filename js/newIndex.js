@@ -217,4 +217,18 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$scope.displaySearch = false;
 		$scope.displayResults = true;
 	};
+
+	$scope.goToResult = function(result)
+	{
+		if(result.itemType == 1)
+		{
+			//Object result
+			$window.location.href = "object.html#!?namespace=" + result.namespace + "&object=" + result.memberName;
+		}
+		else if (result.itemType == 2)
+		{
+			//Method result
+			$window.location.href = "engine.html#!?engine=" + result.namespace + "&method=" + result.memberName;
+		}
+	};
 });
