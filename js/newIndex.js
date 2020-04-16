@@ -1,34 +1,19 @@
-app.controller('indexController', function($scope, $window, $http, $filter, notificationFactory, failureHandling, $location) {
+app.controller('indexController', function($scope, $window, $http, $filter, notificationFactory, failureHandling, $location, apiHelpers) {
 
 	$scope.isLoading = true;
 
-	$scope.currentObject = {};
-	$scope.currentEngine = {};
-	$scope.currentMethod = {};
-	$scope.currentNamespace = "";
-
-	$scope.selectedNamespaceObjects = [];
-	$scope.selectedNamespace = "";
-
-	$scope.objects = [];
-	$scope.methods = [];
-	$scope.adapters = [];
-
-	$scope.namespacesMaster = [];
-	$scope.namespaces = [];
-	$scope.displayNamespace = false;
-	$scope.namespaceFilter = "";
+	//Navigation objects
+	$scope.navigationObjectModel = [];
+	$scope.navigationEngines = [];
+	$scope.navigationAdapters = [];
 
 	$scope.expandObjects = false;
 	$scope.expandEngine = false;
 	$scope.expandAdapter = false;
 
-	$scope.displaySearch = true;
-	$scope.displayResults = false;
-	$scope.displayObject = false;
-	$scope.displayEngineMethod = false;
-
-	//SORT OUT OM NAMESPACES AND ENGINE NAMESPACES AND ADAPTER NAMESPACES FOR LEFT SIDEBAR
+	$scope.objects = [];
+	$scope.methods = [];
+	$scope.adapters = [];
 
 	$scope.mainSearch = {
 		searchTerm : "",
@@ -55,29 +40,19 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$scope.expandAdapter = !$scope.expandAdapter;
 	};
 
-	$scope.setLocationNull = function()
+	$scope.goToObjectNamespace = function(namespace)
 	{
-		$location.search('object', null);
-		$location.search('namespace', null);
-		$location.search('type', null);
-		$location.search('engine', null);
+		$window.location.href = "object.html#!?namespace=" + namespace;
 	};
 
-	$scope.goToNamespace = function(namespace)
+	$scope.goToEngineNamespace = function(engine)
 	{
-		$scope.setLocationNull();
-		$location.search('type', 'oM');
-		$location.search('namespace', namespace);
+		$window.location.href = "engine.html#!?engine=" + engine;
 	};
 
-	$scope.goToEngine = function(engine)
+	$scope.goToAdapterNamespace = function(adapter)
 	{
-		alert("Fraser didn't do this yet - remind him?");
-	};
-
-	$scope.goToAdapter = function(engine)
-	{
-		alert("Fraser didn't do this yet - remind him?");
+		alert("Not done, sorry");
 	};
 
 	$scope.runSearch = function()
@@ -91,57 +66,6 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$location.search('type', 'oM');
 		$location.search('namespace', item.namespace);
 		$location.search('object', item.memberName);
-	};
-
-	$scope.setDisplaySearch = function()
-	{
-		$scope.setAllViewsFalse();
-		$scope.displaySearch = true;
-	};
-
-	$scope.setDisplayObject = function()
-	{
-		$scope.setAllViewsFalse();
-		$scope.displayObject = true;
-	};
-
-	$scope.setDisplayEngineMethods = function()
-	{
-		$scope.setAllViewsFalse();
-		$scope.displayEngineMethod = true;
-	};
-
-	$scope.setAllViewsFalse = function()
-	{
-		$scope.displaySearch = false;
-		$scope.displayResults = false;
-		$scope.displayObject = false;
-		$scope.displayEngineMethod = false;
-	};
-
-	$scope.displayObjectProperties = function(object)
-	{
-		object.displayProperties = !object.displayProperties;
-	};
-
-	$scope.displayEngineMethods = function(object)
-	{
-		object.displayMethods = !object.displayMethods;
-	};
-
-	$scope.displayAdapterMethods = function(object)
-	{
-		object.displayAdapters = !object.displayAdapters;
-	};
-
-	$scope.displayMethodInputs = function(method)
-	{
-		method.displayInputs = !method.displayInputs;
-	};
-
-	$scope.displayMethodOutputs = function(method)
-	{
-		method.displayOutputs = !method.displayOutputs;
 	};
 
 	$scope.displayNamespaceSplit = function(namespace)
@@ -186,314 +110,59 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$location.search('object', object.memberName);
 	};
 
-	$scope.nthIndexOf = function(str, pattern, n) {
-	    var i = -1;
-
-	    while (n-- && i++ < str.length) {
-	        i = str.indexOf(pattern, i);
-	        if (i < 0) break;
-	    }
-
-	    return i;
-	};
-
-	$scope.groupMethodsByNamespace = function(array, coreNS) {
-		var arr = [];
-
-		array.forEach(function(obj) {
-			var ns = obj.namespace;
-			if($scope.nthIndexOf(ns, '.', 3) != -1)
-				ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
-
-			if(arr[ns] == undefined)
-				arr[ns] = [];
-
-			arr[ns].push(obj);
-		});
-
-		var tuples = [];
-
-		for (var key in arr) tuples.push([key, arr[key]]);
-
-		tuples.sort(function(a, b) {
-			if(a[0].includes(coreNS)) return -1;
-			if(b[0].includes(coreNS)) return 1;
-			return 0;
-		});
-
-		var t = tuples.shift();
-
-		tuples.sort(function(a, b) {
-			a = a[0];
-			b = b[0];
-			if(a < b) return -1;
-			if(a > b) return 1;
-			return 0;
-		});
-
-		tuples.splice(0, 0, t);
-
-		tuples.forEach(function(obj) {
-			obj[1].sort(function(a, b) {
-				if(a.memberName < b.memberName) return -1;
-				if(a.memberName > b.memberName) return 1;
-				return 0;
-			});
-		});
-
-		return tuples;
-	};
-
-	$scope.groupMethodsByClass = function(array) {
-		var arr = [];
-
-		array.forEach(function(obj) {
-			var ns = obj.className;
-			if($scope.nthIndexOf(ns, '.', 3) != -1)
-				ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
-
-			if(arr[ns] == undefined)
-				arr[ns] = [];
-
-			arr[ns].push(obj);
-		});
-
-		var tuples = [];
-
-		for (var key in arr) tuples.push([key, arr[key]]);
-
-		tuples.sort(function(a, b) {
-			a = a[0];
-			b = b[0];
-			if(a < b) return -1;
-			if(a > b) return 1;
-			return 0;
-		});
-
-		tuples.forEach(function(obj) {
-			obj[1].sort(function(a, b) {
-				if(a.memberName < b.memberName) return -1;
-				if(a.memberName > b.memberName) return 1;
-				return 0;
-			});
-		});
-
-		return tuples;
-	};
-
-	$scope.readSearch = function()
+	$scope.setUpNavigation = function()
 	{
 		$http.get('js/adapter.json').then(function(response) {
 			$scope.adapters = response.data;
 
+			$scope.adapters.forEach(function(obj) {
+				var ns = obj.namespace;
+				if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
+					ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
+
+				if($scope.navigationAdapters.indexOf(ns) == -1)
+					$scope.navigationAdapters.push(ns);
+			});
+
+			$scope.navigationAdapters.sort();
+
 			$http.get('js/methods.json').then(function(response) {
 				$scope.methods = response.data;
 
-				$http.get('js/objects.json').then(function(response) {
-					$scope.objects = response.data;
+				$scope.methods.forEach(function(obj) {
+					var ns = obj.namespace;
+					if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
+						ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
 
-					$scope.isLoading = false;
-				}, function(response) {
-					$scope.handleFailure(response);
+					if($scope.navigationEngines.indexOf(ns) == -1)
+						$scope.navigationEngines.push(ns);
 				});
-			}, function(response) {
-				$scope.handleFailure(response);
-			});
-		}, function(response) {
-			$scope.handleFailure(response);
-		});
-	};
 
-	$scope.read_oM = function()
-	{
-		var namespace = $location.search().namespace;
-		var object = $location.search().object;
-
-		$scope.displayNamespace = false;
-
-		$scope.selectedNamespace = namespace;
-
-		$http.get('js/adapter.json').then(function(response) {
-			$scope.adapters = response.data;
-
-			$http.get('js/methods.json').then(function(response) {
-				$scope.methods = response.data;
+				$scope.navigationEngines.sort();
 
 				$http.get('js/objects.json').then(function(response) {
 					$scope.objects = response.data;
-					$scope.currentObject = null;
-					$scope.selectedNamespaceObjects = [];
 
 					$scope.objects.forEach(function(obj) {
 						var ns = obj.namespace;
-						if($scope.nthIndexOf(ns, '.', 3) != -1)
-							ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
+						if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
+							ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
 
-						if($scope.namespaces.indexOf(ns) == -1)
-							$scope.namespaces.push(ns);
+						if($scope.navigationObjectModel.indexOf(ns) == -1)
+							$scope.navigationObjectModel.push(ns);
 					});
 
-					$scope.namespaces.sort();
+					$scope.navigationObjectModel.sort();
 
-					$scope.namespacesMaster = JSON.parse(JSON.stringify($scope.namespaces));
-
-					if(object != null && object != undefined)
-					{
-						$scope.objects.filter(function(obj) {
-							if(obj.namespace == namespace && obj.memberName == object)
-								$scope.currentObject = obj;
-						});
-
-						if($scope.currentObject != null)
-						{
-							var types = [];
-							types.push(namespace + "." + object);
-							$scope.currentObject.inheritance.forEach(function(obj) {
-								types.push(obj.namespace + "." + obj.memberName);
-							});
-
-							var methods = [];
-							$scope.methods.filter(function(obj) {
-								obj.inputs.filter(function(input) {
-									if(types.indexOf(input.namespace + "." + input.memberName) != -1)
-									{
-										if(methods.indexOf(obj) == -1)
-											methods.push(obj);
-									}
-								});
-							});
-
-							var engineNamespace = namespace.replace('oM', 'Engine');
-							if($scope.nthIndexOf(engineNamespace, '.', 3) != -1)
-								engineNamespace = engineNamespace.substring(0, $scope.nthIndexOf(engineNamespace, '.', 3));
-
-							var groupedMethods = $scope.groupMethodsByNamespace(methods, engineNamespace);
-							$scope.currentObject.methods = groupedMethods;
-
-							var adapters = [];
-							$scope.adapters.filter(function(obj) {
-								if(obj.namespace == $scope.currentObject.namespace && obj.memberName == $scope.currentObject.memberName)
-									adapters.push(obj);
-							});
-
-							var adapterNamespace = namespace.replace('oM', 'Adapter');
-							if($scope.nthIndexOf(adapterNamespace, '.', 3) != -1)
-								adapterNamespace = adapterNamespace.substring(0, $scope.nthIndexOf(adapterNamespace, '.', 3));
-
-							if(adapters.length > 0)
-							{
-								var groupedAdapters = $scope.groupMethodsByNamespace(adapters[0].adapterMethods, adapterNamespace);
-								$scope.currentObject.adapters = groupedAdapters;
-							}
-							else
-								$scope.currentObject.adapters = [];
-						}
-					}
-					else
-					{
-						$scope.objects.filter(function(obj) {
-							if(obj.namespace.startsWith(namespace))
-								$scope.selectedNamespaceObjects.push(obj);
-						});
-
-						$scope.currentNamespace = namespace;
-
-						$scope.displayNamespace = true;
-						$scope.displayObject = false;
-					}
-
-					$scope.isLoading = false;		
+					$scope.read_Engine();
 				}, function(response) {
 					$scope.handleFailure(response);
 				});
-
 			}, function(response) {
 				$scope.handleFailure(response);
 			});
 		}, function(response) {
 			$scope.handleFailure(response);
 		});
-	};
-
-	$scope.readEngine = function()
-	{
-		var engine = $location.search().engine;
-		var method = $location.search().method;
-
-		$http.get('js/methods.json').then(function(response) {
-			$scope.methods = response.data;
-
-			$scope.methods.forEach(function(obj) {
-				var ns = obj.namespace;
-				if($scope.nthIndexOf(ns, '.', 3) != -1)
-					ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
-
-				if($scope.namespaces.indexOf(ns) == -1)
-					$scope.namespaces.push(ns);
-			});
-
-			if(method == null)
-			{
-				$scope.namespacesMaster = JSON.parse(JSON.stringify($scope.namespaces));
-
-				$http.get('js/objects.json').then(function(response) {
-					$scope.objects = response.data;
-					$scope.currentEngine = null;
-
-					if(engine != null && engine != undefined)
-					{
-						$scope.currentEngine = { methods: [] };
-
-						var methods = [];
-						$scope.methods.filter(function(obj) {
-							if(obj.namespace.includes(engine))
-								methods.push(obj);
-						});
-
-						if($scope.nthIndexOf(engine, '.', 3) != -1)
-							engine = engine.substring(0, $scope.nthIndexOf(engine, '.', 3));
-
-						var groupedMethods = $scope.groupMethodsByClass(methods, engine);
-						$scope.currentEngine.methods = groupedMethods;
-					}
-
-					$scope.isLoading = false;		
-				}, function(response) {
-					$scope.handleFailure(response);
-				});
-			}
-			else
-			{
-				$scope.methods.forEach(function(obj) {
-					var ns = obj.namespace;
-					if($scope.nthIndexOf(ns, '.', 3) != -1)
-						ns = ns.substring(0, $scope.nthIndexOf(ns, '.', 3));
-
-					if(ns == engine && obj.memberName == method)
-						$scope.currentMethod = obj;
-				});
-
-				$scope.isLoading = false;
-			}
-
-		}, function(response) {
-			$scope.handleFailure(response);
-		});
-	};
-
-	$scope.showHideNamespace = function(object)
-	{
-		if(object.canView == undefined)
-			object.canView = false;
-		
-		object.canView = !object.canView;
-	};
-
-	$scope.showHideMethodInputs = function(object)
-	{
-		if(object.canViewInputs == undefined)
-			object.canViewInputs = false;
-		
-		object.canViewInputs = !object.canViewInputs;
 	};
 });
