@@ -50,7 +50,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		$location.search('namespace', namespace.name);
 		$scope.navigationObjectModel.forEach(function(item) {
 			item.isVisible = false;
-			if(item.includes(namespace.name))
+			if(item.name.includes(namespace.name))
 				item.isVisible = true;
 		});
 	};

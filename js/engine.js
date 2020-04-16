@@ -48,7 +48,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		$location.search('method', method.memberName);
 		$scope.navigationEngines.forEach(function(item) {
 			item.isVisible = false;
-			if(item.includes(method.namespace))
+			if(item.name.includes(method.namespace))
 				item.isVisible = true;
 		});
 	};
@@ -64,7 +64,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		$location.search('engine', engine.name);
 		$scope.navigationEngines.forEach(function(item) {
 			item.isVisible = false;
-			if(item.includes(engine.name))
+			if(item.name.includes(engine.name))
 				item.isVisible = true;
 		});
 	};
