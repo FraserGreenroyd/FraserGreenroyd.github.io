@@ -47,17 +47,17 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	$scope.goToObjectNamespace = function(namespace)
 	{
 		$scope.setLocationNull();
-		$location.search('namespace', namespace);
+		$location.search('namespace', namespace.name);
 		$scope.navigationObjectModel.forEach(function(item) {
 			item.isVisible = false;
-			if(item.includes(namespace))
+			if(item.includes(namespace.name))
 				item.isVisible = true;
 		});
 	};
 
 	$scope.goToEngineNamespace = function(engine)
 	{
-		$window.location.href = "engine.html#!?engine=" + engine;
+		$window.location.href = "engine.html#!?engine=" + engine.name;
 	};
 
 	$scope.goToAdapterNamespace = function(adapter)
@@ -303,7 +303,9 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 				$scope.navigationAdapters.push({name: item, isVisible: false});
 			});
 
-			$scope.navigationAdapters.sort();
+			$scope.navigationAdapters.sort(function(a, b) {
+				return a.name < b.name;
+			});
 
 			$http.get('js/methods.json').then(function(response) {
 				$scope.methods = response.data;
@@ -323,7 +325,9 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 					$scope.navigationEngines.push({name: item, isVisible: false});
 				});
 
-				$scope.navigationEngines.sort();
+				$scope.navigationEngines.sort(function(a, b) {
+					return a.name < b.name;
+				});
 
 				$http.get('js/objects.json').then(function(response) {
 					$scope.objects = response.data;
@@ -342,7 +346,9 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 						$scope.navigationObjectModel.push({name: item, isVisible: false});
 					});
 
-					$scope.navigationObjectModel.sort();
+					$scope.navigationObjectModel.sort(function(a, b) {
+						return a.name < b.name;
+					});
 
 					$scope.read_oM();
 				}, function(response) {

@@ -55,13 +55,18 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 	$scope.goToObjectNamespace = function(namespace)
 	{
-		$window.location.href = "object.html#!?namespace=" + namespace;
+		$window.location.href = "object.html#!?namespace=" + namespace.name;
 	};
 
 	$scope.goToEngineNamespace = function(engine)
 	{
 		$scope.setLocationNull();
-		$location.search('engine', engine);
+		$location.search('engine', engine.name);
+		$scope.navigationEngines.forEach(function(item) {
+			item.isVisible = false;
+			if(item.includes(engine.name))
+				item.isVisible = true;
+		});
 	};
 
 	$scope.goToAdapterNamespace = function(adapter)

@@ -50,12 +50,12 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 	$scope.goToObjectNamespace = function(namespace)
 	{
-		$window.location.href = "object.html#!?namespace=" + namespace;
+		$window.location.href = "object.html#!?namespace=" + namespace.name;
 	};
 
 	$scope.goToEngineNamespace = function(engine)
 	{
-		$window.location.href = "engine.html#!?engine=" + engine;
+		$window.location.href = "engine.html#!?engine=" + engine.name;
 	};
 
 	$scope.goToAdapterNamespace = function(adapter)
