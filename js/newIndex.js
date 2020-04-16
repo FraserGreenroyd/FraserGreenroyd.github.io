@@ -94,30 +94,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {
 		$scope.isLoading = true;
 
-		var type = $location.search().type;
-		if(type == null)
-		{
-			$scope.readSearch();
-			$scope.setDisplaySearch();
-		}
-		else if(type == "oM")
-		{
-			$scope.read_oM();
-			$scope.setDisplayObject();
-		}
-		else if (type == "engine")
-		{
-			$scope.readEngine();
-			$scope.setDisplayEngineMethods();
-		}
+		$scope.setUpNavigation();
 	});
-
-	$scope.goToObject = function(object)
-	{
-		$location.search('type', 'oM');
-		$location.search('namespace', object.namespace);
-		$location.search('object', object.memberName);
-	};
 
 	$scope.setUpNavigation = function()
 	{
