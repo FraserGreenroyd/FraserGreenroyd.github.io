@@ -150,6 +150,6 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 	$scope.runSearch = function()
 	{
-		alert("Fraser didn't do this yet - remind him?");
+		
 	};
 });
