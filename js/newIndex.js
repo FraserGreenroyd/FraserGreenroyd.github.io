@@ -167,8 +167,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		term = term.toLowerCase();
 
 		$scope.objects.forEach(function(item) {
-			var name = item.namespace + "." + item.memberName;
-			name = name.toLowerCase();
+			var name = item.memberName.toLowerCase();
+
 			if(name.includes(term))
 			{
 				item.itemType = 1;
@@ -177,8 +177,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		});
 
 		$scope.methods.forEach(function(item) {
-			var name = item.namespace + "." + item.memberName;
-			name = name.toLowerCase();
+			var name = item.memberName.toLowerCase();
+
 			if(name.includes(term))
 			{
 				item.itemType = 2;
@@ -187,11 +187,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		});
 
 		foundItems.sort(function(a, b) {
-			var aName = a.namespace + "." + a.memberName;
-			aName = aName.toLowerCase();
-
-			var bName = b.namespace + "." + b.memberName;
-			bName = bName.toLowerCase();
+			var aName = a.memberName.toLowerCase();
+			var bName = b.memberName.toLowerCase();
 
 			return aName.indexOf(term) - bName.indexOf(term);
 		});
