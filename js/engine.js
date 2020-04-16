@@ -58,6 +58,8 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		$window.location.href = "object.html#!?namespace=" + namespace.name;
 	};
 
+	$scope.displayEngineMethods
+
 	$scope.goToEngineNamespace = function(engine)
 	{
 		$scope.setLocationNull();
@@ -103,9 +105,9 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		object.displayProperties = !object.displayProperties;
 	};
 
-	$scope.displayEngineMethods = function(object)
+	$scope.displayEngineMethods = function(engine)
 	{
-		object.displayMethods = !object.displayMethods;
+		engine.showEngineMethods = !engine.showEngineMethods;
 	};
 
 	$scope.displayAdapterMethods = function(object)
