@@ -294,7 +294,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 					ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
 
 				if($scope.navigationAdapters.indexOf(ns) == -1)
-					$scope.navigationAdapters.push(ns);
+					$scope.navigationAdapters.push({name: ns, isVisible: false});
 			});
 
 			$scope.navigationAdapters.sort();
@@ -308,7 +308,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 						ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
 
 					if($scope.navigationEngines.indexOf(ns) == -1)
-						$scope.navigationEngines.push(ns);
+						$scope.navigationEngines.push({name: ns, isVisible: false});
 				});
 
 				$scope.navigationEngines.sort();
@@ -322,7 +322,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 							ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
 
 						if($scope.navigationObjectModel.indexOf(ns) == -1)
-							$scope.navigationObjectModel.push(ns);
+							$scope.navigationObjectModel.push({name: ns, isVisible: false});
 					});
 
 					$scope.navigationObjectModel.sort();

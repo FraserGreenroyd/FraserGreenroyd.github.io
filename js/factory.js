@@ -62,7 +62,8 @@ app.factory('apiHelpers', function() {
 		},
 
 		displayNamespaceSplit : function(namespace) {
-			var split = namespace.split('.');
+			var name = namespace.name;
+			var split = name.split('.');
 
 			if(split.length > 2)
 			{
@@ -71,7 +72,7 @@ app.factory('apiHelpers', function() {
 				else
 					return split[2];
 			}
-			else return namespace; //Not sure what happened
+			else return name; //Not sure what happened
 		},
 	};
 });
