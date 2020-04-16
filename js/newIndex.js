@@ -62,7 +62,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		{
 			//Randomly for an engine
 			var item = $scope.methods[Math.floor(Math.random() * $scope.methods.length)];
-			$window.location.href = "engine.html#!?engine=" + item.namespace + "&method=" item.memberName;
+			$window.location.href = "engine.html#!?engine=" + item.namespace + "&method=" + item.memberName;
 		}
 		else
 		{
