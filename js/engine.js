@@ -136,7 +136,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 		$scope.navigationEngines.forEach(function(item) {
 			item.isVisible = false;
-			if(item.includes($location.search().engine))
+			if(item.name.includes($location.search().engine))
 				item.isVisible = true;
 		});
 

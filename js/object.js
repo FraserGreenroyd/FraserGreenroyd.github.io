@@ -127,7 +127,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 		$scope.navigationObjectModel.forEach(function(item) {
 			item.isVisible = false;
-			if(item.includes($location.search().namespace))
+			if(item.name.includes($location.search().namespace))
 				item.isVisible = true;
 		});
 
