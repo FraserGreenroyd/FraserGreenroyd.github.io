@@ -1,6 +1,6 @@
 <div class="col-md-8 col-md-offset-1 ng-hide" ng-show="displayObject">
 	<div class="col-md-6">
-		<h3 class="left-hand-header bhom-red">oM</h3>
+		<h3 class="left-hand-header bhom-red">Object Model</h3>
 	</div>
 	<div class="col-md-6 text-right">
 		<p class="right-hand-header"><img src="img/main-logo.png" class="top-right-logo" /></p>
@@ -11,7 +11,7 @@
 
 		<p class="object-description">{{currentObject.description}}</p>
 
-		<p class="object-properties can-click" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> oM Properties</p>
+		<p class="object-properties can-click" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Properties</p>
 	</div>
 
 	<div class="row property-table ng-hide" ng-show="currentObject.displayProperties">
