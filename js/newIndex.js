@@ -19,6 +19,9 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		searchTerm : "",
 	};
 
+	$scope.searchResults = [];
+	$scope.loadingSearch = false;
+
 	$scope.runningSearch = false;
 
 	$scope.handleFailure = function(response)
@@ -146,11 +149,50 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		if($scope.mainSearch.searchTerm == "")
 		{
 			$scope.runningSearch = false;
+			$scope.loadingSearch = false;
 			return;
 		}
 
 		$scope.runningSearch = true;
+		$scope.loadingSearch = true;
 
-		
+		var foundItems = [];
+
+		var term = $scope.mainSearch.searchTerm;
+		term = term.toLowerCase();
+
+		$scope.objects.forEach(function(item) {
+			var name = item.namespace + "." + item.memberName;
+			name = name.toLowerCase();
+			if(name.contains(term))
+			{
+				item.itemType = 1;
+				foundItems.push(item);
+			}
+		});
+
+		$scope.methods.forEach(function(item) {
+			var name = item.namespace + "." + item.memberName;
+			name = name.toLowerCase();
+			if(name.contains(term))
+			{
+				item.itemType = 2;
+				foundItems.push(item);
+			}
+		});
+
+		foundItems.sort(function(a, b) {
+			var aName = a.namespace + "." + a.memberName;
+			aName = aName.toLowerCase();
+
+			var bName = b.namespace + "." + b.memberName;
+			bName = bName.toLowerCase();
+
+			return aName.indexOf(term) - bName.indexOf(term);
+		});
+
+		$scope.searchTerm = foundItems;
+
+		$scope.loadingSearch = false;
 	};
 });
