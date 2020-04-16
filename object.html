@@ -40,33 +40,7 @@
 			</div>
 
 			<div class="row ng-hide" ng-show="!isLoading">
-				<div class="col-md-2 menu-sidebar">
-					<!-- Left hand sidebar -->
-					<div class="row text-center">
-						<h3><span class="bhom-black">BHoM</span><span class="bhom-red">.API</span></h3>
-					</div>
-
-					<div class="row">
-						<span class="can-click" ng-click="showObjects()"><span class="fa {{expandObjects ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> oM</span>
-						<div class="row can-click navigation-item ng-hide" ng-show="expandObjects" ng-repeat="x in navigationObjectModel" ng-click="goToObjectNamespace(x)">
-							{{displayNamespaceSplit(x)}}
-						</div>
-					</div>
-
-					<div class="row">
-						<span class="can-click" ng-click="showEngine()"><span class="fa {{expandEngine ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Engine</span>
-						<div class="row can-click navigation-item ng-hide" ng-show="expandEngine" ng-repeat="x in navigationEngines" ng-click="goToEngineNamespace(x)">
-							{{displayNamespaceSplit(x)}}
-						</div>
-					</div>
-
-					<!--<div class="row">
-						<span class="can-click" ng-click="showAdapter()"><span class="fa {{expandAdapter ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Adapter</span>
-						<div class="row can-click navigation-item ng-hide" ng-show="expandAdapter" ng-repeat="x in navigationAdapters" ng-click="goToAdapterNamespace(x)">
-							{{displayNamespaceSplit(x)}}
-						</div>
-					</div>-->
-				</div>
+				<div ng-include="'navigation.html'"></div>
 
 				<div ng-include="'displayNamespace.html'"></div>
 
