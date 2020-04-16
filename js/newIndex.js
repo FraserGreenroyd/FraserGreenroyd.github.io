@@ -66,13 +66,13 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		if(random > 5)
 		{
 			//Randomly for an engine
-			var item = $scope.methods[Math.floor(Math.random() * $scope.methods.length)]
+			var item = $scope.methods[Math.floor(Math.random() * $scope.methods.length)];
 			$window.location.href = "engine.html#!?engine=" + item.namespace + "&method=" item.memberName;
 		}
 		else
 		{
 			//Randomly for an object
-			var item = $scope.objects[Math.floor(Math.random() * $scope.objects.length)]
+			var item = $scope.objects[Math.floor(Math.random() * $scope.objects.length)];
 			$window.location.href = "object.html#!?namespace=" + item.namespace + "&object=" + item.memberName;
 		}
 	};
