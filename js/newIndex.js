@@ -19,6 +19,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		searchTerm : "",
 	};
 
+	$scope.runningSearch = false;
+
 	$scope.handleFailure = function(response)
 	{
 		$scope.isLoading = false;
@@ -150,6 +152,14 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 	$scope.runSearch = function()
 	{
+		if($scope.mainSearch.searchTerm == "")
+		{
+			$scope.runningSearch = false;
+			return;
+		}
+
+		$scope.runningSearch = true;
+
 		
 	};
 });
