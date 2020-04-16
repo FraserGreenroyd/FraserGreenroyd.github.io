@@ -15,6 +15,9 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.methods = [];
 	$scope.adapters = [];
 
+	$scope.displaySearch = true;
+	$scope.displayResults = false;
+
 	$scope.mainSearch = {
 		searchTerm : "",
 	};
@@ -150,6 +153,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		{
 			$scope.runningSearch = false;
 			$scope.loadingSearch = false;
+			$scope.displaySearch = true;
+			$scope.displayResults = false;
 			return;
 		}
 
@@ -191,8 +196,10 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 			return aName.indexOf(term) - bName.indexOf(term);
 		});
 
-		$scope.searchTerm = foundItems;
+		$scope.searchResults = foundItems;
 
 		$scope.loadingSearch = false;
+		$scope.displaySearch = false;
+		$scope.displayResults = true;
 	};
 });
