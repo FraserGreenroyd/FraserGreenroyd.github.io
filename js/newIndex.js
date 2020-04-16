@@ -62,10 +62,19 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 	$scope.surpriseMe = function()
 	{
-		var item = $scope.objects[Math.floor(Math.random() * $scope.objects.length)]
-		$location.search('type', 'oM');
-		$location.search('namespace', item.namespace);
-		$location.search('object', item.memberName);
+		var random = (Math.random() * 10);
+		if(random > 5)
+		{
+			//Randomly for an engine
+			var item = $scope.methods[Math.floor(Math.random() * $scope.methods.length)]
+			$window.location.href = "engine.html#!?engine=" + item.namespace + "&method=" item.memberName;
+		}
+		else
+		{
+			//Randomly for an object
+			var item = $scope.objects[Math.floor(Math.random() * $scope.objects.length)]
+			$window.location.href = "object.html#!?namespace=" + item.namespace + "&object=" + item.memberName;
+		}
 	};
 
 	$scope.displayNamespaceSplit = function(namespace)
