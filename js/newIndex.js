@@ -140,6 +140,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 					$scope.navigationObjectModel.sort();
 
 					$scope.isLoading = false;
+					$scope.runSearch();
 				}, function(response) {
 					$scope.handleFailure(response);
 				});
