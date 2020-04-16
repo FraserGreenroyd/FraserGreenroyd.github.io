@@ -131,6 +131,8 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 					});
 
 					$scope.navigationObjectModel.sort();
+
+					$scope.isLoading = false;
 				}, function(response) {
 					$scope.handleFailure(response);
 				});
