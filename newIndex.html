@@ -53,21 +53,21 @@
 
 					<div class="row">
 						<span class="can-click" ng-click="showObjects()"><span class="fa {{expandObjects ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> oM</span>
-						<div class="row can-click ng-hide" ng-show="expandObjects" ng-repeat="x in navigationObjectModel" ng-click="goToObjectNamespace(x)">
+						<div class="row can-click ng-hide navigation-item" ng-show="expandObjects" ng-repeat="x in navigationObjectModel" ng-click="goToObjectNamespace(x)">
 							{{displayNamespaceSplit(x)}}
 						</div>
 					</div>
 
 					<div class="row">
 						<span class="can-click" ng-click="showEngine()"><span class="fa {{expandEngine ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Engine</span>
-						<div class="row can-click ng-hide" ng-show="expandEngine" ng-repeat="x in navigationEngines" ng-click="goToEngineNamespace(x)">
+						<div class="row can-click ng-hide navigation-item" ng-show="expandEngine" ng-repeat="x in navigationEngines" ng-click="goToEngineNamespace(x)">
 							{{displayNamespaceSplit(x)}}
 						</div>
 					</div>
 
 					<!--<div class="row">
 						<span class="can-click" ng-click="showAdapter()"><span class="fa {{expandAdapter ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Adapter</span>
-						<div class="row can-click ng-hide" ng-show="expandAdapter" ng-repeat="x in navigationAdapters" ng-click="goToAdapterNamespace(x)">
+						<div class="row can-click ng-hide navigation-item" ng-show="expandAdapter" ng-repeat="x in navigationAdapters" ng-click="goToAdapterNamespace(x)">
 							{{displayNamespaceSplit(x)}}
 						</div>
 					</div>-->
