@@ -76,7 +76,7 @@
 				<div class="col-md-9 ng-hide" ng-show="displaySearch">
 					<!-- Main content -->
 					<div class="col-md-12 text-center">
-						<img src="img/main-logo.png" class="main-logo" />
+						<img src="img/main-logo.png" class="main-logo {{searchRunning ? 'margin-top-0' : ''}}" />
 					</div>
 
 					<div class="col-md-9">
@@ -94,7 +94,7 @@
 				<div class="col-md-8 col-md-offset-1 ng-hide" ng-show="displayResults">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3">
-							<input class="form-control" type="text" ng-model="mainSearch.searchTerm" />
+							<input class="form-control" type="text" ng-model="mainSearch.searchTerm" ng-change="runSearch()" />
 						</div>
 					</div>
 

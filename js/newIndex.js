@@ -55,11 +55,6 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		alert("Not done, sorry");
 	};
 
-	$scope.runSearch = function()
-	{
-		alert("Fraser didn't do this yet - remind him?");
-	};
-
 	$scope.surpriseMe = function()
 	{
 		var random = (Math.random() * 10);
@@ -151,5 +146,10 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		}, function(response) {
 			$scope.handleFailure(response);
 		});
+	};
+
+	$scope.runSearch = function()
+	{
+		alert("Fraser didn't do this yet - remind him?");
 	};
 });
