@@ -109,8 +109,10 @@
 						<div class="col-md-12">
 							You searched for <span class="font-bold">{{mainSearch.searchTerm}}</span> and we found these results:
 						</div>
+					</div>
 
-						<div class="row search-result can-click" ng-repeat="x in searchResults">
+					<div class="row">
+						<div class="search-result can-click" ng-repeat="x in searchResults">
 							<div class="col-md-12">
 								{{x.namespace}}.{{x.memberName}}
 							</div>
