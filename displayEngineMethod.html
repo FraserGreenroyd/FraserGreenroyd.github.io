@@ -10,7 +10,7 @@
 		<p class="pre-object-namespace"><span class="pre-object-namespace">{{currentMethod.namespace}}</span>.<span class="object-name">{{currentMethod.className}}</span></p>
 		<p class="object-name">{{currentMethod.memberName}}</p>
 		<p class="object-description">{{currentMethod.description}}</p>
-		<p class="object-properties can-click" ng-click="displayMethodInputs(currentMethod)"><span class="fa {{currentMethod.displayInputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Inputs</p>
+		<p class="object-properties can-click font-bold" ng-click="displayMethodInputs(currentMethod)"><span class="fa {{currentMethod.displayInputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Inputs</p>
 	</div>
 
 	<div class="row method-table table-cell ng-hide" ng-show="currentMethod.displayInputs">
@@ -33,7 +33,7 @@
 		</div>
 	</div>
 
-	<p class="object-properties can-click" ng-click="displayMethodOutputs(currentMethod)"><span class="fa {{currentMethod.displayOutputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Outputs</p>
+	<p class="object-properties can-click font-bold" ng-click="displayMethodOutputs(currentMethod)"><span class="fa {{currentMethod.displayOutputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Outputs</p>
 
 	<div class="row method-table table-cell ng-hide" ng-show="currentMethod.displayOutputs">
 		<div class="level-5-indent col-xs-12 method-table-sub-row">
