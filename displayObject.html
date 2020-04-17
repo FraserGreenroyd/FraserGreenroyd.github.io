@@ -11,7 +11,7 @@
 
 		<p class="object-description">{{currentObject.description}}</p>
 
-		<p class="object-properties can-click" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Properties</p>
+		<p class="object-properties can-click" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Properties</p>
 	</div>
 
 	<div class="row property-table ng-hide" ng-show="currentObject.displayProperties">
@@ -37,7 +37,7 @@
 	</div>
 
 	<div class="row">
-		<p class="engine-methods can-click" ng-click="displayEngineMethods(currentObject)"><span class="fa {{currentObject.displayMethods ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Engine Methods</p>
+		<p class="engine-methods can-click" ng-click="displayEngineMethods(currentObject)"><span class="fa {{currentObject.displayMethods ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Engine Methods</p>
 	</div>
 
 	<div class="row method-table ng-hide" ng-show="currentObject.displayMethods">
@@ -50,13 +50,13 @@
 
 		<div class="level-5-indent method-table-row" ng-repeat="a in currentObject.methods">
 			<div class="namespace-display accordion-display" ng-click="showHideNamespace(a)">
-				<span class="can-click"><span class="fa {{a.canView ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{a[0]}}</span>
+				<span class="can-click"><span class="fa {{a.canView ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> {{a[0]}}</span>
 			</div>
 
 			<div class="namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
 				<div class="table-row">
 					<div class="col-sm-3 table-cell method-table-cell can-click" ng-click="showHideMethodInputs(x)">
-						<span class="fa {{x.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{x.memberName}}
+						<span class="fa {{x.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> {{x.memberName}}
 					</div>
 
 					<div class="col-sm-3 table-cell">
@@ -111,7 +111,7 @@
 	</div>
 
 	<div class="row">
-		<p class="engine-methods can-click" ng-click="displayAdapterMethods(currentObject)"><span class="fa {{currentObject.displayAdapters ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Adapter Methods</p>
+		<p class="engine-methods can-click" ng-click="displayAdapterMethods(currentObject)"><span class="fa {{currentObject.displayAdapters ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Adapter Methods</p>
 	</div>
 
 	<div class="row method-table ng-hide" ng-show="currentObject.displayAdapters">
@@ -123,7 +123,7 @@
 
 		<div class="level-5-indent method-table-row" ng-repeat="a in currentObject.adapters">
 			<div class="namespace-display accordion-display" ng-click="showHideNamespace(a)">
-				<span class="can-click"><span class="fa {{a.canView ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> {{a[0]}}</span>
+				<span class="can-click"><span class="fa {{a.canView ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> {{a[0]}}</span>
 			</div>
 
 			<div class="namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
@@ -134,7 +134,7 @@
 					<div class="row table-cell">{{x.assemblyName}}</div>
 					<div class="row table-cell">{{x.description}}</div>
 					<div class="row method-input-table-header can-click" ng-click="showHideMethodInputs(x)">
-						<span class="fa {{x.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Inputs
+						<span class="fa {{x.canViewInputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Inputs
 					</div>
 				</div>
 

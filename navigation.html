@@ -5,21 +5,21 @@
 	</div>
 
 	<div class="row">
-		<span class="can-click" ng-click="showObjects()"><span class="fa {{expandObjects ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> oM</span>
+		<span class="can-click" ng-click="showObjects()"><span class="fa {{expandObjects ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> oM</span>
 		<div class="row can-click ng-hide navigation-item" ng-show="expandObjects" ng-repeat="x in navigationObjectModel" ng-click="goToObjectNamespace(x)">
 			<span class="fa {{x.isVisible ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> {{displayNamespaceSplit(x)}}
 		</div>
 	</div>
 
 	<div class="row">
-		<span class="can-click" ng-click="showEngine()"><span class="fa {{expandEngine ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Engine</span>
+		<span class="can-click" ng-click="showEngine()"><span class="fa {{expandEngine ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Engine</span>
 		<div class="row can-click ng-hide navigation-item" ng-show="expandEngine" ng-repeat="x in navigationEngines" ng-click="goToEngineNamespace(x)">
 			<span class="fa {{x.isVisible ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> {{displayNamespaceSplit(x)}}
 		</div>
 	</div>
 
 	<!--<div class="row">
-		<span class="can-click" ng-click="showAdapter()"><span class="fa {{expandAdapter ? 'fa-times-circle' : 'fa-plus-circle'}} fa-2x"></span> Adapter</span>
+		<span class="can-click" ng-click="showAdapter()"><span class="fa {{expandAdapter ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Adapter</span>
 		<div class="row can-click ng-hide navigation-item" ng-show="expandAdapter" ng-repeat="x in navigationAdapters" ng-click="goToAdapterNamespace(x)">
 			<span class="fa {{x.isVisible ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> {{displayNamespaceSplit(x)}}
 		</div>
