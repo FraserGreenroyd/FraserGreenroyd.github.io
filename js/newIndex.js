@@ -111,12 +111,10 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 					adapterNames.push(ns);
 			});
 
+			adapterNames.sort();
+
 			adapterNames.forEach(function(item) {
 				$scope.navigationAdapters.push({name: item, isVisible: false});
-			});
-
-			$scope.navigationAdapters.sort(function(a, b) {
-				return a.name < b.name;
 			});
 
 			$http.get('js/methods.json').then(function(response) {
@@ -133,12 +131,10 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 						engineNames.push(ns);
 				});
 
+				engineNames.sort();
+
 				engineNames.forEach(function(item) {
 					$scope.navigationEngines.push({name: item, isVisible: false});
-				});
-
-				$scope.navigationEngines.sort(function(a, b) {
-					return a.name < b.name;
 				});
 
 				$http.get('js/objects.json').then(function(response) {
@@ -154,12 +150,10 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 							objectNames.push(ns);
 					});
 
+					objectNames.sort();
+
 					objectNames.forEach(function(item) {
 						$scope.navigationObjectModel.push({name: item, isVisible: false});
-					});
-
-					$scope.navigationObjectModel.sort(function(a, b) {
-						return a.name < b.name;
 					});
 
 					$scope.isLoading = false;
