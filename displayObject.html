@@ -9,11 +9,11 @@
 	</div>
 
 	<div class="row">
-		<p><span class="pre-object-namespace">{{currentObject.namespace}}</span>.<span class="object-name">{{currentObject.memberName}}</span> : <span class="can-click inheritance-name" ng-repeat="x in currentObject.inheritance" ng-click="goToObject(x)">{{x.memberName}}, </span></p>
+		<div class="col-md-12"><span class="pre-object-namespace">{{currentObject.namespace}}</span>.<span class="object-name">{{currentObject.memberName}}</span> : <span class="can-click inheritance-name" ng-repeat="x in currentObject.inheritance" ng-click="goToObject(x)">{{x.memberName}}, </span></div>
 
-		<p class="object-description">{{currentObject.description}}</p>
+		<div class="col-md-12 object-description">{{currentObject.description}}</div>
 
-		<p class="object-properties can-click font-bold" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Properties</p>
+		<div class="col-md-12 object-properties can-click font-bold" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Properties</div>
 	</div>
 
 	<div class="row property-table ng-hide" ng-show="currentObject.displayProperties">

@@ -9,10 +9,10 @@
 	</div>
 
 	<div class="row">
-		<p class="pre-object-namespace"><span class="pre-object-namespace">{{currentMethod.namespace}}</span>.<span class="object-name">{{currentMethod.className}}</span></p>
-		<p class="object-name">{{currentMethod.memberName}}</p>
-		<p class="object-description">{{currentMethod.description}}</p>
-		<p class="object-properties can-click font-bold" ng-click="displayMethodInputs(currentMethod)"><span class="fa {{currentMethod.displayInputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Inputs</p>
+		<div class="col-md-12 pre-object-namespace"><span class="pre-object-namespace">{{currentMethod.namespace}}</span>.<span class="object-name">{{currentMethod.className}}</span></div>
+		<div class="col-md-12 object-name">{{currentMethod.memberName}}</div>
+		<div class="col-md-12 object-description">{{currentMethod.description}}</div>
+		<div class="col-md-12 object-properties can-click font-bold" ng-click="displayMethodInputs(currentMethod)"><span class="fa {{currentMethod.displayInputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Inputs</div>
 	</div>
 
 	<div class="row method-table table-cell ng-hide" ng-show="currentMethod.displayInputs">
