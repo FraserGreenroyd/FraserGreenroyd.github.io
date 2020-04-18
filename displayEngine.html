@@ -21,7 +21,9 @@
 
 		<div class="property-table-row" ng-repeat="x in currentEngine.methods">		
 			<div class="row property-table-cell">
-				<span class="object-name can-click" ng-click="displayEngineMethods(x)"><span class="fa {{x.showEngineMethods ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> {{x[0]}}</span>
+				<div class="col-md-12">
+					<span class="object-name can-click" ng-click="displayEngineMethods(x)"><span class="fa {{x.showEngineMethods ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> {{x[0]}}</span>
+				</div>
 			</div>
 
 			<div class="row method-table table-cel level-5-indent ng-hide" ng-show="x.showEngineMethods">

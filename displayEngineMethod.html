@@ -35,7 +35,11 @@
 		</div>
 	</div>
 
-	<div class="row object-properties can-click font-bold" ng-click="displayMethodOutputs(currentMethod)"><span class="fa {{currentMethod.displayOutputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Outputs</div>
+	<div class="row object-properties can-click font-bold" ng-click="displayMethodOutputs(currentMethod)">
+		<div class="col-md-12">
+			<span class="fa {{currentMethod.displayOutputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Outputs
+		</div>
+	</div>
 
 	<div class="row method-table table-cell ng-hide" ng-show="currentMethod.displayOutputs">
 		<div class="level-5-indent col-xs-12 method-table-sub-row">
