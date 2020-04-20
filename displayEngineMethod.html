@@ -16,16 +16,16 @@
 	</div>
 
 	<div class="row method-table table-cell ng-hide" ng-show="currentMethod.displayInputs">
-		<div class="level-5-indent method-table-row">
+		<div class="method-table-row">
 			<div class="col-xs-12 method-table-sub-row">
-				<div class="row method-input-table-header hidden-xs">
+				<div class="row method-input-table-header hidden-xs dg-background">
 					<div class="col-sm-3 table-cell-inner table-header">Name</div>
 					<div class="col-sm-3 table-cell-inner table-header">Type</div>
 					<div class="col-sm-2 table-cell-inner table-header">Is Required</div>
 					<div class="col-sm-4 table-cell-inner table-header">Description</div>
 				</div>
 
-				<div class="row method-input-row" ng-repeat="y in currentMethod.inputs">
+				<div class="row method-input-row lg-background" ng-repeat="y in currentMethod.inputs">
 					<div class="col-sm-3 table-cell-inner">{{y.inputName}}</div>
 					<div class="col-sm-3 table-cell-inner"><span class="can-click" ng-click="goToObject(y)">{{y.namespace}}.{{y.memberName}}</span></div>
 					<div class="col-sm-2 table-cell-inner">{{y.isRequired}}</div>
