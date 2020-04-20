@@ -141,7 +141,6 @@ h4
 	font-weight: bold;
 	border: 3px solid;
 	height: 40px;
-	width: calc(100% + 5px);
 }
 
 .form-control
