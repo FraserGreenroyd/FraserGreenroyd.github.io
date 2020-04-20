@@ -225,6 +225,8 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 			if($scope.currentObject != null)
 			{
+				$scope.currentObject.displayProperties = true;
+				
 				var types = [];
 				types.push(namespace + "." + object);
 				$scope.currentObject.inheritance.forEach(function(obj) {
