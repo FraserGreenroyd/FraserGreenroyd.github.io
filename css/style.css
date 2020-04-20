@@ -120,6 +120,7 @@ h4
 	font-weight: bold;
 	border-color: #FE224A;
 	margin-right: -15px;
+	height: 40px;
 	width: calc(100% + 7px);
 }
 
@@ -138,6 +139,7 @@ h4
 	color: #FE224A;
 	font-weight: bold;
 	border: 3px solid;
+	height: 40px;
 	width: calc(100% + 5px);
 }
 
