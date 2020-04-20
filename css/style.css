@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Courier Prime';
-  src: url('Courier Prime.tff');
+  src: url('Courier Prime.tff') format("truetype");
 }
 
 body
