@@ -13,6 +13,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	//oM specific methods
 	$scope.currentObject = {};
+	$scope.currentNamespace = "";
 
 	$scope.selectedNamespaceObjects = [];
 
@@ -136,7 +137,6 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	$scope.goToObject = function(object)
 	{
-		$location.search('type', 'oM');
 		$location.search('namespace', object.namespace);
 		$location.search('object', object.memberName);
 	};
@@ -211,7 +211,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 		$scope.displayNamespace = false;
 
-		$scope.selectedNamespace = namespace;
+		$scope.currentNamespace = namespace;
 
 		$scope.currentObject = null;
 		$scope.selectedNamespaceObjects = [];
