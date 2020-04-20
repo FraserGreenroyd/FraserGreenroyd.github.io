@@ -106,6 +106,7 @@ h4
 	padding-right: 10%;
 	font-weight: bold;
 	border-color: #FE224A;
+	border-radius: 0px;
 }
 
 .search-btn:hover
@@ -122,6 +123,7 @@ h4
 	border-color: #FE224A;
 	color: #FE224A;
 	font-weight: bold;
+	border-radius: 0px;
 }
 
 .surprise-btn:hover
