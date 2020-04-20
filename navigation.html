@@ -4,15 +4,15 @@
 		<h3 class="font-courier-prime"><span class="bhom-black">BHoM</span><span class="bhom-red">.API</span></h3>
 	</div>
 
-	<div class="row">
-		<span class="font-courier-prime can-click font-bold" ng-click="showObjects()"><span class="fa {{expandObjects ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> oM</span>
+	<div class="row font-zilla-slab">
+		<span class="can-click font-bold" ng-click="showObjects()"><span class="fa {{expandObjects ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> oM</span>
 		<div class="row can-click ng-hide navigation-item" ng-show="expandObjects" ng-repeat="x in navigationObjectModel" ng-click="goToObjectNamespace(x)">
 			<span class="font-bold"><span class="fa {{x.isVisible ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> {{displayNamespaceSplit(x)}}</span>
 		</div>
 	</div>
 
-	<div class="row">
-		<span class="font-courier-prime can-click font-bold" ng-click="showEngine()"><span class="fa {{expandEngine ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Engine</span>
+	<div class="row font-zilla-slab">
+		<span class="can-click font-bold" ng-click="showEngine()"><span class="fa {{expandEngine ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Engine</span>
 		<div class="row can-click ng-hide navigation-item" ng-show="expandEngine" ng-repeat="x in navigationEngines" ng-click="goToEngineNamespace(x)">
 			<span class="font-bold"><span class="fa {{x.isVisible ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> {{displayNamespaceSplit(x)}}</span>
 		</div>
