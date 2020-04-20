@@ -8,15 +8,15 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row font-open-sans">
 		<div class="col-md-12"><span class="pre-object-namespace">{{currentObject.namespace}}</span>.<span class="object-name">{{currentObject.memberName}}</span> : <span class="can-click inheritance-name" ng-repeat="x in currentObject.inheritance" ng-click="goToObject(x)">{{x.memberName}}, </span></div>
 
 		<div class="col-md-12 object-description">{{currentObject.description}}</div>
 
-		<div class="col-md-12 object-properties can-click font-bold" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Properties</div>
+		<div class="col-md-12 object-properties can-click font-bold font-zilla-slab" ng-click="displayObjectProperties(currentObject)"><span class="fa {{currentObject.displayProperties ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Properties</div>
 	</div>
 
-	<div class="row property-table ng-hide" ng-show="currentObject.displayProperties">
+	<div class="row property-table font-open-sans ng-hide" ng-show="currentObject.displayProperties">
 		<div class="table-row method-table-row ng-hide" ng-show="currentObject.properties.length == 0">
 			<div class="col-xs-12 text-center">
 				{{currentObject.memberName}} has no properties associated with it
@@ -38,12 +38,11 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row font-zilla-slab">
 		<div class="col-md-12 engine-methods can-click font-bold" ng-click="displayEngineMethods(currentObject)"><span class="fa {{currentObject.displayMethods ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Engine Methods</div>
 	</div>
 
-	<div class="row method-table ng-hide" ng-show="currentObject.displayMethods">
-
+	<div class="row method-table font-open-sans ng-hide" ng-show="currentObject.displayMethods">
 		<div class="level-5-indent table-row method-table-row ng-hide" ng-show="currentObject.methods.length == 0">
 			<div class="col-xs-12 text-center">
 				{{currentObject.memberName}} has no methods associated with it
@@ -112,11 +111,11 @@
 		</div>
 	</div>
 
-	<!--<div class="row">
+	<!--<div class="row font-zilla-slab">
 		<div class="col-md-12 engine-methods can-click font-bold" ng-click="displayAdapterMethods(currentObject)"><span class="fa {{currentObject.displayAdapters ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Adapter Methods</div>
 	</div>
 
-	<div class="row method-table ng-hide" ng-show="currentObject.displayAdapters">
+	<div class="row method-table font-open-sans ng-hide" ng-show="currentObject.displayAdapters">
 		<div class="level-5-indent table-row method-table-row ng-hide" ng-show="currentObject.adapters.length == 0">
 			<div class="col-xs-12 text-center">
 				{{currentObject.memberName}} has no adapters associated with it
