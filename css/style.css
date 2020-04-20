@@ -105,6 +105,13 @@ h4
 	padding-left: 10%;
 	padding-right: 10%;
 	font-weight: bold;
+	border-color: #FE224A;
+}
+
+.search-btn:hover
+{
+	background-color: #FFD700;
+	border-color: #FFD700;
 }
 
 .surprise-btn
@@ -115,6 +122,12 @@ h4
 	border-color: #FE224A;
 	color: #FE224A;
 	font-weight: bold;
+}
+
+.surprise-btn:hover
+{
+	background-color: #FFD700;
+	border-color: #FFD700;
 }
 
 .table
