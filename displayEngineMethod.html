@@ -1,5 +1,5 @@
 <div class="col-md-8 col-md-offset-1 ng-hide" ng-show="displayEngineMethod">
-	<div class="row">
+	<div class="row font-courier-prime">
 		<div class="col-md-6">
 			<h3 class="left-hand-header bhom-red">Engine</h3>
 		</div>
@@ -8,14 +8,14 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row font-open-sans">
 		<div class="col-md-12 pre-object-namespace"><span class="pre-object-namespace">{{currentMethod.namespace}}</span>.<span class="object-name">{{currentMethod.className}}</span></div>
 		<div class="col-md-12 object-name">{{currentMethod.memberName}}</div>
 		<div class="col-md-12 object-description">{{currentMethod.description}}</div>
-		<div class="col-md-12 object-properties can-click font-bold" ng-click="displayMethodInputs(currentMethod)"><span class="fa {{currentMethod.displayInputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Inputs</div>
+		<div class="col-md-12 object-properties can-click font-bold font-zilla-slab" ng-click="displayMethodInputs(currentMethod)"><span class="fa {{currentMethod.displayInputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Inputs</div>
 	</div>
 
-	<div class="row method-table table-cell ng-hide" ng-show="currentMethod.displayInputs">
+	<div class="row method-table table-cell font-open-sans ng-hide" ng-show="currentMethod.displayInputs">
 		<div class="method-table-row">
 			<div class="col-xs-12 method-table-sub-row">
 				<div class="row method-input-table-header hidden-xs dg-background">
@@ -35,13 +35,13 @@
 		</div>
 	</div>
 
-	<div class="row object-properties can-click font-bold" ng-click="displayMethodOutputs(currentMethod)">
+	<div class="row object-properties can-click font-bold font-zilla-slab" ng-click="displayMethodOutputs(currentMethod)">
 		<div class="col-md-12">
 			<span class="fa {{currentMethod.displayOutputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Outputs
 		</div>
 	</div>
 
-	<div class="row method-table table-cell ng-hide" ng-show="currentMethod.displayOutputs">
+	<div class="row method-table table-cell font-open-sans ng-hide" ng-show="currentMethod.displayOutputs">
 		<div class="col-xs-12 method-table-sub-row">
 			<div class="row method-input-table-header hidden-xs dg-background">
 				<div class="col-sm-3 table-cell-inner table-header">Name</div>
@@ -63,7 +63,7 @@
 		</div>
 	</div>
 
-	<p class="version-info version-title">Assembly and Version Information</p>
-	<p class="version-info">{{currentMethod.assemblyName}}</p>
-	<p class="version-info">{{currentMethod.version}}</p>
+	<p class="version-info version-title font-open-sans">Assembly and Version Information</p>
+	<p class="version-info font-open-sans">{{currentMethod.assemblyName}}</p>
+	<p class="version-info font-open-sans">{{currentMethod.version}}</p>
 </div>
