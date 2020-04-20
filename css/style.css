@@ -292,3 +292,9 @@ h4
 {
 	margin-top: 1%;
 }
+
+.main-search:focus
+{
+	border-color: #A6A6A6;
+	font-family: "Zilla Slab";
+}
