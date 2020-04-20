@@ -112,7 +112,7 @@ h4
 	margin-right: -30px;
 }
 
-.search-btn, .surprise-btn:hover
+.search-btn
 {
 	background-color: #FE224A;
 	padding-left: 10%;
@@ -125,7 +125,13 @@ h4
 	width: calc(100% + 7px);
 }
 
-.surprise-btn, .search-btn:hover
+.search-btn:hover
+{
+	background-color: #000000;
+	border-color: #000000;
+}
+
+.surprise-btn
 {
 	background-color: #FFFFFF;
 	padding-left: 10%;
@@ -141,6 +147,12 @@ h4
 .form-control
 {
 	border-radius: 0px;
+}
+
+.surprise-btn:hover
+{
+	background-color: #000000;
+	border-color: #000000;
 }
 
 .table
