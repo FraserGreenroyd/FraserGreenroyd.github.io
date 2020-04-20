@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-	<div class="row font-zilla-slab">
+	<div class="row font-zilla-slab margin-top-3">
 		<span class="can-click font-bold" ng-click="showEngine()"><span class="fa {{expandEngine ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Engine</span>
 		<div class="row can-click ng-hide navigation-item" ng-show="expandEngine" ng-repeat="x in navigationEngines" ng-click="goToEngineNamespace(x)">
 			<span class="font-bold"><span class="fa {{x.isVisible ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> {{displayNamespaceSplit(x)}}</span>

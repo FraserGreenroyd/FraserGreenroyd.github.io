@@ -12,7 +12,7 @@
 		<div class="col-md-12 pre-object-namespace"><span class="pre-object-namespace">{{currentMethod.namespace}}</span>.<span class="object-name">{{currentMethod.className}}</span></div>
 		<div class="col-md-12 object-name">{{currentMethod.memberName}}</div>
 		<div class="col-md-12 object-description">{{currentMethod.description}}</div>
-		<div class="col-md-12 object-properties can-click font-bold font-zilla-slab" ng-click="displayMethodInputs(currentMethod)"><span class="fa {{currentMethod.displayInputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Inputs</div>
+		<div class="col-md-12 object-properties can-click font-bold font-zilla-slab margin-top-3" ng-click="displayMethodInputs(currentMethod)"><span class="fa {{currentMethod.displayInputs ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Inputs</div>
 	</div>
 
 	<div class="row method-table table-cell font-open-sans ng-hide" ng-show="currentMethod.displayInputs">
