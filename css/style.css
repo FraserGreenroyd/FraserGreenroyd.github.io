@@ -125,7 +125,7 @@ h4
 	width: calc(100% + 7px);
 }
 
-.search-btn:hover, .search-btn:active, .search-btn:focus
+.search-btn:hover, .search-btn:active, .search-btn:focus, .btn-success:active:focus
 {
 	background-color: #000000;
 	border-color: #000000;
@@ -148,7 +148,7 @@ h4
 	border-radius: 0px;
 }
 
-.surprise-btn:hover, .surprise-btn:active, .surprise-btn:focus
+.surprise-btn:hover, .surprise-btn:active, .surprise-btn:focus, .btn-info:active:focus
 {
 	background-color: #000000;
 	border-color: #000000;
