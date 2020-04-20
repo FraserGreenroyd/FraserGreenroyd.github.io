@@ -122,16 +122,12 @@ h4
 	border-color: #FE224A;
 	color: #FE224A;
 	font-weight: bold;
+	border: 3px;
 }
 
 .form-control
 {
 	border-radius: 0px;
-}
-
-.btn
-{
-	border: 3px solid transparent;
 }
 
 .surprise-btn:hover
