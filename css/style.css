@@ -298,3 +298,8 @@ h4
 	border-color: #A6A6A6;
 	font-family: "Zilla Slab";
 }
+
+.main-search
+{
+	height: 40px;
+}
