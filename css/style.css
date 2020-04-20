@@ -129,6 +129,11 @@ h4
 	border-radius: 0px;
 }
 
+.btn
+{
+	border: 3px solid transparent;
+}
+
 .surprise-btn:hover
 {
 	background-color: #FFD700;
