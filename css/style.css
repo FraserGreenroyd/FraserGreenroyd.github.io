@@ -107,7 +107,7 @@ h4
 
 .main-search-buttons
 {
-	margin-top: 1%;
+	margin-top: 5%;
 	margin-left: -30px;
 	margin-right: -30px;
 }
@@ -119,6 +119,8 @@ h4
 	padding-right: 10%;
 	font-weight: bold;
 	border-color: #FE224A;
+	margin-right: -15px;
+	width: calc(100% + 7px);
 }
 
 .search-btn:hover
@@ -136,6 +138,7 @@ h4
 	color: #FE224A;
 	font-weight: bold;
 	border: 3px solid;
+	width: calc(100% + 5px);
 }
 
 .form-control
