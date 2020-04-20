@@ -60,7 +60,7 @@
 
 					<div class="col-md-4 col-md-offset-4">
 						<div class="row main-search-bar">
-							<input class="form-control" type="text" ng-model="mainSearch.searchTerm" ng-keypress="runSearchKeyPress($event)" />
+							<input class="form-control main-search" type="text" ng-model="mainSearch.searchTerm" ng-keypress="runSearchKeyPress($event)" />
 						</div>
 
 						<div class="row main-search-buttons">
@@ -78,7 +78,7 @@
 				<div class="col-md-8 col-md-offset-1 font-open-sans ng-hide" ng-show="displayResults">
 					<div class="row">
 						<div class="col-md-6">
-							<input class="form-control search-box-top margin-top-10" type="text" ng-model="mainSearch.searchTerm" ng-keypress="runSearchKeyPress($event)" />
+							<input class="form-control search-box-top margin-top-10 main-search" type="text" ng-model="mainSearch.searchTerm" ng-keypress="runSearchKeyPress($event)" />
 						</div>
 						<div class="col-md-6 text-right">
 							<p class="right-hand-header"><img src="img/main-logo.png" class="top-right-logo" /></p>
