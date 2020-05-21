@@ -33,6 +33,12 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		failureHandling.handleFailure(response, $window);
 	};
 
+	$scope.goHome = function()
+	{
+		$scope.isLoading = true;
+		$window.location.href = "/";
+	};
+
 	$scope.showObjects = function()
 	{
 		$scope.expandObjects = !$scope.expandObjects;
