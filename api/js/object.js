@@ -143,8 +143,8 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	$scope.goToObject = function(object)
 	{
-		if(object.isInterface) return;
-		
+		if(object.isInterface == 1) return;
+
 		$location.search('namespace', object.namespace);
 		$location.search('object', object.memberName);
 	};
