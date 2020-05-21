@@ -88,7 +88,9 @@
 							<div class="col-sm-2 table-cell-inner">{{y.isRequired}}</div>
 							<div class="col-sm-4 table-cell-inner">{{(y.description == "" ? 'N/A' : y.description)}}</div>
 						</div>
+					</div>
 
+					<div class="ng-hide table-cell method-table-cell" ng-show="x.canViewInputs">
 						<div class="row table-inner-margin">
 							<div class="col-sm-3 table-cell-inner table-header">Outputs</div>
 							<div class="col-sm-3 table-cell-inner table-header">Type</div>
@@ -102,7 +104,9 @@
 							<div class="col-sm-2 table-cell-inner"></div>
 							<div class="col-sm-4 table-cell-inner">{{(x.outputs.description == "" ? 'N/A' : x.outputs.description)}}</div>
 						</div>
+					</div>
 
+					<div class="ng-hide table-cell method-table-cell" ng-show="x.canViewInputs">
 						<div class="row table-inner-margin">
 							<div class="col-sm-3 table-cell-inner table-header">Assembly</div>
 							<div class="col-sm-3 table-cell-inner">{{x.assemblyName}}</div>
