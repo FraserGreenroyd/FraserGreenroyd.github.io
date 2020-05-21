@@ -83,7 +83,7 @@
 
 					<div class="row" ng-repeat="y in x.inputs">
 						<div class="col-sm-3 table-cell-inner">{{y.inputName}}</div>
-						<div class="col-sm-3 table-cell-inner"><span class="can-click" ng-click="goToObject(y)">{{y.namespace}}.{{y.memberName}}</span></div>
+						<div class="col-sm-3 table-cell-inner"><span class="{{y.isInterface == 1 ? '' : 'can-click'}}" ng-click="goToObject(y)">{{y.namespace}}.{{y.memberName}}</span></div>
 						<div class="col-sm-2 table-cell-inner">{{y.isRequired}}</div>
 						<div class="col-sm-4 table-cell-inner">{{(y.description == "" ? 'N/A' : y.description)}}</div>
 					</div>
