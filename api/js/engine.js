@@ -153,6 +153,8 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 	$scope.goToObject = function(object)
 	{
+		if(object.isInterface) return;
+		
 		$window.location.href = "object.html#!?namespace=" + object.namespace + "&object=" + object.memberName;
 	};
 

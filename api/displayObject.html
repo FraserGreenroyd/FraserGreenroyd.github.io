@@ -9,7 +9,7 @@
 	</div>
 
 	<div class="row font-open-sans">
-		<div class="col-md-12"><span class="pre-object-namespace">{{currentObject.namespace}}</span>.<span class="object-name">{{currentObject.memberName}}</span> : <span class="can-click inheritance-name" ng-repeat="x in currentObject.inheritance" ng-click="goToObject(x)">{{x.memberName}}, </span></div>
+		<div class="col-md-12"><span class="pre-object-namespace">{{currentObject.namespace}}</span>.<span class="object-name">{{currentObject.memberName}}</span> : <span ng-repeat="x in currentObject.inheritance" class="{{x.isInterface ? '' : 'can-click'}} inheritance-name" ng-click="goToObject(x)">{{x.memberName}}, </span></div>
 
 		<div class="col-md-12">
 			<p ng-repeat="a in currentObject.descriptionParts">
