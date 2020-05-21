@@ -265,6 +265,13 @@ h4
 .method-table-cell
 {
 	padding: 1%;
+	margin-bottom: 1%;
+	padding-left: 5%;
+}
+
+.method-table-header-cell
+{
+	padding: 1%;
 }
 
 .method-input-row
