@@ -33,7 +33,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	$scope.goHome = function()
 	{
 		$scope.isLoading = true;
-		$window.location.href = "/";
+		$window.location.href = "/api";
 	};
 
 	$scope.showObjects = function()

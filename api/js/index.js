@@ -36,7 +36,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 	$scope.goHome = function()
 	{
 		$scope.isLoading = true;
-		$window.location.href = "/";
+		$window.location.href = "/api";
 	};
 
 	$scope.showObjects = function()
