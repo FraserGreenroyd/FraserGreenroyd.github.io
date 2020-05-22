@@ -32,7 +32,7 @@
 				<div class="row method-input-row lg-background" ng-repeat="y in currentMethod.inputs">
 					<div class="col-sm-3 table-cell-inner">{{y.inputName}}</div>
 					<div class="col-sm-3 table-cell-inner"><span class="{{y.isInterface == 1 ? '' : 'can-click'}}" ng-click="goToObject(y)">{{y.namespace}}.{{y.memberName}}</span></div>
-					<div class="col-sm-2 table-cell-inner">{{y.isRequired}}</div>
+					<div class="col-sm-2 table-cell-inner">{{(y.isRequired == 1 ? 'Yes' : 'No')}}</div>
 					<div class="col-sm-4 table-cell-inner">
 						<p ng-repeat="a in y.descriptionParts">
 							{{a}}
