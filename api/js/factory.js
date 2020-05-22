@@ -80,7 +80,7 @@ app.factory('apiHelpers', function() {
 app.factory('navigationFactory', function() {
 	return {
 		displayMobileObjectNav : function($scope) {
-			$scope.displayMobileObjectNavSetting = !$scope.displayMobileEngineNavSetting;
+			$scope.displayMobileObjectNavSetting = !$scope.displayMobileObjectNavSetting;
 			$scope.displayMobileEngineNavSetting = false;
 		},
 
