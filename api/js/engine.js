@@ -22,6 +22,9 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 	$scope.methods = [];
 	$scope.objects = [];
 
+	$scope.displayMobileObjectNavSetting = false;
+	$scope.displayMobileEngineNavSetting = false
+
 	$scope.handleFailure = function(response)
 	{
 		$scope.isLoading = false;
@@ -32,6 +35,16 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 	{
 		$scope.isLoading = true;
 		$window.location.href = "/api";
+	};
+
+	$scope.displayMobileObjectNav = function()
+	{
+		navigationFactory.displayMobileObjectNav($scope);
+	};
+
+	$scope.displayMobileEngineNav = function()
+	{
+		navigationFactory.displayMobileeEngineav($scope);
 	};
 
 	$scope.showObjects = function()
