@@ -318,3 +318,12 @@ h4
 	font-weight: bold;
 	font-size: 18px;
 }
+
+.icon-bar
+{
+	display: block;
+  	width: 22px;
+  	height: 2px;
+  	background-color: #cccccc;
+  	border-radius: 1px;
+}
