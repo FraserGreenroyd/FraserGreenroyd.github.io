@@ -44,7 +44,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 	$scope.displayMobileEngineNav = function()
 	{
-		navigationFactory.displayMobileeEngineav($scope);
+		navigationFactory.displayMobileEngineNav($scope);
 	};
 
 	$scope.showObjects = function()

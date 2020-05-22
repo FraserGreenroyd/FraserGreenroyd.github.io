@@ -43,7 +43,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 	$scope.displayMobileEngineNav = function()
 	{
-		navigationFactory.displayMobileeEngineav($scope);
+		navigationFactory.displayMobileEngineNav($scope);
 	};
 
 	$scope.goHome = function()
