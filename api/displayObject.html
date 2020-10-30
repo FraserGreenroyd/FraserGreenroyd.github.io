@@ -19,8 +19,8 @@
 		<div class="col-md-12"><span class="pre-object-namespace">{{currentObject.namespace}}</span>.<span class="object-name">{{currentObject.memberName}}</span> : <span ng-repeat="x in currentObject.inheritance" class="{{x.isInterface == 1 ? '' : 'can-click'}} inheritance-name" ng-click="goToObject(x)">{{x.memberName}}, </span></div>
 
 		<div class="col-md-12">
-			<p ng-repeat="a in currentObject.descriptionParts">
-				<span class="object-description">{{a}}</span>
+			<p>
+				<span class="object-description">{{x.description}}</span>
 			</p>
 		</div>
 
