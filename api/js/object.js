@@ -165,11 +165,11 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	$scope.goToType = function(type)
 	{
-		if(object.isInterface == 1)
+		if(type.isInterface == 1)
 			return;
 
-		$location.search('namespace', object.namespace);
-		$location.search('object', object.type);
+		$location.search('namespace', type.namespace);
+		$location.search('object', type.type);
 	};
 
 	$scope.groupMethodsByNamespace = function(array, coreNS) {
