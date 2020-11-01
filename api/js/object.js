@@ -179,7 +179,6 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			if(x.includes("Enum values:"))
 			{
 				hasEnumWords = true;
-				break;
 			}
 		});
 
