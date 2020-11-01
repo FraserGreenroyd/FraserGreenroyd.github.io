@@ -172,6 +172,20 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		$location.search('object', type.type);
 	};
 
+	$scope.isEnum = function(type)
+	{
+		var hasEnumWords = false;
+		type.descriptionParts.forEach(function(x) {
+			if(x.includes("Enum values:"))
+			{
+				hasEnumWords = true;
+				break;
+			}
+		});
+
+		return hasEnumWords;
+	};
+
 	$scope.groupMethodsByNamespace = function(array, coreNS) {
 		var arr = [];
 
