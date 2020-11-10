@@ -20,7 +20,7 @@
 			<span ng-repeat="x in currentObject.inheritance" class="inheritance-name">
 				{{x.memberName}} 
 				<span class="ng-hide" ng-show="x.inheritances.length > 0">
-					[<span ng-repeat="y in x.inheritances">{{y.memberName}}</span>]
+					[<span ng-repeat="y in x.inheritances track by $index">{{y.memberName}}<span class="ng-hide" ng-show="$index < x.inheritances.length - 1">, </span></span> ]
 				</span>,
 			</span>
 	</span></div>
