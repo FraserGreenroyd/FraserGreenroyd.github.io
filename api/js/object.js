@@ -165,7 +165,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	$scope.goToType = function(type)
 	{
-		if(type.isInterface == 1)
+		if(!type.namespace.startsWith("BH.oM"))
 			return;
 
 		$location.search('namespace', type.namespace);
