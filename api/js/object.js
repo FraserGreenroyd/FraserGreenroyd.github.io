@@ -205,7 +205,11 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 		var tuples = [];
 
-		for (var key in arr) tuples.push([key, arr[key]]);
+		if(arr.length == 0)
+			return tuples;
+
+		for (var key in arr)
+			tuples.push([key, arr[key]]);
 
 		tuples.sort(function(a, b) {
 			if(a[0].includes(coreNS)) return -1;
