@@ -210,9 +210,6 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 		var tuples = [];
 
-		if(arr.length == 0)
-			return tuples;
-
 		for (var key in arr)
 			tuples.push([key, arr[key]]);
 
