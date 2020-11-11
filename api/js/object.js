@@ -119,6 +119,11 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		object.displayMethods = !object.displayMethods;
 	};
 
+	$scope.displayImplementedTypes = function(object)
+	{
+		object.displayImplementedBy = !object.displayImplementedBy;
+	};
+
 	$scope.displayAdapterMethods = function(object)
 	{
 		object.displayAdapters = !object.displayAdapters;
