@@ -276,6 +276,12 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			tuples.push([ns, arr[ns]]);
 		}
 
+		tuples.sort(function(a, b) {
+			if(a[0] < b[0]) return -1;
+			if(a[0] > b[0]) return 1;
+			return 0;
+		});
+
 		return tuples;
 	};
 
