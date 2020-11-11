@@ -267,8 +267,11 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		if(object != null && object != undefined)
 		{
 			$scope.objects.filter(function(obj) {
-				if(obj.namespace == namespace && obj.memberName == object)
-					$scope.currentObject = obj;
+				if(obj.namespace == namespace)
+				{
+					if((object.startsWith("I") && obj.memberName.startsWith(object)) || obj.memberName == object)
+						$scope.currentObject = obj;
+				}
 			});
 
 			if($scope.currentObject != null)
