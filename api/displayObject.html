@@ -163,8 +163,8 @@
 
 				<div class="namespace-methods-display ng-hide" ng-show="a.canView" ng-repeat="x in a[1]">
 					<div class="table-row">
-						<div class="col-sm-3 table-cell method-table-header-cell">
-							{{x.memberName}}
+						<div class="col-sm-3 table-cell method-table-cell">
+							{{x.namespace}}.<span class="can-click" ng-click="goToObject(x)">{{x.memberName}}</span>
 						</div>
 
 						<div class="col-sm-9 table-cell font-14">
