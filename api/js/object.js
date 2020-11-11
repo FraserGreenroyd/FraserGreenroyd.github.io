@@ -248,6 +248,31 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		return tuples;
 	};
 
+	$scope.groupedImplementedByNamespace = function(array, coreNS)
+	{
+		var arr = [];
+
+		array.forEach(function(obj) {
+			var ns = obj.namespace;
+			if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
+				ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
+
+			if(arr[ns] == undefined)
+				arr[ns] = [];
+
+			arr[ns].push(obj);
+		});
+
+		for(var ns in arr)
+		{
+			arr[ns].sort(function(a, b) {
+				if(a.memberName < b.memberName) return -1;
+				if(a.memberName > b.memberName) return 1;
+				return 0;
+			});
+		}
+	};
+
 	$scope.showHideNamespace = function(object)
 	{
 		if(object.canView == undefined)
@@ -314,7 +339,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 				var groupedMethods = $scope.groupMethodsByNamespace(methods, engineNamespace);
 				$scope.currentObject.methods = groupedMethods;
 
-				var groupedImplemented = $scope.groupMethodsByNamespace($scope.currentObject.implementedBy, namespace);
+				var groupedImplemented = $scope.groupedImplementedByNamespace($scope.currentObject.implementedBy, namespace);
 				$scope.currentObject.implementedBy = groupedImplemented;
 
 				var adapters = [];
