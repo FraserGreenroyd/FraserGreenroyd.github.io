@@ -314,6 +314,9 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 				var groupedMethods = $scope.groupMethodsByNamespace(methods, engineNamespace);
 				$scope.currentObject.methods = groupedMethods;
 
+				var groupedImplemented = $scope.groupMethodsByNamespace($scope.currentObject.implementedBy, namespace);
+				$scope.currentObject.implementedBy = groupedImplemented;
+
 				var adapters = [];
 				$scope.adapters.filter(function(obj) {
 					if(obj.namespace == $scope.currentObject.namespace && obj.memberName == $scope.currentObject.memberName)
