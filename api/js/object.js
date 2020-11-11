@@ -226,11 +226,14 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		tuples.splice(0, 0, t);
 
 		tuples.forEach(function(obj) {
-			obj[1].sort(function(a, b) {
-				if(a.memberName < b.memberName) return -1;
-				if(a.memberName > b.memberName) return 1;
-				return 0;
-			});
+			if(obj != undefined)
+			{
+				obj[1].sort(function(a, b) {
+					if(a.memberName < b.memberName) return -1;
+					if(a.memberName > b.memberName) return 1;
+					return 0;
+				});
+			}
 		});
 
 		return tuples;
