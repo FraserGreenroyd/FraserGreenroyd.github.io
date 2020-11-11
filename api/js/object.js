@@ -263,6 +263,8 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			arr[ns].push(obj);
 		});
 
+		var tuples = [];
+
 		for(var ns in arr)
 		{
 			arr[ns].sort(function(a, b) {
@@ -270,7 +272,11 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 				if(a.memberName > b.memberName) return 1;
 				return 0;
 			});
+
+			tuples.push([ns, arr[ns]]);
 		}
+
+		return tuples;
 	};
 
 	$scope.showHideNamespace = function(object)
