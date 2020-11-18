@@ -69,12 +69,14 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		$scope.setLocationNull();
 
 		var currentItem = namespace;
-		var name = "";
+		var name = currentItem.current;
 		while(currentItem.parent != null)
 		{
-			name = currentItem.current + "." + name;
 			currentItem = currentItem.parent;
+			name = currentItem.current + "." + name;
 		}
+
+		name = "BH.oM." + name;
 
 		$location.search('namespace', name);
 		$scope.navigationObjectModel.forEach(function(item) {
@@ -82,6 +84,11 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			if(item.name.includes(name))
 				item.isVisible = true;
 		});
+	};
+
+	$scope.expand = function(data)
+	{
+		alert("Hi Bentley");
 	};
 
 	$scope.goToEngineNamespace = function(engine)
