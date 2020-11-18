@@ -67,10 +67,19 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	$scope.goToObjectNamespace = function(namespace)
 	{
 		$scope.setLocationNull();
-		$location.search('namespace', namespace.name);
+
+		var currentItem = namespace;
+		var name = "";
+		while(currentItem.parent != null)
+		{
+			name = currentItem.current + "." + name;
+			currentItem = currentItem.parent;
+		}
+
+		$location.search('namespace', name);
 		$scope.navigationObjectModel.forEach(function(item) {
 			item.isVisible = false;
-			if(item.name.includes(namespace.name))
+			if(item.name.includes(name))
 				item.isVisible = true;
 		});
 	};
