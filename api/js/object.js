@@ -72,11 +72,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		var name = currentItem.current;
 		while(currentItem.parent != null)
 		{
-			$scope.navigationObjectModel.forEach(function(item) {
-				if(item.children.includes(currentItem))
-					currentItem = item;
-			});
-			
+			currentItem = currentItem.parent;
 			name = currentItem.current + "." + name;
 		}
 
