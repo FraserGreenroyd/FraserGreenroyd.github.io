@@ -54,7 +54,7 @@
 
 <script type="text/ng-template" id="tree_item_renderer.html">
     <span class="font-bold can-click" ng-repeat="x in x.children"><span class="fa {{x.isVisible ? 'fa-times-circle' : 'fa-plus-circle'}}" ng-click="expandNameSpaceNavigation(x)"></span> <span ng-click="goToObjectNamespace(x)">{{x.current}}</span></span>
-    <div ng-include="'tree_item_renderer.html'"></div>
+    <div ng-repeat="x in x.children" ng-include="'tree_item_renderer.html'"></div>
 </script>
 
 <!--<ul ng-app="Application" ng-controller="TreeController">
