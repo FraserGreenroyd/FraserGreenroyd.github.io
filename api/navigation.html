@@ -57,7 +57,7 @@
 </div>
 
 <script type="text/ng-template" id="tree_item_renderer.html">
-    <span class="font-bold" ng-repeat="data in data.children">
+    <span class="font-bold">
     	<span class="fa fa-times-circle" ng-click=""></span> <span class="can-click">{{data.current}}</span>
     	<ul class="row">
     		<li ng-repeat="data in data.children" ng-include="'tree_item_renderer.html'"></li>
