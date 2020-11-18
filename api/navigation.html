@@ -32,13 +32,12 @@
 	<div class="row font-zilla-slab">
 		<span class="can-click font-bold" ng-click="showObjects()"><span class="fa {{expandObjects ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> oM</span>
 
-		<ul class="row ng-hide navigation-item" ng-show="expandObjects">
+		<!--<ul class="row ng-hide navigation-item" ng-show="expandObjects">
 			<li ng-repeat="data in navigationObjectModel" ng-include="'tree_item_renderer.html'"></li>
-		</ul>
-		<!--<div class="row ng-hide navigation-item" ng-show="expandObjects" ng-repeat="x in navigationObjectModel" ng-include="'tree_item_renderer.html'">
-
-			<span class="font-bold"><span class="fa {{x.isVisible ? 'fa-times-circle' : 'fa-plus-circle'}}" ng-click="expandNameSpaceNavigation(x)"></span> <span ng-click="goToObjectNamespace(x)">{{displayNamespaceSplit(x)}}</span></span>
-		</div>-->
+		</ul>-->
+		<div class="row ng-hide navigation-item" ng-show="expandObjects" ng-repeat="data in navigationObjectModel" ng-include="'tree_item_renderer.html'">
+			<!--<span class="font-bold"><span class="fa {{x.isVisible ? 'fa-times-circle' : 'fa-plus-circle'}}" ng-click="expandNameSpaceNavigation(x)"></span> <span ng-click="goToObjectNamespace(x)">{{displayNamespaceSplit(x)}}</span></span>-->
+		</div>
 	</div>
 
 	<div class="row font-zilla-slab margin-top-3">
@@ -59,9 +58,9 @@
 <script type="text/ng-template" id="tree_item_renderer.html">
     <span class="font-bold">
     	<span class="fa fa-times-circle" ng-click=""></span> <span class="can-click">{{data.current}}</span>
-    	<ul class="row">
-    		<li ng-repeat="data in data.children" ng-include="'tree_item_renderer.html'"></li>
-    	</ul>
+    	<span class="row">
+    		<span ng-repeat="data in data.children" ng-include="'tree_item_renderer.html'"></span>
+    	</span>
     </span>
 </script>
 
