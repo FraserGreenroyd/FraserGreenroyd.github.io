@@ -43,7 +43,7 @@
 
 	<div class="row font-zilla-slab margin-top-3">
 		<span class="can-click font-bold" ng-click="showEngine()"><span class="fa {{expandEngine ? 'fa-times-circle' : 'fa-plus-circle'}}"></span> Engine</span>
-		<ul class="row ng-hide navigation-item" ng-show="expandObjects">
+		<ul class="row ng-hide navigation-item" ng-show="expandEngine">
 			<li style="list-style:none;" ng-repeat="data in navigationEngines" ng-include="'tree_item_renderer.html'"></li>
 		</ul>
 		<!--<div class="row can-click ng-hide navigation-item" ng-show="expandEngine" ng-repeat="x in navigationEngines" ng-click="goToEngineNamespace(x)">
