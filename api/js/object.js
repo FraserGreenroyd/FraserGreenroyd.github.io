@@ -94,11 +94,6 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		name = "BH.oM." + name;
 
 		$location.search('namespace', name);
-		$scope.navigationObjectModel.forEach(function(item) {
-			item.isVisible = false;
-			if(item.name.includes(name))
-				item.isVisible = true;
-		});
 	};
 
 	$scope.expand = function(data)
@@ -417,7 +412,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 			$http.get('js/methods.json').then(function(response) {
 				$scope.methods = response.data;
-				
+
 				$http.get('js/objectNavigation.json').then(function(response) {
 					$scope.navigationObjectModel = response.data;
 
