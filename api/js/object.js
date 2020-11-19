@@ -39,11 +39,11 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		if($scope.objects.length == 0)
 			$scope.setUpNavigation(); //First time load
 
-		$scope.navigationObjectModel.forEach(function(item) {
+		/*$scope.navigationObjectModel.forEach(function(item) {
 			item.isVisible = false;
 			if(item.name.includes($location.search().namespace))
 				item.isVisible = true;
-		});
+		});*/
 
 		$scope.read_oM();
 	});
