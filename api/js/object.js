@@ -33,6 +33,21 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		failureHandling.handleFailure(response, $window);
 	};
 
+	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {
+		$scope.isLoading = true;
+
+		if($scope.objects.length == 0)
+			$scope.setUpNavigation(); //First time load
+
+		$scope.navigationObjectModel.forEach(function(item) {
+			item.isVisible = false;
+			if(item.name.includes($location.search().namespace))
+				item.isVisible = true;
+		});
+
+		$scope.read_oM();
+	});
+
 	$scope.goHome = function()
 	{
 		$scope.isLoading = true;
@@ -90,7 +105,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	{
 		if(data.expandChildren == undefined)
 			data.expandChildren = false;
-		
+
 		data.expandChildren = !data.expandChildren;
 	};
 
@@ -162,21 +177,6 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	{
 		return apiHelpers.displayNamespaceSplit(namespace);
 	};
-
-	$scope.$on('$locationChangeSuccess', function (a, newUrl, oldUrl) {
-		$scope.isLoading = true;
-
-		if($scope.objects.length == 0)
-			$scope.setUpNavigation(); //First time load
-
-		$scope.navigationObjectModel.forEach(function(item) {
-			item.isVisible = false;
-			if(item.name.includes($location.search().namespace))
-				item.isVisible = true;
-		});
-
-		$scope.read_oM();
-	});
 
 	$scope.goToObject = function(object)
 	{
@@ -412,19 +412,36 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	$scope.setUpNavigation = function()
 	{
-		$http.get('js/objectNavigation.json').then(function(response) {
-			$scope.navigationObjectModel = response.data;
+		$http.get('js/objects.json').then(function(response) {
+			$scope.objects = response.data;
 
-			$http.get('js/methodNavigation.json').then(function(response) {
-				$scope.navigationEngines = response.data;
+			$http.get('js/methods.json').then(function(response) {
+				$scope.methods = response.data;
+				
+				$http.get('js/objectNavigation.json').then(function(response) {
+					$scope.navigationObjectModel = response.data;
 
-				$scope.read_oM();
+					$http.get('js/methodNavigation.json').then(function(response) {
+						$scope.navigationEngines = response.data;
+
+						$scope.read_oM();
+					}, function(response) {
+						//Failure method for getting js/methodNavigation.json
+						$scope.handleFailure(response);
+					});
+				}, function(response) {
+					//Failure method for getting js/objectNavigation.json
+					$scope.handleFailure(response);
+				});
 			}, function(response) {
+				//Failure method for getting js/methods.json
 				$scope.handleFailure(response);
 			});
 		}, function(response) {
+			//Failure method for getting js/objects.json
 			$scope.handleFailure(response);
 		});
+		
 
 
 
