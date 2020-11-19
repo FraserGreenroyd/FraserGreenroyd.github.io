@@ -79,7 +79,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 		name = "BH.oM." + name;
 
-		$window.location.href = "object.html#!?namespace=" + namespace.name;
+		$window.location.href = "object.html#!?namespace=" + name;
 	};
 
 	$scope.goToEngineNamespace = function(namespace)
@@ -94,7 +94,7 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 
 		name = "BH.Engine." + name;
 
-		$window.location.href = "engine.html#!?engine=" + engine.name;
+		$window.location.href = "engine.html#!?engine=" + name;
 	};
 
 	$scope.goToAdapterNamespace = function(adapter)
