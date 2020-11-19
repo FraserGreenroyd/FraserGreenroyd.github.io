@@ -77,7 +77,18 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 	$scope.goToEngineNamespace = function(engine)
 	{
 		$scope.setLocationNull();
-		$location.search('engine', engine.name);
+
+		var currentItem = engine;
+		var name = currentItem.current;
+		while(currentItem.parent != null)
+		{
+			currentItem = currentItem.parent;
+			name = currentItem.current + "." + name;
+		}
+
+		name = "BH.Engine." + name;
+
+		$location.search('engine', name);
 	};
 
 	$scope.goToAdapterNamespace = function(adapter)
