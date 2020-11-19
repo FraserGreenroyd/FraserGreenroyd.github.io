@@ -159,7 +159,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		$scope.read_Engine();
 	});
 
-	$scope.goToObjectNameSpace = function(namespace)
+	$scope.goToObjectNamespace = function(namespace)
 	{
 		var currentItem = namespace;
 		var name = currentItem.current;
