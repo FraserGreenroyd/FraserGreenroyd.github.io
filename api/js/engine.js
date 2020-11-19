@@ -259,7 +259,10 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 				var methods = [];
 				$scope.methods.filter(function(obj) {
-					if(obj.namespace.includes(engine))
+					var ns = obj.namespace;
+					ns += "." + obj.className;
+
+					if(obj.namespace.includes(ns))
 						methods.push(obj);
 				});
 
@@ -278,6 +281,8 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		{
 			$scope.methods.forEach(function(obj) {
 				var ns = obj.namespace;
+				ns += "." + obj.className;
+
 				if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
 					ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
 
