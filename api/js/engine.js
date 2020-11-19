@@ -78,11 +78,6 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 	{
 		$scope.setLocationNull();
 		$location.search('engine', engine.name);
-		$scope.navigationEngines.forEach(function(item) {
-			item.isVisible = false;
-			if(item.name.includes(engine.name))
-				item.isVisible = true;
-		});
 	};
 
 	$scope.goToAdapterNamespace = function(adapter)
@@ -149,7 +144,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 		if($scope.objects.length == 0)
 			$scope.setUpNavigation(); //First time load
-		
+
 		$scope.read_Engine();
 	});
 
