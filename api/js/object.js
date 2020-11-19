@@ -88,11 +88,10 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	$scope.expand = function(data)
 	{
-		alert("Hi Bentley");
-
-		data.children.forEach(function(item) {
-			item.isVisible = !item.isVisible;
-		});
+		if(data.expandChildren == undefined)
+			data.expandChildren = false;
+		
+		data.expandChildren = !data.expandChildren;
 	};
 
 	$scope.goToEngineNamespace = function(engine)
