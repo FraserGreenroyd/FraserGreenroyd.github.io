@@ -284,14 +284,16 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		}
 		else
 		{
+			var e = engine.split('.');
+			var engineNamespace = "";
+			for(var x = 0; x < e.length - 1; x++)
+				engineNamespace += e[x] + ".";
+
+			engineNamespace = engineNamespace.substring(0, engineNamespace.length - 1);
+			var engineClass = e[e.length - 1];
+
 			$scope.methods.forEach(function(obj) {
-				var ns = obj.namespace;
-				ns += "." + obj.className;
-
-				if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
-					ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
-
-				if(ns == engine && obj.memberName == method)
+				if(obj.namespace == engineNamespace && obj.className == engineClass && obj.memberName == method)
 					$scope.currentMethod = obj;
 			});
 
