@@ -164,6 +164,21 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		$scope.read_Engine();
 	});
 
+	$scope.goToObjectNameSpace = function(namespace)
+	{
+		var currentItem = namespace;
+		var name = currentItem.current;
+		while(currentItem.parent != null)
+		{
+			currentItem = currentItem.parent;
+			name = currentItem.current + "." + name;
+		}
+
+		name = "BH.oM." + name;
+
+		$window.location.href = "object.html#!?namespace=" + name;
+	}
+
 	$scope.goToObject = function(object)
 	{
 		if(object.isInterface == 1) return;
@@ -274,73 +289,33 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 	$scope.setUpNavigation = function()
 	{
-		$http.get('js/adapter.json').then(function(response) {
-			$scope.adapters = response.data;
-
-			var adapterNames = [];
-
-			$scope.adapters.forEach(function(obj) {
-				var ns = obj.namespace;
-				if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
-					ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
-
-				if(adapterNames.indexOf(ns) == -1)
-					adapterNames.push(ns);
-			});
-
-			adapterNames.sort();
-
-			adapterNames.forEach(function(item) {
-				$scope.navigationAdapters.push({name: item, isVisible: false});
-			});
+		$http.get('js/objects.json').then(function(response) {
+			$scope.objects = response.data;
 
 			$http.get('js/methods.json').then(function(response) {
 				$scope.methods = response.data;
 
-				var engineNames = [];
+				$http.get('js/objectNavigation.json').then(function(response) {
+					$scope.navigationObjectModel = response.data;
 
-				$scope.methods.forEach(function(obj) {
-					var ns = obj.namespace;
-					if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
-						ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
+					$http.get('js/methodNavigation.json').then(function(response) {
+						$scope.navigationEngines = response.data;
 
-					if(engineNames.indexOf(ns) == -1)
-						engineNames.push(ns);
-				});
-
-				engineNames.sort();
-
-				engineNames.forEach(function(item) {
-					$scope.navigationEngines.push({name: item, isVisible: false});
-				});
-
-				$http.get('js/objects.json').then(function(response) {
-					$scope.objects = response.data;
-
-					var objectNames = [];
-					$scope.objects.forEach(function(obj) {
-						var ns = obj.namespace;
-						if(apiHelpers.nthIndexOf(ns, '.', 3) != -1)
-							ns = ns.substring(0, apiHelpers.nthIndexOf(ns, '.', 3));
-
-						if(objectNames.indexOf(ns) == -1)
-							objectNames.push(ns);
+						$scope.read_oM();
+					}, function(response) {
+						//Failure method for getting js/methodNavigation.json
+						$scope.handleFailure(response);
 					});
-
-					objectNames.sort();
-
-					objectNames.forEach(function(item) {
-						$scope.navigationObjectModel.push({name: item, isVisible: false});
-					});
-					
-					$scope.read_Engine();
 				}, function(response) {
+					//Failure method for getting js/objectNavigation.json
 					$scope.handleFailure(response);
 				});
 			}, function(response) {
+				//Failure method for getting js/methods.json
 				$scope.handleFailure(response);
 			});
 		}, function(response) {
+			//Failure method for getting js/objects.json
 			$scope.handleFailure(response);
 		});
 	};
