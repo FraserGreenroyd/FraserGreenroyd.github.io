@@ -255,14 +255,19 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 			if(engine != null && engine != undefined)
 			{
+				var e = engine.split('.');
+				var engineNamespace = "";
+				for(var x = 0; x < e.length - 1; x++)
+					engineNamespace += e[x] + ".";
+
+				engineNamespace = engineNamespace.substring(0, engineNamespace.length - 1);
+				var engineClass = e[e.length - 1];
+
 				$scope.currentEngine = { methods: [], name : "" };
 
 				var methods = [];
 				$scope.methods.filter(function(obj) {
-					var ns = obj.namespace;
-					ns += "." + obj.className;
-
-					if(obj.namespace.includes(ns))
+					if(obj.namespace.includes(engineNamespace) && obj.className == engineClass)
 						methods.push(obj);
 				});
 
