@@ -72,6 +72,14 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		});
 	};
 
+	$scope.expand = function(data)
+	{
+		if(data.expandChildren == undefined)
+			data.expandChildren = false;
+
+		data.expandChildren = !data.expandChildren;
+	};
+
 	$scope.displayEngineMethods
 
 	$scope.goToEngineNamespace = function(engine)
