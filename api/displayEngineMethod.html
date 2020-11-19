@@ -41,7 +41,7 @@
 					<div class="col-sm-3 table-cell-inner">
 						<span class="{{y.namespace.startsWith('BH.oM') ? 'can-click' : ''}}" ng-click="goToObject(y)">{{y.namespace}}.{{y.memberName}}</span>
 						<span class="ng-hide" ng-show="y.inheritances.length > 0">
-							[<span ng-repeat="z in y.inheritances track by $index"><span class="{{z.namespace.startsWith('BH.oM') ? 'can-click' : ''}}" ng-click="goToObject(z)">{{z.memberName}}</span><span class="ng-hide" ng-show="$index < x.inheritances.length - 1">, </span></span> ]
+							[<span ng-repeat="z in y.inheritances track by $index"><span class="{{z.namespace.startsWith('BH.oM') ? 'can-click' : ''}}" ng-click="goToObject(z)">{{z.memberName}}</span><span class="ng-hide" ng-show="$index < y.inheritances.length - 1">, </span></span> ]
 						</span>
 
 						<!--<span class="{{y.isInterface == 1 ? '' : 'can-click'}}" ng-click="goToObject(y)">{{y.namespace}}.{{y.memberName}}</span>-->
@@ -73,7 +73,10 @@
 
 			<div class="row property-table-row method-input-row lg-background">
 				<div class="col-sm-3 table-cell-inner">
-					{{currentMethod.outputs.memberName}}
+					<span class="{{currentMethod.outputs.namespace.startsWith('BH.oM') ? 'can-click' : ''}}" ng-click="goToObject(currentMethod.outputs)">{{currentMethod.outputs.memberName}}</span>
+					<span class="ng-hide" ng-show="currentMethod.outputs.inheritances.length > 0">
+						[<span ng-repeat="z in currentMethod.outputs.inheritances track by $index"><span class="{{z.namespace.startsWith('BH.oM') ? 'can-click' : ''}}" ng-click="goToObject(z)">{{z.memberName}}</span><span class="ng-hide" ng-show="$index < currentMethod.outputs.inheritances.length - 1">, </span></span> ]
+					</span>
 				</div>
 				<div class="col-sm-3 table-cell-inner">
 					{{currentMethod.outputs.namespace}}
