@@ -61,7 +61,7 @@
 
 <script type="text/ng-template" id="object_render.html">
     <span class="font-bold">
-    	<span class="fa {{data.isVisible ? 'fa-times-circle' : 'fa-plus-circle'}}" ng-click="expand(data)"></span> <span class="can-click" ng-click="goToObjectNamespace(data)">{{data.current}}</span>
+    	<span class="ng-hide fa {{data.isVisible ? 'fa-times-circle' : 'fa-plus-circle'}}" ng-show="data.isVisible" ng-click="expand(data)"></span> <span class="can-click" ng-click="goToObjectNamespace(data)">{{data.current}}</span>
     	<ul class="row">
     		<li style="list-style:none;" ng-repeat="data in data.children" ng-include="'object_render.html'"></li>
     	</ul>
