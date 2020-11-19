@@ -184,7 +184,8 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 	$scope.goToObject = function(object)
 	{
-		if(object.isInterface == 1) return;
+		if(!object.namespace.startsWith("BH.oM"))
+			return;
 
 		$window.location.href = "object.html#!?namespace=" + object.namespace + "&object=" + object.memberName;
 	};
