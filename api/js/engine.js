@@ -301,7 +301,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 					$http.get('js/methodNavigation.json').then(function(response) {
 						$scope.navigationEngines = response.data;
 
-						$scope.read_oM();
+						$scope.read_engine();
 					}, function(response) {
 						//Failure method for getting js/methodNavigation.json
 						$scope.handleFailure(response);
