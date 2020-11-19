@@ -82,6 +82,14 @@ app.controller('indexController', function($scope, $window, $http, $filter, noti
 		$window.location.href = "object.html#!?namespace=" + name;
 	};
 
+	$scope.expand = function(data)
+	{
+		if(data.expandChildren == undefined)
+			data.expandChildren = false;
+
+		data.expandChildren = !data.expandChildren;
+	};
+
 	$scope.goToEngineNamespace = function(namespace)
 	{
 		var currentItem = namespace;
