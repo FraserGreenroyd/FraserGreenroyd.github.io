@@ -106,7 +106,17 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	$scope.goToEngineNamespace = function(engine)
 	{
-		$window.location.href = "engine.html#!?engine=" + engine.name;
+		var currentItem = engine;
+		var name = currentItem.current;
+		while(currentItem.parent != null)
+		{
+			currentItem = currentItem.parent;
+			name = currentItem.current + "." + name;
+		}
+
+		name = "BH.Engine." + name;
+
+		$window.location.href = "engine.html#!?engine=" + name;
 	};
 
 	$scope.goToAdapterNamespace = function(adapter)
