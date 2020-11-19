@@ -72,11 +72,6 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		});
 	};
 
-	$scope.goToObjectNamespace = function(namespace)
-	{
-		$window.location.href = "object.html#!?namespace=" + namespace.name;
-	};
-
 	$scope.displayEngineMethods
 
 	$scope.goToEngineNamespace = function(engine)
