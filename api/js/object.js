@@ -40,23 +40,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			$scope.setUpNavigation(); //First time load
 		else
 		{
-			var namespace = $location.search().namespace;
-			if(namespace != null && namespace != undefined)
-			{
-				$scope.navigationObjectModel.forEach(function(item) {
-					var ns = "BH.oM." + item.current;
-					item.expandChildren = false;
-					if(namespace.startsWith(ns))
-						item.expandChildren = true;
-
-					item.children.forEach(function(item2) {
-						var ns2 = ns + "." + item2.current;
-						item2.expandChildren = false;
-						if(namespace.startsWith(ns2))
-							item.expandChildren = true;
-					});
-				});
-			}
+			$scope.setNavigationMenu();
 		}
 
 		$scope.read_oM();
@@ -443,21 +427,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 					$http.get('js/methodNavigation.json').then(function(response) {
 						$scope.navigationEngines = response.data;
 
-						var namespace = $location.search().namespace;
-						if(namespace != null && namespace != undefined)
-						{
-							$scope.navigationObjectModel.forEach(function(item) {
-								item.expandChildren = false;
-								if(namespace.startsWith(item.namespace))
-									item.expandChildren = true;
-
-								item.children.forEach(function(item2) {
-									item2.expandChildren = false;
-									if(namespace.startsWith(item2.namespace))
-										item.expandChildren = true;
-								});
-							});
-						}
+						$scope.setNavigationMenu();
 
 						$scope.read_oM();
 					}, function(response) {
@@ -476,5 +446,26 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			//Failure method for getting js/objects.json
 			$scope.handleFailure(response);
 		});
+	};
+
+	$scope.setNavigationMenu = function()
+	{
+		var namespace = $location.search().namespace;
+		if(namespace != null && namespace != undefined)
+		{
+			$scope.navigationObjectModel.forEach(function(item) {
+				var ns = "BH.oM." + item.current;
+				item.expandChildren = false;
+				if(namespace.startsWith(ns))
+					item.expandChildren = true;
+
+				item.children.forEach(function(item2) {
+					var ns2 = ns + "." + item2.current;
+					item2.expandChildren = false;
+					if(namespace.startsWith(ns2))
+						item.expandChildren = true;
+				});
+			});
+		}
 	};
 });
