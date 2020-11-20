@@ -50,10 +50,10 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 	$scope.updateSideBarHeight = function()
 	{
-		var sidebar = angular.element(document.querySelector("#content-left-border"))[0];//.offsetHeight;
+		var sidebar = angular.element(document.querySelector(".content-left-border"))[0];//.offsetHeight;
 
 		if(document.body.clientHeight < sidebar.offsetHeight)
-		    $('#content-left-border').css('height', sidebar.offsetHeight);
+		    $('.content-left-border').css('height', sidebar.offsetHeight);
 	};
 
 	$scope.goHome = function()
