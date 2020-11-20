@@ -164,7 +164,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 		if($scope.objects.length == 0)
 			$scope.setUpNavigation(); //First time load
 		else
-			$scope.setUpNavigation();
+			$scope.setNavigationMenu();
 
 		$scope.read_Engine();
 	});
@@ -336,7 +336,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 					$http.get('js/methodNavigation.json').then(function(response) {
 						$scope.navigationEngines = response.data;
 
-						$scope.setUpNavigation();
+						$scope.setNavigationMenu();
 
 						$scope.read_Engine();
 					}, function(response) {
