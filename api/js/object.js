@@ -45,7 +45,8 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 		$scope.read_oM();
 
-		console.log("HEIGHT " + angular.element("#navigation-menu-sidebar")[0].offsetHeight);
+		console.log(angular.element(document.querySelector("#navigation-menu-sidebar")));
+		console.log("HEIGHT " + angular.element(document.querySelector("#navigation-menu-sidebar"))[0].offsetHeight);
 	});
 
 	$scope.goHome = function()
