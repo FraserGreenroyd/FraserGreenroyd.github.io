@@ -39,6 +39,22 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		if($scope.objects.length == 0)
 			$scope.setUpNavigation(); //First time load
 
+		var namespace = $location.search().namespace;
+		if(namespace != null && namespace != undefined)
+		{
+			$scope.navigationObjectModel.forEach(function(item) {
+				item.expandChildren = false;
+				if(namespace.startsWith(item.namespace))
+					item.expandChildren = true;
+
+				item.children.forEach(function(item2) {
+					item2.expandChildren = false;
+					if(namespace.startsWith(item2.namespace))
+						item.expandChildren = true;
+				});
+			});
+		}
+
 		/*$scope.navigationObjectModel.forEach(function(item) {
 			item.isVisible = false;
 			if(item.name.includes($location.search().namespace))
