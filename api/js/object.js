@@ -453,6 +453,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		var namespace = $location.search().namespace;
 		if(namespace != null && namespace != undefined)
 		{
+			$scope.expandObjects = true;
 			$scope.navigationObjectModel.forEach(function(item) {
 				var ns = "BH.oM." + item.current;
 				item.expandChildren = false;

@@ -356,11 +356,13 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 			$scope.handleFailure(response);
 		});
 	};
+	
 	$scope.setNavigationMenu = function()
 	{
 		var namespace = $location.search().namespace;
 		if(namespace != null && namespace != undefined)
 		{
+			$scope.expandEngine = true;
 			$scope.navigationEngines.forEach(function(item) {
 				var ns = "BH.Engine." + item.current;
 				item.expandChildren = false;
