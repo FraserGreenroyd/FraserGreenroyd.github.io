@@ -52,8 +52,10 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	{
 		var sidebar = angular.element(document.querySelector(".content-left-border"))[0];//.offsetHeight;
 
-		if(document.body.clientHeight > sidebar.offsetHeight)
-		    $('.content-left-border').css('height', document.body.clientHeight);
+		if(document.body.scrollHeight > sidebar.offsetHeight)
+		    $('.content-left-border').css('height', document.body.scrollHeight);
+		else
+			$('.content-left-border').css('height', sidebar.offsetHeight);
 	};
 
 	$scope.goHome = function()
