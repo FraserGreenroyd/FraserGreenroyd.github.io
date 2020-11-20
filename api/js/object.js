@@ -60,8 +60,8 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 				maxMainHeight = mainbar[x].offsetHeight;
 		}
 		
-		if(mainHeight > sidebar.offsetHeight)
-			sidebar.css('height', (mainHeight + 100) + "px");
+		if(maxMainHeight > sidebar.offsetHeight)
+			sidebar.css('height', (maxMainHeight + 100) + "px");
 	};
 
 	$scope.goHome = function()
