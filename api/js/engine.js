@@ -356,10 +356,10 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 			$scope.handleFailure(response);
 		});
 	};
-	
+
 	$scope.setNavigationMenu = function()
 	{
-		var namespace = $location.search().namespace;
+		var namespace = $location.search().engine;
 		if(namespace != null && namespace != undefined)
 		{
 			$scope.expandEngine = true;
