@@ -54,11 +54,12 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 		var mainbar = angular.element(document.querySelector(".main-cell-display"));//[0].offsetHeight;
 
 		var maxMainHeight = 0;
-		mainbar.forEach(function(item) {
-			if(item.offsetHeight > maxMainHeight)
-				maxMainHeight = item.offsetHeight;
-		});
-
+		for(var x = 0; x < mainbar.length; x++)
+		{
+			if(mainbar[x].offsetHeight > maxMainHeight)
+				maxMainHeight = mainbar[x].offsetHeight;
+		}
+		
 		if(mainHeight > sidebar.offsetHeight)
 			sidebar.css('height', (mainHeight + 100) + "px");
 	};
