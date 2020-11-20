@@ -79,7 +79,7 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 	{
 		var ns = $location.search().engine;
 		ns += "." + method.className;
-		$locaion.search('engine', ns);
+		$location.search('engine', ns);
 		$location.search('method', method.memberName);
 	};
 
