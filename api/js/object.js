@@ -51,7 +51,13 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	$scope.updateSideBarHeight = function()
 	{
 		var sidebar = angular.element(document.querySelector("#navigation-menu-sidebar"))[0];//.offsetHeight;
-		var mainHeight = angular.element(document.querySelector("#main-cell-display"))[0].offsetHeight;
+		var mainbar = angular.element(document.querySelector(".main-cell-display"));//[0].offsetHeight;
+
+		var maxMainHeight = 0;
+		mainbar.forEach(function(item) {
+			if(item.offsetHeight > maxMainHeight)
+				maxMainHeight = item.offsetHeight;
+		});
 
 		if(mainHeight > sidebar.offsetHeight)
 			sidebar.css('height', (mainHeight + 100) + "px");
