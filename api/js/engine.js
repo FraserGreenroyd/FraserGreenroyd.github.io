@@ -261,14 +261,22 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 				for(var x = 0; x < e.length - 1; x++)
 					engineNamespace += e[x] + ".";
 
-				engineNamespace = engineNamespace.substring(0, engineNamespace.length - 1);
 				var engineClass = e[e.length - 1];
+				if(engineClass != "Compute" && engineClass != "Convert" && engineClass != "Create" && engineClass != "Modify" && engineClass != "Query")
+				{
+					//Not actually at a class level yet
+					engineNamespace += engineClass;
+				}
+				else
+					engineNamespace = engineNamespace.substring(0, engineNamespace.length - 1);
 
 				$scope.currentEngine = { methods: [], name : "" };
 
 				var methods = [];
 				$scope.methods.filter(function(obj) {
-					if(obj.namespace.includes(engineNamespace) && obj.className == engineClass)
+					var n = obj.namespace + "." + obj.className;
+
+					if(n.startsWith(engineNamespace))
 						methods.push(obj);
 				});
 
