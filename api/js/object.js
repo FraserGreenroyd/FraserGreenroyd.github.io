@@ -44,13 +44,15 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			if(namespace != null && namespace != undefined)
 			{
 				$scope.navigationObjectModel.forEach(function(item) {
+					var ns = "BH.oM." + item.current;
 					item.expandChildren = false;
-					if(namespace.startsWith(item.namespace))
+					if(namespace.startsWith(ns))
 						item.expandChildren = true;
 
 					item.children.forEach(function(item2) {
+						var ns2 = ns + "." + item2.current;
 						item2.expandChildren = false;
-						if(namespace.startsWith(item2.namespace))
+						if(namespace.startsWith(ns2))
 							item.expandChildren = true;
 					});
 				});
