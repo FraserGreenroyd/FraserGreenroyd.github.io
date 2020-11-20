@@ -45,9 +45,17 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 
 		$scope.read_oM();
 
-		console.log(angular.element(document.querySelector("#navigation-menu-sidebar")));
-		console.log("HEIGHT " + angular.element(document.querySelector("#navigation-menu-sidebar"))[0].offsetHeight);
+		$scope.updateSideBarHeight();
 	});
+
+	$scope.updateSideBarHeight = function()
+	{
+		var sidebar = angular.element(document.querySelector("#navigation-menu-sidebar"))[0];//.offsetHeight;
+		var mainHeight = angular.element(document.querySelector("#main-cell-display"))[0].offsetHeight;
+
+		if(mainHeight > sidebar.offsetHeight)
+			sidebar.css('height', (mainHeight + 100) + "px");
+	};
 
 	$scope.goHome = function()
 	{
@@ -68,16 +76,19 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	$scope.showObjects = function()
 	{
 		$scope.expandObjects = !$scope.expandObjects;
+		$scope.updateSideBarHeight();
 	};
 
 	$scope.showEngine = function()
 	{
 		$scope.expandEngine = !$scope.expandEngine;
+		$scope.updateSideBarHeight();
 	};
 
 	$scope.showAdapter = function()
 	{
 		$scope.expandAdapter = !$scope.expandAdapter;
+		$scope.updateSideBarHeight();
 	};
 
 	$scope.goToObjectNamespace = function(namespace)
@@ -103,6 +114,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			data.expandChildren = false;
 
 		data.expandChildren = !data.expandChildren;
+		$scope.updateSideBarHeight();
 	};
 
 	$scope.goToEngineNamespace = function(engine)
@@ -152,31 +164,37 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 	$scope.displayObjectProperties = function(object)
 	{
 		object.displayProperties = !object.displayProperties;
+		$scope.updateSideBarHeight();
 	};
 
 	$scope.displayEngineMethods = function(object)
 	{
 		object.displayMethods = !object.displayMethods;
+		$scope.updateSideBarHeight();
 	};
 
 	$scope.displayImplementedTypes = function(object)
 	{
 		object.displayImplementedBy = !object.displayImplementedBy;
+		$scope.updateSideBarHeight();
 	};
 
 	$scope.displayAdapterMethods = function(object)
 	{
 		object.displayAdapters = !object.displayAdapters;
+		$scope.updateSideBarHeight();
 	};
 
 	$scope.displayMethodInputs = function(method)
 	{
 		method.displayInputs = !method.displayInputs;
+		$scope.updateSideBarHeight();
 	};
 
 	$scope.displayMethodOutputs = function(method)
 	{
 		method.displayOutputs = !method.displayOutputs;
+		$scope.updateSideBarHeight();
 	};
 
 	$scope.displayNamespaceSplit = function(namespace)
@@ -319,6 +337,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			object.canView = false;
 		
 		object.canView = !object.canView;
+		$scope.updateSideBarHeight();
 	};
 
 	$scope.showHideMethodInputs = function(object)
@@ -327,6 +346,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			object.canViewInputs = false;
 		
 		object.canViewInputs = !object.canViewInputs;
+		$scope.updateSideBarHeight();
 	};
 
 	$scope.read_oM = function()
@@ -413,6 +433,7 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			$scope.setDisplayNamespace();
 		}
 
+		$scope.updateSideBarHeight();
 		$scope.isLoading = false;
 	};
 
@@ -470,6 +491,8 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 						item.expandChildren = true;
 				});
 			});
+
+			$scope.updateSideBarHeight();
 		}
 	};
 });
