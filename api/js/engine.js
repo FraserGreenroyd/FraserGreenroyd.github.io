@@ -278,13 +278,13 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 				$scope.methods.filter(function(obj) {
 					if(useEngineClass)
 					{
-						var n = obj.namespace + "." + obj.className;
-						if(n.startsWith(engineNamespace))
+						if(obj.namespace.startsWith(engineNamespace) && obj.className == engineClass)
 							methods.push(obj);
 					}
 					else
 					{
-						if(obj.namespace.startsWith(engineNamespace) && obj.className == engineClass)
+						var n = obj.namespace + "." + obj.className;
+						if(n.startsWith(engineNamespace))
 							methods.push(obj);
 					}
 				});
