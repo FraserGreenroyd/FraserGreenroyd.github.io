@@ -262,10 +262,12 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 					engineNamespace += e[x] + ".";
 
 				var engineClass = e[e.length - 1];
+				var useEngineClass = true;
 				if(engineClass != "Compute" && engineClass != "Convert" && engineClass != "Create" && engineClass != "Modify" && engineClass != "Query")
 				{
 					//Not actually at a class level yet
 					engineNamespace += engineClass;
+					useEngineClass = false;
 				}
 				else
 					engineNamespace = engineNamespace.substring(0, engineNamespace.length - 1);
@@ -274,10 +276,17 @@ app.controller('methodController', function($scope, $window, $http, $filter, not
 
 				var methods = [];
 				$scope.methods.filter(function(obj) {
-					var n = obj.namespace + "." + obj.className;
-
-					if(n.startsWith(engineNamespace))
-						methods.push(obj);
+					if(useEngineClass)
+					{
+						var n = obj.namespace + "." + obj.className;
+						if(n.startsWith(engineNamespace))
+							methods.push(obj);
+					}
+					else
+					{
+						if(obj.namespace.startsWith(engineNamespace) && obj.className == engineClass)
+							methods.push(obj);
+					}
 				});
 
 				if(apiHelpers.nthIndexOf(engine, '.', 3) != -1)
