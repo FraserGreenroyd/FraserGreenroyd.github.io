@@ -318,7 +318,11 @@ app.controller('objectController', function($scope, $window, $http, $filter, not
 			if(!goHard)
 				arr[ns].push(obj);
 			else
-				arr[ns].push(obj[1]);
+			{
+				obj[1].forEach(function(item) {
+					arr[ns].push(item);
+				});
+			}
 		});
 
 		var tuples = [];
